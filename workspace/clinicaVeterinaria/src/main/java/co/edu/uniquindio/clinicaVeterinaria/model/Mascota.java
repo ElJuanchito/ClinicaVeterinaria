@@ -3,6 +3,8 @@ package co.edu.uniquindio.clinicaVeterinaria.model;
 import java.util.Objects;
 
 public class Mascota {
+	
+	private String codigo;
 	private String nombre;
 	private Integer edad;
 	private String raza;
@@ -25,13 +27,22 @@ public class Mascota {
 	 * @param tipo
 	 * @param sexo
 	 */
-	public Mascota(String nombre, Integer edad, String raza, Tipo tipo, Sexo sexo) {
+	public Mascota(String codigo, String nombre, Integer edad, String raza, Tipo tipo, Sexo sexo) {
 		super();
+		this.codigo = codigo;
 		this.nombre = nombre;
 		this.edad = edad;
 		this.raza = raza;
 		this.tipo = tipo;
 		this.sexo = sexo;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNombre() {
@@ -76,7 +87,7 @@ public class Mascota {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(edad, nombre, raza, sexo, tipo);
+		return Objects.hash(codigo);
 	}
 
 	@Override
@@ -88,15 +99,17 @@ public class Mascota {
 		if (getClass() != obj.getClass())
 			return false;
 		Mascota other = (Mascota) obj;
-		return Objects.equals(edad, other.edad) && Objects.equals(nombre, other.nombre)
-				&& Objects.equals(raza, other.raza) && sexo == other.sexo && tipo == other.tipo;
+		return Objects.equals(codigo, other.codigo);
 	}
 
 	@Override
 	public String toString() {
-		return "Mascota [nombre=" + nombre + ", edad=" + edad + ", raza=" + raza + ", tipo=" + tipo + ", sexo=" + sexo
-				+ "]";
+		return "Mascota [codigo=" + codigo + ", nombre=" + nombre + ", edad=" + edad + ", raza=" + raza + ", tipo="
+				+ tipo + ", sexo=" + sexo + "]";
 	}
+	
+	
+	
 	
 	
 }
