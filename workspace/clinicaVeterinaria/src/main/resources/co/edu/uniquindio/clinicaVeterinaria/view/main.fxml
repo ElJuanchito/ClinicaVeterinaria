@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="782.0" prefWidth="1054.0" spacing="10.0" styleClass="asd" stylesheets="@../styles/progress-bar.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.MainController">
+   <children>
+      <ProgressBar fx:id="progressBar" prefHeight="78.0" prefWidth="911.0" progress="0.09" VBox.vgrow="ALWAYS">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin></ProgressBar>
+      <HBox alignment="CENTER">
+         <children>
+            <Label fx:id="lblPorcentaje" text="9">
+               <font>
+                  <Font name="Arial" size="41.0" />
+               </font>
+            </Label>
+            <Label text=" %">
+               <font>
+                  <Font size="41.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</VBox>

@@ -1,29 +1,30 @@
 package co.edu.uniquindio.clinicaVeterinaria.application;
 
+import java.io.IOException;
+import java.util.HashMap;
+
+import co.edu.uniquindio.clinicaVeterinaria.exceptions.EscenaNotFoundException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 /**
  * JavaFX App
  */
 public class App extends Application {
 
-	private static Scene scene;
+	private static HashMap<ESCENA, Scene> escenas;
+
+	public static void main(String[] args) {
+		launch();
+	}
 
 	@Override
 	public void start(Stage stage) throws IOException {
-		scene = new Scene(loadFXML("primary"), 640, 480);
-		stage.setScene(scene);
+		stage.setScene(new Scene(loadFXML("main"), 640, 480));
 		stage.show();
-	}
-
-	static void setRoot(String fxml) throws IOException {
-		scene.setRoot(loadFXML(fxml));
 	}
 
 	private static Parent loadFXML(String fxml) throws IOException {
@@ -32,8 +33,32 @@ public class App extends Application {
 		return fxmlLoader.load();
 	}
 
-	public static void main(String[] args) {
-		launch();
+	public static void cargarEscenas(Runnable actionOnFinished) {
+		// TODO
+		// TODO
+		// TODO
+		// TODO
+		// TODO
+		// TODO
+		// TODO
+		actionOnFinished.run();
+	}
+
+	public static void irA(ESCENA escena) throws EscenaNotFoundException {
+		Scene escenaEncontrada = escenas.getOrDefault(escena, null);
+		if (escenaEncontrada == null)
+			throw new EscenaNotFoundException("La escena seleccionada no fue encontrada");
+		// TODO
+		// TODO
+		// TODO
+		// TODO
+		// TODO
+		// TODO
+		// TODO
+	}
+
+	public static enum ESCENA {
+		MAIN, INICIO;
 	}
 
 }

@@ -4,4 +4,6 @@ module co.edu.uniquindio.clinicaVeterinaria {
     requires jpro.webapi;
 
     exports co.edu.uniquindio.clinicaVeterinaria.application;
+    opens co.edu.uniquindio.clinicaVeterinaria.controllers to javafx.fxml;
+    exports co.edu.uniquindio.clinicaVeterinaria.controllers to javafx.fxml;
 }

@@ -1,0 +1,10 @@
+.progress-bar > .track {
+  -fx-text-box-border: transparent;
+  -fx-control-inner-background: transparent;
+}
+.progress-bar .bar {
+  -fx-background-image: url("../sources/patita.png");
+  -fx-background-repeat: repeat no-repeat;
+  -fx-background-color: transparent;
+  -fx-border-width: 0;
+}
