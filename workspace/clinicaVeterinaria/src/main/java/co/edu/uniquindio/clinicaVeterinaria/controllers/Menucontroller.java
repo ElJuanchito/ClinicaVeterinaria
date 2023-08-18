@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.SVGPath;
 
 public class Menucontroller {
 
@@ -12,6 +13,9 @@ public class Menucontroller {
 
 	@FXML
 	private ImageView imgVeterinario;
+
+	@FXML
+	private SVGPath trianguloDesplieguePerfil;
 
 	@FXML
 	void eventoDespliegueMenu(MouseEvent event) {
@@ -30,6 +34,6 @@ public class Menucontroller {
 
 	@FXML
 	void eventoDesplieguePerfil(MouseEvent event) {
-System.out.println("despliegue perfil");
+		System.out.println("despliegue perfil");
 	}
 }
