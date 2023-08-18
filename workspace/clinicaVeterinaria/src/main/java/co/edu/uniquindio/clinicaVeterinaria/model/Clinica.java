@@ -478,7 +478,7 @@ public class Clinica implements Serializable {
 	 * @return
 	 * @author ElJuancho
 	 */
-	public List<AtencionVeterinaria> citasEnRangodeDias(LocalDate inicio, LocalDate fin) {
+	public List<AtencionVeterinaria> citasEnRangoDeDias(LocalDate inicio, LocalDate fin) {
 		return citas.values().stream().filter(cita -> cita.enRangoDeFecha(inicio, fin)).collect(Collectors.toList());
 	}
 }

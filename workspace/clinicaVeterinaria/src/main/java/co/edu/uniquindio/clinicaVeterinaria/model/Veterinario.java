@@ -11,20 +11,22 @@ public class Veterinario extends Persona{
 	 */
 	private static final long serialVersionUID = 1L;
 	private String codigo;
-	private String contrasena;
 	private Image foto;
+
+	
 
 	/**
 	 * Constructor con parametros de la clase <b>Veterinario</b>
-	 * 
 	 * @param nombre
 	 * @param correo
 	 * @param telefono
 	 * @param codigo
+	 * @param foto
 	 */
-	public Veterinario(String nombre, String correo, String telefono, String codigo) {
+	public Veterinario(String nombre, String correo, String telefono, String codigo, Image foto) {
 		super(nombre, correo, telefono);
 		this.codigo = codigo;
+		this.foto = foto;
 	}
 
 	public String getCodigo() {
@@ -49,20 +51,6 @@ public class Veterinario extends Persona{
 		this.foto = foto;
 	}
 
-	/**
-	 * @return the contrasena
-	 */
-	public String getContrasena() {
-		return contrasena;
-	}
-
-	/**
-	 * @param contrasena the contrasena to set
-	 */
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -85,10 +73,11 @@ public class Veterinario extends Persona{
 
 	@Override
 	public String toString() {
-		return "Veterinario [codigo=" + codigo + ", getNombre()=" + getNombre() + ", getCorreo()=" + getCorreo()
-				+ ", getTelefono()=" + getTelefono() + ", getClass()=" + getClass() + ", toString()=" + super.toString()
-				+ "]";
+		return "Veterinario [codigo=" + codigo + ", foto=" + foto + ", Nombre=" + getNombre() + ", Correo="
+				+ getCorreo() + ", Telefono=" + getTelefono() + "]";
 	}
+
+	
 
 	/*
 	private byte[] getByteArrayImg() {
