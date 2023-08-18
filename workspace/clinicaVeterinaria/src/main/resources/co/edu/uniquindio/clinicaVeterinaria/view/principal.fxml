@@ -12,19 +12,15 @@
    <top>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: white;" stylesheets="@../styles/menu.css" BorderPane.alignment="CENTER">
       	<center>
-      		<HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0" BorderPane.alignment="CENTER">
+      		<HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
       			<children>
       				<Group onMouseClicked="#eventoDespliegueMenu" onMousePressed="#eventoHoverMenuAnimacion" onMouseReleased="#eventoUnHoverMenuAnimacion" styleClass="menu-bar">
       					<children>
       						<Circle fx:id="circulo" fill="#00abeb" opacity="0.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="circulo" />
-      						<ImageView fitHeight="51.0" fitWidth="57.0" layoutX="-25.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
-      							<image>
-      								<Image url="@../sources/menu.png" />
-      							</image>
-      						</ImageView>
+                        <SVGPath content="m 25 18 h 50 a 1 1 0 0 1 0 14 h -50 a 1 1 0 0 1 0 -14 m 0 25 h 30 a 1 1 0 0 1 0 14 h -30 a 1 1 0 0 1 0 -14 m 0 25 h 10 a 1 1 0 0 1 0 14 h -10 a 1 1 0 0 1 0 -14" fill="#14133b" layoutX="-50.0" layoutY="-50.0" scaleX="0.6" scaleY="0.6" strokeWidth="0.0" />
       					</children>
       				</Group>
-      				<ImageView fitHeight="106.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+      				<ImageView fitHeight="78.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
       					<image>
       						<Image url="@../sources/logo-no-text.png" />
       					</image>
@@ -39,30 +35,25 @@
       				<Insets />
       			</BorderPane.margin>
       			<padding>
-      				<Insets left="20.0" />
+      				<Insets left="20.0" right="20.0" />
       			</padding>
       		</HBox>
       	</center>
       	<right>
-      		<HBox alignment="CENTER_RIGHT" onMouseClicked="#eventoDesplieguePerfil" prefHeight="65.0" prefWidth="208.0" style="-fx-background-radius: 90% 0 0 10%;" styleClass="despliegue-perfil">
+      		<HBox alignment="CENTER_RIGHT" onMouseClicked="#eventoDesplieguePerfil" prefHeight="100.0" prefWidth="230.0" spacing="20.0" style="-fx-background-radius: 0 0 0 100;" styleClass="despliegue-perfil">
       			<children>
       				<Group>
       					<children>
-      						<ImageView fx:id="imgVeterinario" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-      							<image>
-      								<Image url="@../sources/jsjs.png" />
-      							</image>
-      						</ImageView>
+      						<ImageView fx:id="imgVeterinario" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
       						<SVGPath content="m 0 0 h 100 v 100 h -100 v -100 m 50 5 a 1 1 0 0 0 0 90 a 1 1 0 0 0 0 -90" layoutX="-11.0" layoutY="-12.0" scaleX="0.5" scaleY="0.5" styleClass="imagen-perfil" />
-      						<SVGPath content="m 50 2 a 1 1 0 0 0 0 96 a 1 1 0 0 0 0 -96 m 0 8 a 1 1 0 0 0 0 80 a 1 1 0 0 0 0 -80 z " fill="#14133b" fillRule="EVEN_ODD" layoutX="-11.0" layoutY="-12.0" scaleX="0.5" scaleY="0.5" smooth="false" />
+      						<SVGPath content="m 50 2 a 1 1 0 0 0 0 96 a 1 1 0 0 0 0 -96 m 0 8 a 1 1 0 0 0 0 80 a 1 1 0 0 0 0 -80 z " fill="#14133b" fillRule="EVEN_ODD" layoutX="-11.0" layoutY="-12.0" scaleX="0.5" scaleY="0.5" />
       					</children>
       				</Group>
-      				<ImageView fitHeight="55.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" BorderPane.alignment="CENTER">
-      					<image>
-      						<Image url="@../sources/triangulo.png" />
-      					</image>
-      				</ImageView>
+                  <SVGPath fx:id="trianguloDesplieguePerfil" content="m 20 25 h 60 l -30 40 z" fill="#14133b" scaleX="0.8" scaleY="0.8" />
       			</children>
+               <padding>
+                  <Insets right="20.0" />
+               </padding>
       		</HBox>
       	</right>
          <bottom>
