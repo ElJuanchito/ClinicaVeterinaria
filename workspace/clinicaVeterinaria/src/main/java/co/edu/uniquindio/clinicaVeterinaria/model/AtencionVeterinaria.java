@@ -1,9 +1,20 @@
 package co.edu.uniquindio.clinicaVeterinaria.model;
 
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class AtencionVeterinaria {
+/**
+ * 
+ * @author ElJuancho
+ */
+public class AtencionVeterinaria implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Long codigo;
 	private LocalDateTime fecha;
 	private Estado estado;
 	private Mascota mascota;
@@ -19,17 +30,28 @@ public class AtencionVeterinaria {
 	/**
 	 * Constructor con parametros de la clase <b>AtencionVeterinaria</b>
 	 * 
+	 * @param codigo
 	 * @param fecha
 	 * @param estado
 	 * @param mascota
 	 * @param veterinario
 	 */
-	public AtencionVeterinaria(LocalDateTime fecha, Estado estado, Mascota mascota, Veterinario veterinario) {
+	public AtencionVeterinaria(Long codigo, LocalDateTime fecha, Estado estado, Mascota mascota,
+			Veterinario veterinario) {
 		super();
+		this.codigo = codigo;
 		this.fecha = fecha;
 		this.estado = estado;
 		this.mascota = mascota;
 		this.veterinario = veterinario;
+	}
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
 	}
 
 	public LocalDateTime getFecha() {
@@ -66,7 +88,7 @@ public class AtencionVeterinaria {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(fecha);
+		return Objects.hash(codigo);
 	}
 
 	@Override
@@ -78,13 +100,17 @@ public class AtencionVeterinaria {
 		if (getClass() != obj.getClass())
 			return false;
 		AtencionVeterinaria other = (AtencionVeterinaria) obj;
-		return Objects.equals(fecha, other.fecha);
+		return Objects.equals(codigo, other.codigo);
 	}
 
 	@Override
 	public String toString() {
-		return "AtencionVeterinaria [fecha=" + fecha + ", estado=" + estado + ", mascota=" + mascota + ", veterinario="
-				+ veterinario + "]";
+		return "AtencionVeterinaria [codigo=" + codigo + ", fecha=" + fecha + ", estado=" + estado + ", mascota="
+				+ mascota + ", veterinario=" + veterinario + "]";
+	}
+	
+	public boolean enRangoDeFecha(LocalDate inicio, LocalDate fin) {
+		return fecha.toLocalDate().isAfter(inicio) && fecha.toLocalDate().isBefore(fin);
 	}
 
 }

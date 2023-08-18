@@ -1,8 +1,16 @@
 package co.edu.uniquindio.clinicaVeterinaria.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Mascota {
+public class Mascota implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String codigo;
+	private Cliente dueno;
 	private String nombre;
 	private Integer edad;
 	private String raza;
@@ -25,13 +33,23 @@ public class Mascota {
 	 * @param tipo
 	 * @param sexo
 	 */
-	public Mascota(String nombre, Integer edad, String raza, Tipo tipo, Sexo sexo) {
+	public Mascota(String codigo, Cliente dueno, String nombre, Integer edad, String raza, Tipo tipo, Sexo sexo) {
 		super();
+		this.codigo = codigo;
+		this.dueno = dueno;
 		this.nombre = nombre;
 		this.edad = edad;
 		this.raza = raza;
 		this.tipo = tipo;
 		this.sexo = sexo;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNombre() {
@@ -76,7 +94,7 @@ public class Mascota {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(edad, nombre, raza, sexo, tipo);
+		return Objects.hash(codigo);
 	}
 
 	@Override
@@ -88,15 +106,31 @@ public class Mascota {
 		if (getClass() != obj.getClass())
 			return false;
 		Mascota other = (Mascota) obj;
-		return Objects.equals(edad, other.edad) && Objects.equals(nombre, other.nombre)
-				&& Objects.equals(raza, other.raza) && sexo == other.sexo && tipo == other.tipo;
+		return Objects.equals(codigo, other.codigo);
 	}
 
 	@Override
 	public String toString() {
-		return "Mascota [nombre=" + nombre + ", edad=" + edad + ", raza=" + raza + ", tipo=" + tipo + ", sexo=" + sexo
-				+ "]";
+		return "Mascota [codigo=" + codigo + ", nombre=" + nombre + ", edad=" + edad + ", raza=" + raza + ", tipo="
+				+ tipo + ", sexo=" + sexo + "]";
 	}
+
+	/**
+	 * @return the dueno
+	 */
+	public Cliente getDueno() {
+		return dueno;
+	}
+
+	/**
+	 * @param dueno the dueno to set
+	 */
+	public void setDueno(Cliente dueno) {
+		this.dueno = dueno;
+	}
+	
+	
+	
 	
 	
 }

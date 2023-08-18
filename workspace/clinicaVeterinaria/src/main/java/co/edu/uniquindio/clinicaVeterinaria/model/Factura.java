@@ -1,10 +1,15 @@
 package co.edu.uniquindio.clinicaVeterinaria.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Factura {
+public class Factura implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private Double costo;
 	private LocalDate fecha;
@@ -37,13 +42,13 @@ public class Factura {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	public void setCosto(Double costo) {
+		this.costo = costo;
+	}
 
 	public Double getCosto() {
 		return costo;
-	}
-
-	public void setCosto(Double costo) {
-		this.costo = costo;
 	}
 
 	public LocalDate getFecha() {
