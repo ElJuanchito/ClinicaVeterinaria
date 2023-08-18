@@ -2,8 +2,12 @@ package co.edu.uniquindio.clinicaVeterinaria.model;
 
 import java.util.Objects;
 
-public class Veterinario extends Persona {
+public class Veterinario extends Persona{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String codigo;
 
 	/**

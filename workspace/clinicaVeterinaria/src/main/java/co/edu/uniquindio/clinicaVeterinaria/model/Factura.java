@@ -1,10 +1,15 @@
 package co.edu.uniquindio.clinicaVeterinaria.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Factura {
+public class Factura implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private Double costo;
 	private LocalDate fecha;

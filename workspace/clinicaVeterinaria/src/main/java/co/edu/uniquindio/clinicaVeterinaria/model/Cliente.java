@@ -11,7 +11,12 @@ import co.edu.uniquindio.clinicaVeterinaria.exceptions.MascotaYaExistenteExcepti
  * @author juanp
  */
 
-public class Cliente extends Persona {
+public class Cliente extends Persona{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String cedula;
 	private String direccion;
 	private Map<String, Mascota> mascotas;

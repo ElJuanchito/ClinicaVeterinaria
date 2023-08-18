@@ -1,9 +1,14 @@
 package co.edu.uniquindio.clinicaVeterinaria.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Mascota {
+public class Mascota implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String codigo;
 	private String nombre;
 	private Integer edad;

@@ -1,16 +1,17 @@
 package co.edu.uniquindio.clinicaVeterinaria.model;
 
-import java.time.LocalDateTime;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
+import co.edu.uniquindio.clinicaVeterinaria.exceptions.AtencionExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.AtencionNoExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.ClienteExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.ClienteNoExistenteException;
+import co.edu.uniquindio.clinicaVeterinaria.exceptions.FacturaNoEcontradaException;
+import co.edu.uniquindio.clinicaVeterinaria.exceptions.FacturaYaExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.MascotaNoEncontradaExpcetion;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.MascotaYaExistenteException;
 
@@ -18,7 +19,11 @@ import co.edu.uniquindio.clinicaVeterinaria.exceptions.MascotaYaExistenteExcepti
  * 
  * @author ElJuancho
  */
-public class Clinica {
+public class Clinica implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Veterinario[] veterinarios;
 	private Map<Long, AtencionVeterinaria> citas;
 	private Map<Long, Factura> facturas;
@@ -42,11 +47,11 @@ public class Clinica {
 		this.veterinarios = veterinarios;
 	}
 
-	public Set<AtencionVeterinaria> getCitas() {
+	public Map<Long, AtencionVeterinaria> getCitas() {
 		return citas;
 	}
 
-	public void setCitas(Set<AtencionVeterinaria> citas) {
+	public void setCitas(Map<Long, AtencionVeterinaria> citas) {
 		this.citas = citas;
 	}
 
@@ -255,8 +260,9 @@ public class Clinica {
 	// AtencionVeterinaria
 
 	/**
-	 * Verifica si la <b>AtencionVeterinaria</b> existe en la lista por medio del codigo,
-	 * retorna un valor booleano dependiendo de la busqueda.
+	 * Verifica si la <b>AtencionVeterinaria</b> existe en la lista por medio del
+	 * codigo, retorna un valor booleano dependiendo de la busqueda.
+	 * 
 	 * @param codigo
 	 * @return
 	 * @author ElJuancho
@@ -264,9 +270,10 @@ public class Clinica {
 	public boolean verificarAtencion(Long codigo) {
 		return citas.containsKey(codigo) && citas.get(codigo) != null;
 	}
-	
+
 	/**
 	 * Lanza una exception si la atencion veterinaria no existe en la lista.
+	 * 
 	 * @param codigo
 	 * @throws AtencionNoExistenteException
 	 * @author ElJuancho
@@ -280,12 +287,159 @@ public class Clinica {
 	/**
 	 * Lanza una exception si la atencion veterinaria ya existe en la lista.
 	 * 
-	 * @param cedula
-	 * @throws ClienteExistenteException
+	 * @param codigo
+	 * @throws AtencionExistenteException
+	 * @author ElJuancho
 	 */
-	private void throwClienteYaExistente(String codigo) throws AExistenteException {
+	private void throwCitaYaExistente(Long codigo) throws AtencionExistenteException {
 		if (verificarAtencion(codigo))
 			throw new AtencionExistenteException(
 					"La atencion veterinaria con codigo: " + codigo + ", ya existe en la lista");
 	}
+
+	/**
+	 * Agrega una nueva atencion veterinaria a la lista de citas. Lanza una
+	 * exception si ya existe.
+	 * 
+	 * @param cita
+	 * @throws AtencionExistenteException
+	 * @author ElJuancho
+	 */
+	public void agregarCita(AtencionVeterinaria cita) throws AtencionExistenteException {
+		throwCitaYaExistente(cita.getCodigo());
+		citas.put(cita.getCodigo(), cita);
+	}
+
+	/**
+	 * Busca y retorna una atencion veterinaria en la lista de citas. Lanza una
+	 * exception si la atencion no existe.
+	 * 
+	 * @param codigo
+	 * @return
+	 * @throws AtencionNoExistenteException
+	 * @author ElJuancho
+	 */
+	public AtencionVeterinaria buscarCita(Long codigo) throws AtencionNoExistenteException {
+		throwCitaNoEncontrada(codigo);
+		return citas.get(codigo);
+	}
+
+	/**
+	 * Elimina y retorna una atencion veterinaria de la lista. Lanza una exception
+	 * 
+	 * @param codigo
+	 * @return
+	 * @throws AtencionNoExistenteException
+	 * @author ElJuancho
+	 */
+	public AtencionVeterinaria eliminarCita(Long codigo) throws AtencionNoExistenteException {
+		throwCitaNoEncontrada(codigo);
+		return citas.remove(codigo);
+	}
+
+	/**
+	 * Actualiza los datos de una cita. Lanza una exception si no existe.
+	 * 
+	 * @param cita
+	 * @throws AtencionNoExistenteException
+	 * @author ElJuancho
+	 */
+	public void actualizarCita(AtencionVeterinaria cita) throws AtencionNoExistenteException {
+		throwCitaNoEncontrada(cita.getCodigo());
+		citas.put(cita.getCodigo(), cita);
+	}
+
+	/**
+	 * Actualiza el estado de una cita. Lanza una exception si no existe en la
+	 * lista.
+	 * 
+	 * @param codigo
+	 * @param estado
+	 * @throws AtencionNoExistenteException
+	 * @author ElJuancho
+	 */
+	public void actualizarEstadoCita(Long codigo, Estado estado) throws AtencionNoExistenteException {
+		throwCitaNoEncontrada(codigo);
+		AtencionVeterinaria aux = buscarCita(codigo);
+		aux.setEstado(estado);
+		actualizarCita(aux);
+	}
+
+	// CRUD Facturas
+
+	// ------------------------------------------------------------------------------
+
+	/**
+	 * Verifica si la <b>factura</b> existe en la lista por medio del id, retorna un
+	 * valor booleano dependiendo de la busqueda.
+	 * 
+	 * @param id
+	 * @return
+	 * @author ElJuancho
+	 */
+	public boolean verificarFactura(Long id) {
+		return facturas.containsKey(id) && facturas.get(id) != null;
+	}
+
+	/**
+	 * Lanza una exception si la factura no existe en la lista.
+	 * 
+	 * @param id
+	 * @throws FacturaNoEcontradaException
+	 * @author ElJuancho
+	 */
+	private void throwFacturaNoEncontrada(Long id) throws FacturaNoEcontradaException {
+		if (!verificarFactura(id))
+			throw new FacturaNoEcontradaException("La factura identificada con el id " + id + "no existe en la lista");
+	}
+
+	/**
+	 * Lanza una exception si la factura ya existe en la lista.
+	 * 
+	 * @param id
+	 * @throws FacturaYaExistenteException
+	 * @author ElJuancho
+	 */
+	private void throwFacturaYaExistente(Long id) throws FacturaYaExistenteException {
+		if (verificarFactura(id))
+			throw new FacturaYaExistenteException("La factura identificada con el id " + id + "ya existe en la lista");
+	}
+
+	/**
+	 * Busca una factura en la lista. Lanza una exception si la factura no existe en
+	 * la lista.
+	 * 
+	 * @param id
+	 * @return
+	 * @throws FacturaNoEcontradaException
+	 * @author ElJuancho
+	 */
+	public Factura buscarFactura(Long id) throws FacturaNoEcontradaException {
+		throwFacturaNoEncontrada(id);
+		return facturas.get(id);
+	}
+	
+	/**
+	 * Agrega un factura a la lista. Lanza una exception si la factura ya existe.
+	 * @param factura
+	 * @throws FacturaYaExistenteException
+	 * @author ElJuancho
+	 */
+	public void agregarFactura(Factura factura) throws FacturaYaExistenteException {
+		throwFacturaYaExistente(factura.getId());
+		facturas.put(factura.getId(), factura);
+	}
+	
+	/**
+	 * Elimina una factura de la lista. Lanza una exception si la factura no existe.
+	 * @param id
+	 * @return
+	 * @throws FacturaNoEcontradaException
+	 * @author ElJuancho
+	 */
+	public Factura eliminarFactura(Long id) throws FacturaNoEcontradaException {
+		throwFacturaNoEncontrada(id);
+		return facturas.remove(id);
+	}
+
 }

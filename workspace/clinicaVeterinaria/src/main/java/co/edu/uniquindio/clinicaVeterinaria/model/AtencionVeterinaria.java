@@ -1,5 +1,6 @@
 package co.edu.uniquindio.clinicaVeterinaria.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -7,7 +8,11 @@ import java.util.Objects;
  * 
  * @author ElJuancho
  */
-public class AtencionVeterinaria {
+public class AtencionVeterinaria implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long codigo;
 	private LocalDateTime fecha;
 	private Estado estado;

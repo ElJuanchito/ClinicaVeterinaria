@@ -4,17 +4,19 @@
 package co.edu.uniquindio.clinicaVeterinaria.exceptions;
 
 /**
- * @author ElJuancho
+ * 
+ * @Author ElJuancho
  */
-public class AtencionNoExistenteException extends Exception {
-
+public class FacturaNoEcontradaException extends Exception {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public AtencionNoExistenteException(String msg) {
+	/**
+	 * 
+	 */
+	public FacturaNoEcontradaException(String msg) {
 		super(msg);
 	}
-
 }
