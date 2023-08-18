@@ -42,13 +42,13 @@ public class Factura implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	public void setCosto(Double costo) {
+		this.costo = costo;
+	}
 
 	public Double getCosto() {
 		return costo;
-	}
-
-	public void setCosto(Double costo) {
-		this.costo = costo;
 	}
 
 	public LocalDate getFecha() {

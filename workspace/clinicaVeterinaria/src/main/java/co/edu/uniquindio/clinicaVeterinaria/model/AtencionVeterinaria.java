@@ -1,6 +1,7 @@
 package co.edu.uniquindio.clinicaVeterinaria.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -106,6 +107,10 @@ public class AtencionVeterinaria implements Serializable{
 	public String toString() {
 		return "AtencionVeterinaria [codigo=" + codigo + ", fecha=" + fecha + ", estado=" + estado + ", mascota="
 				+ mascota + ", veterinario=" + veterinario + "]";
+	}
+	
+	public boolean enRangoDeFecha(LocalDate inicio, LocalDate fin) {
+		return fecha.toLocalDate().isAfter(inicio) && fecha.toLocalDate().isBefore(fin);
 	}
 
 }

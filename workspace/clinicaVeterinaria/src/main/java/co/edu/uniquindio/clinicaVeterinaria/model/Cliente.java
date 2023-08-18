@@ -146,5 +146,15 @@ public class Cliente extends Persona{
 		throwMascotaNoEncontrada(mascota.getCodigo());
 		mascotas.put(mascota.getCodigo(), mascota);
 	}
+	
+	/**
+	 * Busca y retorna una mascota segun su nombre.
+	 * @param nombre
+	 * @return
+	 * @author ElJuancho
+	 */
+	public Mascota buscarMascotaPorNombre(String nombre) {
+		return mascotas.values().stream().filter(m -> m.getNombre().equals(nombre)).findFirst().orElse(null);
+	}
 
 }

@@ -10,6 +10,7 @@ public class Mascota implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private String codigo;
+	private Cliente dueno;
 	private String nombre;
 	private Integer edad;
 	private String raza;
@@ -32,9 +33,10 @@ public class Mascota implements Serializable{
 	 * @param tipo
 	 * @param sexo
 	 */
-	public Mascota(String codigo, String nombre, Integer edad, String raza, Tipo tipo, Sexo sexo) {
+	public Mascota(String codigo, Cliente dueno, String nombre, Integer edad, String raza, Tipo tipo, Sexo sexo) {
 		super();
 		this.codigo = codigo;
+		this.dueno = dueno;
 		this.nombre = nombre;
 		this.edad = edad;
 		this.raza = raza;
@@ -111,6 +113,20 @@ public class Mascota implements Serializable{
 	public String toString() {
 		return "Mascota [codigo=" + codigo + ", nombre=" + nombre + ", edad=" + edad + ", raza=" + raza + ", tipo="
 				+ tipo + ", sexo=" + sexo + "]";
+	}
+
+	/**
+	 * @return the dueno
+	 */
+	public Cliente getDueno() {
+		return dueno;
+	}
+
+	/**
+	 * @param dueno the dueno to set
+	 */
+	public void setDueno(Cliente dueno) {
+		this.dueno = dueno;
 	}
 	
 	

@@ -1,10 +1,13 @@
 package co.edu.uniquindio.clinicaVeterinaria.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.AtencionExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.AtencionNoExistenteException;
@@ -19,7 +22,7 @@ import co.edu.uniquindio.clinicaVeterinaria.exceptions.MascotaYaExistenteExcepti
  * 
  * @author ElJuancho
  */
-public class Clinica implements Serializable{
+public class Clinica implements Serializable {
 	/**
 	 * 
 	 */
@@ -418,9 +421,10 @@ public class Clinica implements Serializable{
 		throwFacturaNoEncontrada(id);
 		return facturas.get(id);
 	}
-	
+
 	/**
 	 * Agrega un factura a la lista. Lanza una exception si la factura ya existe.
+	 * 
 	 * @param factura
 	 * @throws FacturaYaExistenteException
 	 * @author ElJuancho
@@ -429,9 +433,10 @@ public class Clinica implements Serializable{
 		throwFacturaYaExistente(factura.getId());
 		facturas.put(factura.getId(), factura);
 	}
-	
+
 	/**
 	 * Elimina una factura de la lista. Lanza una exception si la factura no existe.
+	 * 
 	 * @param id
 	 * @return
 	 * @throws FacturaNoEcontradaException
@@ -442,4 +447,38 @@ public class Clinica implements Serializable{
 		return facturas.remove(id);
 	}
 
+	// ------------------------------------------------------------------------
+
+	// La clínica desea contar con una funcionalidad que le permita obtener el
+	// historial clínico de una mascota dada la cédula del dueño y el nombre de la
+	// mascota.
+
+	/**
+	 * Retorna una lista de citas deacuerdo al nombre de la mascota y a la cedula
+	 * del dueno.
+	 * 
+	 * @param cedula
+	 * @param nombre
+	 * @return
+	 * @author ElJuancho
+	 */
+	public List<AtencionVeterinaria> obtenerHistorialClinico(String cedula, String nombre) {
+		return citas.values().stream().filter(
+				c -> c.getMascota().getNombre().equals(nombre) && c.getMascota().getDueno().getCedula().equals(cedula))
+				.collect(Collectors.toList());
+	}
+
+	// La clínica desea saber cuántas citas se han solicitado en un rango de días.
+	// Se debe indicar la fecha de inicio y de fin.
+	
+	/**
+	 * Retorna una lista con las citas solicitadas en un rango de fechas.
+	 * @param inicio
+	 * @param fin
+	 * @return
+	 * @author ElJuancho
+	 */
+	public List<AtencionVeterinaria> citasEnRangodeDias(LocalDate inicio, LocalDate fin) {
+		return citas.values().stream().filter(cita -> cita.enRangoDeFecha(inicio, fin)).collect(Collectors.toList());
+	}
 }

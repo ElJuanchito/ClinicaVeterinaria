@@ -2,6 +2,8 @@ package co.edu.uniquindio.clinicaVeterinaria.model;
 
 import java.util.Objects;
 
+import javafx.scene.image.Image;
+
 public class Veterinario extends Persona{
 	
 	/**
@@ -9,9 +11,12 @@ public class Veterinario extends Persona{
 	 */
 	private static final long serialVersionUID = 1L;
 	private String codigo;
+	private String contrasena;
+	private Image foto;
 
 	/**
 	 * Constructor con parametros de la clase <b>Veterinario</b>
+	 * 
 	 * @param nombre
 	 * @param correo
 	 * @param telefono
@@ -28,6 +33,34 @@ public class Veterinario extends Persona{
 
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
+	}
+
+	/**
+	 * @return the foto
+	 */
+	public Image getFoto() {
+		return foto;
+	}
+
+	/**
+	 * @param foto the foto to set
+	 */
+	public void setFoto(Image foto) {
+		this.foto = foto;
+	}
+
+	/**
+	 * @return the contrasena
+	 */
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	/**
+	 * @param contrasena the contrasena to set
+	 */
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
 	@Override
@@ -56,6 +89,18 @@ public class Veterinario extends Persona{
 				+ ", getTelefono()=" + getTelefono() + ", getClass()=" + getClass() + ", toString()=" + super.toString()
 				+ "]";
 	}
+
+	/*
+	private byte[] getByteArrayImg() {
+		try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+			ImageIO.write(SwingFXUtils.fromFXImage(foto, null), "png", baos);
+			return baos.toByteArray();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+    }
+    */
 	
 	
 }
