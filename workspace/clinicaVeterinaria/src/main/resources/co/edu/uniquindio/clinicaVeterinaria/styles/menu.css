@@ -1,0 +1,15 @@
+* {
+	col-despliegue:#00ABEB;  
+}
+.imagen-perfil {
+	-fx-fill: col-despliegue;
+}
+.despliegue-perfil {
+	-fx-background-color: col-despliegue;
+}
+.despliegue-perfil:hover, .despliegue-perfil:hover  .imagen-perfil {
+	col-despliegue: #008ec4;
+}
+.menu-bar:hover .circulo {
+	-fx-opacity: 0.2;
+}

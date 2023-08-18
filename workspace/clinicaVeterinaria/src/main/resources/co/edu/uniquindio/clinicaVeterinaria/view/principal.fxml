@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="338.0" prefWidth="599.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.Menucontroller">
+   <top>
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: white;" stylesheets="@../styles/menu.css" BorderPane.alignment="CENTER">
+      	<center>
+      		<HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0" BorderPane.alignment="CENTER">
+      			<children>
+      				<Group onMouseClicked="#eventoDespliegueMenu" onMousePressed="#eventoHoverMenuAnimacion" onMouseReleased="#eventoUnHoverMenuAnimacion" styleClass="menu-bar">
+      					<children>
+      						<Circle fx:id="circulo" fill="#00abeb" opacity="0.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="circulo" />
+      						<ImageView fitHeight="51.0" fitWidth="57.0" layoutX="-25.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
+      							<image>
+      								<Image url="@../sources/menu.png" />
+      							</image>
+      						</ImageView>
+      					</children>
+      				</Group>
+      				<ImageView fitHeight="106.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+      					<image>
+      						<Image url="@../sources/logo-no-text.png" />
+      					</image>
+      				</ImageView>
+      				<ImageView fitHeight="30.0" fitWidth="388.0" pickOnBounds="true" preserveRatio="true">
+      					<image>
+      						<Image url="@../sources/patitas-peludas.png" />
+      					</image>
+      				</ImageView>
+      			</children>
+      			<BorderPane.margin>
+      				<Insets />
+      			</BorderPane.margin>
+      			<padding>
+      				<Insets left="20.0" />
+      			</padding>
+      		</HBox>
+      	</center>
+      	<right>
+      		<HBox alignment="CENTER_RIGHT" onMouseClicked="#eventoDesplieguePerfil" prefHeight="65.0" prefWidth="208.0" style="-fx-background-radius: 90% 0 0 10%;" styleClass="despliegue-perfil">
+      			<children>
+      				<Group>
+      					<children>
+      						<ImageView fx:id="imgVeterinario" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+      							<image>
+      								<Image url="@../sources/jsjs.png" />
+      							</image>
+      						</ImageView>
+      						<SVGPath content="m 0 0 h 100 v 100 h -100 v -100 m 50 5 a 1 1 0 0 0 0 90 a 1 1 0 0 0 0 -90" layoutX="-11.0" layoutY="-12.0" scaleX="0.5" scaleY="0.5" styleClass="imagen-perfil" />
+      						<SVGPath content="m 50 2 a 1 1 0 0 0 0 96 a 1 1 0 0 0 0 -96 m 0 8 a 1 1 0 0 0 0 80 a 1 1 0 0 0 0 -80 z " fill="#14133b" fillRule="EVEN_ODD" layoutX="-11.0" layoutY="-12.0" scaleX="0.5" scaleY="0.5" smooth="false" />
+      					</children>
+      				</Group>
+      				<ImageView fitHeight="55.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" BorderPane.alignment="CENTER">
+      					<image>
+      						<Image url="@../sources/triangulo.png" />
+      					</image>
+      				</ImageView>
+      			</children>
+      		</HBox>
+      	</right>
+         <bottom>
+            <Separator style="-fx-background-color: #e2e2e2; -fx-border-width: 0;" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </Separator>
+         </bottom>
+      </BorderPane>
+   </top>
+</BorderPane>
