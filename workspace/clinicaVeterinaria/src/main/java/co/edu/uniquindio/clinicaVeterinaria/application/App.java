@@ -15,7 +15,8 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
-	private static HashMap<ESCENA, Scene> escenas;
+	private static HashMap<ESCENA, Parent> escenas = new HashMap<>();
+	private static Scene scena;
 
 	public static void main(String[] args) {
 		launch();
@@ -23,7 +24,8 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage stage) throws IOException {
-		stage.setScene(new Scene(loadFXML("principal"), 640, 480));
+		scena = new Scene(loadFXML("loadScreen"), 1000, 480);
+		stage.setScene(scena);
 		stage.show();
 	}
 
@@ -33,28 +35,19 @@ public class App extends Application {
 		return fxmlLoader.load();
 	}
 
-	public static void cargarEscenas(Runnable actionOnFinished) {
-		// TODO
-		// TODO
-		// TODO
-		// TODO
-		// TODO
-		// TODO
-		// TODO
-		actionOnFinished.run();
+	public static void cargarEscenas() {
+		try {
+			escenas.put(ESCENA.INICIO, loadFXML("principal"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public static void irA(ESCENA escena) throws EscenaNotFoundException {
-		Scene escenaEncontrada = escenas.getOrDefault(escena, null);
+	public static void cambiarEscena(ESCENA escena) throws EscenaNotFoundException {
+		Parent escenaEncontrada = escenas.getOrDefault(escena, null);
 		if (escenaEncontrada == null)
 			throw new EscenaNotFoundException("La escena seleccionada no fue encontrada");
-		// TODO
-		// TODO
-		// TODO
-		// TODO
-		// TODO
-		// TODO
-		// TODO
+		scena.setRoot(escenaEncontrada);
 	}
 
 	public static enum ESCENA {
