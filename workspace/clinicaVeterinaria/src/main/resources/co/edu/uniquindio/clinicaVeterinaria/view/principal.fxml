@@ -17,7 +17,7 @@
       				<Group onMouseClicked="#eventoDespliegueMenu" onMousePressed="#eventoHoverMenuAnimacion" onMouseReleased="#eventoUnHoverMenuAnimacion" styleClass="menu-bar">
       					<children>
       						<Circle fx:id="circulo" fill="#00abeb" opacity="0.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="circulo" />
-                        <SVGPath content="m 25 18 h 50 a 1 1 0 0 1 0 14 h -50 a 1 1 0 0 1 0 -14 m 0 25 h 30 a 1 1 0 0 1 0 14 h -30 a 1 1 0 0 1 0 -14 m 0 25 h 10 a 1 1 0 0 1 0 14 h -10 a 1 1 0 0 1 0 -14" fill="#14133b" layoutX="-50.0" layoutY="-50.0" scaleX="0.6" scaleY="0.6" strokeWidth="0.0" />
+                        <SVGPath fx:id="menuIzq" content="m 25 18 h 50 a 1 1 0 0 1 0 14 h -50 a 1 1 0 0 1 0 -14 m 0 25 h 30 a 1 1 0 0 1 0 14 h -30 a 1 1 0 0 1 0 -14 m 0 25 h 10 a 1 1 0 0 1 0 14 h -10 a 1 1 0 0 1 0 -14" fill="#14133b" layoutX="-50.0" layoutY="-50.0" scaleX="0.6" scaleY="0.6" strokeWidth="0.0" />
       					</children>
       				</Group>
       				<ImageView fitHeight="78.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
