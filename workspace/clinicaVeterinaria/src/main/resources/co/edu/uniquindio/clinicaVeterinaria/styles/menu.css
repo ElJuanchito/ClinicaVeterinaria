@@ -10,6 +10,10 @@
 .despliegue-perfil:hover, .despliegue-perfil:hover  .imagen-perfil {
 	col-despliegue: #008ec4;
 }
-.menu-bar:hover .circulo {
-	-fx-opacity: 0.2;
+.menu-button:hover .button-fill {
+	-fx-opacity: 1;
+	-fx-stroke: #cceefb;
+}
+.menu-button:hover .button-unfill {
+	-fx-opacity: 0;
 }

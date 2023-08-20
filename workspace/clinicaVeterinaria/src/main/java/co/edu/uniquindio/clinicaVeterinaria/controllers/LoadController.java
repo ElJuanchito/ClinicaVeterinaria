@@ -3,6 +3,7 @@ package co.edu.uniquindio.clinicaVeterinaria.controllers;
 import co.edu.uniquindio.clinicaVeterinaria.application.App;
 import co.edu.uniquindio.clinicaVeterinaria.application.App.ESCENA;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.EscenaNotFoundException;
+import co.edu.uniquindio.clinicaVeterinaria.services.CustomFxThread;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -10,6 +11,8 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -31,8 +34,61 @@ public class LoadController {
 
 	@FXML
 	void initialize() {
+		establecerPropiedades();
+		ejecutarTransicion();
+	}
+
+	private void establecerPropiedades() {
 		scroll.minHeightProperty().bind(doubleProperty.multiply(245));
 		lblPorcentaje.textProperty().bind(doubleProperty.multiply(100).asString("%.0f"));
+	}
+
+	private void ejecutarTransicion() {
+		Timeline transition = new Timeline();
+		agregarKeyFramesTransicion(transition);
+
+		transition.play();
+		Platform.runLater(() -> {
+			CustomFxThread.crearHilo(() -> cargarEscenas(transition)).iniciarActividad();
+		});
+	}
+
+	private void cargarEscenas(Timeline transition) {
+		App.cargarEscenas(() -> {
+			if (transition.getCurrentTime().lessThan(Duration.millis(1500)))
+				transition.jumpTo(Duration.millis(1500));
+			transition.currentTimeProperty().addListener(new ChangeListener<Duration>() {
+				@Override
+				public void changed(ObservableValue<? extends Duration> obs, Duration oldVal, Duration newVal) {
+					if (newVal.greaterThan(Duration.millis(2900))) {
+						transition.currentTimeProperty().removeListener(this);
+						irAEscenaPrincipal();
+					}
+				}
+			});
+			if (transition.getCurrentTime().greaterThan(Duration.millis(2900))) {
+				irAEscenaPrincipal();
+			}
+		});
+	}
+
+	private void irAEscenaPrincipal() {
+		try {
+			App.cambiarEscena(ESCENA.INICIO);
+		} catch (EscenaNotFoundException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+	private void agregarKeyFramesTransicion(Timeline transition) {
+		Interpolator interpolacion = crearInterpolacion();
+		transition.getKeyFrames().add(new KeyFrame(Duration.millis(100), new KeyValue(doubleProperty, 0.09)));
+		transition.getKeyFrames()
+				.add(new KeyFrame(Duration.millis(2400), new KeyValue(doubleProperty, 1, interpolacion)));
+		transition.getKeyFrames().add(new KeyFrame(Duration.millis(3000), new KeyValue(doubleProperty, 1)));
+	}
+
+	private Interpolator crearInterpolacion() {
 		Interpolator interpolacion = new Interpolator() {
 
 			@Override
@@ -40,22 +96,6 @@ public class LoadController {
 				return t * (2 - t);
 			}
 		};
-		Timeline transition = new Timeline();
-		transition.getKeyFrames()
-				.add(new KeyFrame(Duration.seconds(2), new KeyValue(doubleProperty, 1, interpolacion)));
-		transition.getKeyFrames().add(new KeyFrame(Duration.millis(2400), new KeyValue(doubleProperty, 1)));
-		transition.setOnFinished(e -> {
-			try {
-				App.cambiarEscena(ESCENA.INICIO);
-			} catch (EscenaNotFoundException e1) {
-				e1.printStackTrace();
-			}
-		});
-
-		Platform.runLater(() -> {
-			transition.play();
-			App.cargarEscenas();
-		});
-
+		return interpolacion;
 	}
 }
