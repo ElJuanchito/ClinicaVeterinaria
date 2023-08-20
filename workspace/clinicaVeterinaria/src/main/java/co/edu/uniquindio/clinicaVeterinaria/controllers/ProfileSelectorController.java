@@ -1,5 +1,7 @@
 package co.edu.uniquindio.clinicaVeterinaria.controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -8,51 +10,58 @@ import javafx.scene.input.MouseEvent;
 
 public class ProfileSelectorController {
 
-    
-    @FXML
-    private ImageView imgVet2;
+	@FXML
+	private ResourceBundle resources;
 
-    @FXML
-    private Label lblVet3;
+	@FXML
+	private URL location;
 
-    @FXML
-    private Label lblVet4;
+	@FXML
+	private ImageView imgUser1;
 
-    @FXML
-    private Label lblVet2;
+	@FXML
+	private ImageView imgUser2;
 
-    @FXML
-    private ImageView Imag;
+	@FXML
+	private ImageView imgUser3;
 
-    @FXML
-    private Label lblTitle;
+	@FXML
+	private ImageView imgUser4;
 
-    @FXML
-    private ImageView imgVet1;
+	@FXML
+	private Label lblUser1;
 
-    @FXML
-    private Label lblVet;
+	@FXML
+	private Label lblUser2;
 
-    @FXML
-    void vet1PresionadoEvent(MouseEvent event) {
+	@FXML
+	private Label lblUser3;
 
-    }
+	@FXML
+	private Label lblUser4;
 
-    @FXML
-    void vet2PresionadoEvent(MouseEvent event) {
+	@FXML
+	void selectUser1Event(MouseEvent event) {
+		lblUser1.setText("Arcangel la maravilla");
+	}
 
-    }
+	@FXML
+	void selectUser2Event(MouseEvent event) {
+		lblUser2.setText("El negrito ojos claros");
+	}
 
-    @FXML
-    void vet3PresionadoEvent(MouseEvent event) {
+	@FXML
+	void selectUser3Event(MouseEvent event) {
+		lblUser3.setText("Msmsmsm wou weeeer");
+	}
 
-    }
+	@FXML
+	void selectUser4Event(MouseEvent event) {
+		lblUser4.setText("Sooo Nasty");
+	}
 
-    @FXML
-    void vet4PresionadoEvent(MouseEvent event) {
-
-    }
-   
-    
+	@FXML
+	void initialize() {
+	}
 
 }

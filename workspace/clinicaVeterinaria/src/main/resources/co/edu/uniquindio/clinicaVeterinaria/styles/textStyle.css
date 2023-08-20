@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@600&display=swap');
+
+#titulo{
+	-fx-font-size: 2em;
+}
+
+.texto{
+	-fx-font-family: 'Rubik', sans-serif;
+	-fx-font-size: 1.5em;
+	-fx-font-weight: bold;
+	
+}
