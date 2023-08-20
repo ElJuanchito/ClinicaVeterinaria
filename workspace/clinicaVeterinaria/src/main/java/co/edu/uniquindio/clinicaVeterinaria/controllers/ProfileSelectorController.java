@@ -1,18 +1,25 @@
 package co.edu.uniquindio.clinicaVeterinaria.controllers;
 
+
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 public class ProfileSelectorController {
 
-    @FXML
-    private Button btnVet4;
-
+    
     @FXML
     private ImageView imgVet2;
+
+    @FXML
+    private Label lblVet3;
+
+    @FXML
+    private Label lblVet4;
+
+    @FXML
+    private Label lblVet2;
 
     @FXML
     private ImageView Imag;
@@ -22,14 +29,30 @@ public class ProfileSelectorController {
 
     @FXML
     private ImageView imgVet1;
-    
-    
+
     @FXML
-    public void initialize (){
-        ImageView imageView = new ImageView(getClass().getResource("/co/edu/uniquindio/clinicaVeterinaria/sources/imgTry.jpeg").toExternalForm());
-        btnVet4.setGraphic(imageView);
-        btnVet4.setContentDisplay(ContentDisplay.CENTER);
+    private Label lblVet;
+
+    @FXML
+    void vet1PresionadoEvent(MouseEvent event) {
+
     }
+
+    @FXML
+    void vet2PresionadoEvent(MouseEvent event) {
+
+    }
+
+    @FXML
+    void vet3PresionadoEvent(MouseEvent event) {
+
+    }
+
+    @FXML
+    void vet4PresionadoEvent(MouseEvent event) {
+
+    }
+   
     
 
 }
