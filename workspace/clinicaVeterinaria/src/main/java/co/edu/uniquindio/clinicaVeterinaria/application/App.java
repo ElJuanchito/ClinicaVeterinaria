@@ -5,9 +5,11 @@ import java.util.HashMap;
 
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.EscenaNotFoundException;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
@@ -17,6 +19,7 @@ public class App extends Application {
 
 	private static HashMap<ESCENA, Parent> escenas = new HashMap<>();
 	private static Scene scena;
+	private static BorderPane panel;
 
 	public static void main(String[] args) {
 		launch();
@@ -35,19 +38,31 @@ public class App extends Application {
 		return fxmlLoader.load();
 	}
 
-	public static void cargarEscenas() {
+	public static void cargarEscenas(Runnable accionTerminado) {
 		try {
-			escenas.put(ESCENA.INICIO, loadFXML("principal"));
+			cargarEscena(ESCENA.INICIO, "principal");
+			Platform.runLater(() -> accionTerminado.run());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private static void cargarEscena(ESCENA escena, String fxml) throws IOException {
+		escenas.put(escena, loadFXML(fxml));
 	}
 
 	public static void cambiarEscena(ESCENA escena) throws EscenaNotFoundException {
 		Parent escenaEncontrada = escenas.getOrDefault(escena, null);
 		if (escenaEncontrada == null)
 			throw new EscenaNotFoundException("La escena seleccionada no fue encontrada");
-		scena.setRoot(escenaEncontrada);
+		if (escena == ESCENA.INICIO) {
+			scena.setRoot(escenaEncontrada);
+			panel = (BorderPane) escenaEncontrada;
+			return;
+		}
+		if (panel == null)
+			return;
+		panel.setCenter(escenaEncontrada);
 	}
 
 	public static enum ESCENA {
