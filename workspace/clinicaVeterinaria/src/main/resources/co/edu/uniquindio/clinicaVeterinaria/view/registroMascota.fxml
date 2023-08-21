@@ -5,31 +5,33 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.RegistroMascotaController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.RegistroMascotaController">
    <children>
-      <Label alignment="CENTER" prefHeight="52.0" prefWidth="600.0" text="Registro de Mascotas">
+      <Label id="titulo" alignment="CENTER" prefHeight="52.0" prefWidth="600.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Registro de Mascotas">
          <padding>
             <Insets bottom="20.0" />
          </padding>
       </Label>
       <GridPane>
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="lblNombreMascota" alignment="CENTER" prefHeight="17.0" prefWidth="309.0" text="Nombre" />
-            <Label fx:id="lblEdadMascota" alignment="CENTER" prefHeight="17.0" prefWidth="303.0" text="Edad" GridPane.rowIndex="1" />
-            <Label fx:id="lblSexoMascota" alignment="CENTER" prefHeight="17.0" prefWidth="312.0" text="Sexo" GridPane.rowIndex="2" />
-            <Label fx:id="lblTipoMascota" alignment="CENTER" prefHeight="17.0" prefWidth="322.0" text="Tipo" GridPane.rowIndex="3" />
-            <TextField fx:id="txtNombreMascota" GridPane.columnIndex="1">
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="309.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Nombre:" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="303.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Edad:" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="312.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Sexo:" GridPane.rowIndex="4" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="322.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Tipo:" GridPane.rowIndex="5" />
+            <TextField fx:id="txtNombre" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -37,23 +39,35 @@
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtEdadMascota" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="txtEdad" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtSexoMascota" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="318.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Raza:" GridPane.rowIndex="6" />
+            <TextField fx:id="txtRaza" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtTipoMascota" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <ComboBox fx:id="cbSexo" maxWidth="1.7976931348623157E308" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <ComboBox fx:id="cbTipo" maxWidth="1.7976931348623157E308" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <Label alignment="CENTER" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Cedula dueño:" />
+            <TextField fx:id="txtCedula" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <Label fx:id="lblRazaMascota" alignment="CENTER" prefHeight="17.0" prefWidth="318.0" text="Raza" GridPane.rowIndex="4" />
-            <TextField fx:id="txtRazaMascota" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label styleClass="texto" stylesheets="@../styles/textStyle.css" text="Codigo:" GridPane.rowIndex="2" />
+            <TextField fx:id="txtCodigo" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
@@ -62,7 +76,7 @@
       </GridPane>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="btnRegistrarMascota" mnemonicParsing="false" onMouseClicked="#registrarMascota" text="Registrar" />
+            <Button fx:id="btnRegistrar" mnemonicParsing="false" onAction="#registrarEvent" styleClass="boton" stylesheets="@../styles/buttonStyle.css" text="Registrar" />
          </children>
       </HBox>
    </children>
