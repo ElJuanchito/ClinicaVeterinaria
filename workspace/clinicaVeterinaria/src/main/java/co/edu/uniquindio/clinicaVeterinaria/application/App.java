@@ -41,6 +41,7 @@ public class App extends Application {
 	public static void cargarEscenas(Runnable accionTerminado) {
 		try {
 			cargarEscena(ESCENA.INICIO, "principal");
+			cargarEscena(ESCENA.LOGIN, "profileSelector");
 			Platform.runLater(() -> accionTerminado.run());
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -55,6 +56,10 @@ public class App extends Application {
 		Parent escenaEncontrada = escenas.getOrDefault(escena, null);
 		if (escenaEncontrada == null)
 			throw new EscenaNotFoundException("La escena seleccionada no fue encontrada");
+		if (escena == ESCENA.LOGIN) {
+			scena.setRoot(escenaEncontrada);
+			return;
+		}
 		if (escena == ESCENA.INICIO) {
 			scena.setRoot(escenaEncontrada);
 			panel = (BorderPane) escenaEncontrada;
@@ -66,7 +71,7 @@ public class App extends Application {
 	}
 
 	public static enum ESCENA {
-		MAIN, INICIO;
+		INICIO, LOGIN;
 	}
 
 }

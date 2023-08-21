@@ -60,32 +60,38 @@ public class LoadController {
 			transition.currentTimeProperty().addListener(new ChangeListener<Duration>() {
 				@Override
 				public void changed(ObservableValue<? extends Duration> obs, Duration oldVal, Duration newVal) {
-					if (newVal.greaterThan(Duration.millis(2900))) {
+					if (newVal.greaterThan(Duration.millis(2300))) {
 						transition.currentTimeProperty().removeListener(this);
 						irAEscenaPrincipal();
 					}
 				}
 			});
-			if (transition.getCurrentTime().greaterThan(Duration.millis(2900))) {
+			if (transition.getCurrentTime().greaterThan(Duration.millis(2300))) {
 				irAEscenaPrincipal();
 			}
 		});
 	}
 
 	private void irAEscenaPrincipal() {
-		try {
-			App.cambiarEscena(ESCENA.INICIO);
-		} catch (EscenaNotFoundException e1) {
-			e1.printStackTrace();
-		}
+		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(0)),
+				new KeyFrame(Duration.millis(100), new KeyValue(doubleProperty, 1)),
+				new KeyFrame(Duration.millis(300)));
+		timeline.playFromStart();
+		timeline.setOnFinished((e) -> {
+			try {
+				App.cambiarEscena(ESCENA.LOGIN);
+			} catch (EscenaNotFoundException e1) {
+				e1.printStackTrace();
+			}
+		});
+
 	}
 
 	private void agregarKeyFramesTransicion(Timeline transition) {
 		Interpolator interpolacion = crearInterpolacion();
 		transition.getKeyFrames().add(new KeyFrame(Duration.millis(100), new KeyValue(doubleProperty, 0.09)));
 		transition.getKeyFrames()
-				.add(new KeyFrame(Duration.millis(2400), new KeyValue(doubleProperty, 1, interpolacion)));
-		transition.getKeyFrames().add(new KeyFrame(Duration.millis(3000), new KeyValue(doubleProperty, 1)));
+				.add(new KeyFrame(Duration.millis(2400), new KeyValue(doubleProperty, .99, interpolacion)));
 	}
 
 	private Interpolator crearInterpolacion() {
