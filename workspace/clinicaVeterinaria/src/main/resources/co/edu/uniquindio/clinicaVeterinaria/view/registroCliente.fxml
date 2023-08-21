@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.RegistroClienteController">
+   <children>
+      <Label fx:id="lblTitleCliente" alignment="CENTER" prefHeight="62.0" prefWidth="600.0" text="Registro de Cliente">
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
+      </Label>
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="lblCedulaCliente" alignment="TOP_CENTER" prefHeight="17.0" prefWidth="301.0" text="Cedula" />
+            <Label fx:id="lblNombreCliente" alignment="TOP_CENTER" prefHeight="17.0" prefWidth="304.0" text="Nombre" GridPane.rowIndex="1" />
+            <Label fx:id="lblTelefonoCliente" alignment="TOP_CENTER" prefHeight="17.0" prefWidth="296.0" text="Telefono" GridPane.rowIndex="2" />
+            <Label fx:id="lblCorreoCliente" alignment="TOP_CENTER" prefHeight="17.0" prefWidth="300.0" text="Correo Electronico" GridPane.rowIndex="3" />
+            <Label fx:id="lblDireccionCliente" alignment="TOP_CENTER" prefHeight="17.0" prefWidth="302.0" text="Direccion de Residencia" GridPane.rowIndex="4" />
+            <TextField fx:id="txtCedulaCliente" prefHeight="25.0" prefWidth="76.0" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="txtNombreCliente" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="txtTelefonoCliente" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="txtCorreoCliente" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="txtDireccionCliente" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+         </children>
+      </GridPane>
+      <HBox alignment="CENTER" prefHeight="90.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="btnRegistrarCliente" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#registrarCliente" text="Registrar" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
