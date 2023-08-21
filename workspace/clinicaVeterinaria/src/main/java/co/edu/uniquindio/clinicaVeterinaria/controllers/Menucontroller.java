@@ -1,16 +1,24 @@
 package co.edu.uniquindio.clinicaVeterinaria.controllers;
 
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
-import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.StringExpression;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Circle;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
@@ -20,15 +28,9 @@ public class Menucontroller {
 	private boolean estaPerfilDesplegado = false;
 	private boolean estaMenuDesplegado = false;
 	private RotateTransition animacionRotarPerfil;
-	private ParallelTransition animacionRotarMenu;
-	private Timeline animacionRotarMenuMid;
-	private Timeline animacionRotarMenuMid2;
-	private Timeline animacionRotarMenuInf;
 
 	@FXML
-	private SVGPath menuIzq;
-	@FXML
-	private Circle circulo;
+	private VBox menuIzq;
 
 	@FXML
 	private Rectangle rectanguloMid;
@@ -41,63 +43,25 @@ public class Menucontroller {
 
 	@FXML
 	private SVGPath trianguloDesplieguePerfil;
-	private Timeline animacionUnHoverCirculo;
 
 	@FXML
 	void eventoEnteredMenuAnimacion(MouseEvent event) {
-		Group grupo = (Group) event.getSource();
-		try {
-			Circle circulo = (Circle) grupo.getChildren().get(0);
-			Timeline animacionHoverCirculo = new Timeline();
-			animacionHoverCirculo.getKeyFrames().add(new KeyFrame(Duration.millis(100),
-					new KeyValue(circulo.opacityProperty(), event.getButton() == MouseButton.NONE ? 0.2 : 0.5)));
-			animacionHoverCirculo.playFromStart();
-		} catch (ClassCastException e) {
-			e.printStackTrace();
-		}
+		ejecutarAnimacionBotonCircular(event, 0.2);
 	}
 
 	@FXML
 	void eventoExitedMenuAnimacion(MouseEvent event) {
-		Group grupo = (Group) event.getSource();
-		try {
-			Circle circulo = (Circle) grupo.getChildren().get(0);
-			Timeline animacionHoverCirculo = new Timeline();
-			animacionHoverCirculo.getKeyFrames().add(new KeyFrame(Duration.millis(100),
-					new KeyValue(circulo.opacityProperty(), event.getButton() == MouseButton.NONE ? 0 : 0.2)));
-			animacionHoverCirculo.playFromStart();
-		} catch (ClassCastException e) {
-			e.printStackTrace();
-		}
+		ejecutarAnimacionBotonCircular(event, event.getButton() == MouseButton.NONE ? 0 : 0.2);
 	}
 
 	@FXML
 	void eventoPressedMenuAnimacion(MouseEvent event) {
-		Group grupo = (Group) event.getSource();
-		try {
-
-			Circle circulo = (Circle) grupo.getChildren().get(0);
-			Timeline animacionHoverCirculo = new Timeline();
-			animacionHoverCirculo.getKeyFrames()
-					.add(new KeyFrame(Duration.millis(100), new KeyValue(circulo.opacityProperty(), 0.5)));
-			animacionHoverCirculo.playFromStart();
-		} catch (ClassCastException e) {
-			e.printStackTrace();
-		}
+		ejecutarAnimacionBotonCircular(event, 0.5);
 	}
 
 	@FXML
 	void eventoReleasedMenuAnimacion(MouseEvent event) {
-		Group grupo = (Group) event.getSource();
-		try {
-			Circle circulo = (Circle) grupo.getChildren().get(0);
-			Timeline animacionHoverCirculo = new Timeline();
-			animacionHoverCirculo.getKeyFrames().add(new KeyFrame(Duration.millis(100),
-					new KeyValue(circulo.opacityProperty(), grupo.contains(event.getX(), event.getY()) ? 0.2 : 0)));
-			animacionHoverCirculo.playFromStart();
-		} catch (ClassCastException e) {
-			e.printStackTrace();
-		}
+		ejecutarAnimacionBotonCircularReleased(event);
 	}
 
 	@FXML
@@ -112,58 +76,71 @@ public class Menucontroller {
 
 	@FXML
 	void initialize() {
-		animacionRotarMenuMid = new Timeline();
-		animacionRotarMenuMid2 = new Timeline();
-		animacionRotarMenuInf = new Timeline();
-		animacionRotarMenu = new ParallelTransition(animacionRotarMenuMid, animacionRotarMenuMid2,
-				animacionRotarMenuInf);
 		animacionRotarPerfil = new RotateTransition(Duration.millis(100), trianguloDesplieguePerfil);
-		animacionUnHoverCirculo = new Timeline();
-		animacionUnHoverCirculo.getKeyFrames()
-				.add(new KeyFrame(Duration.millis(100), new KeyValue(circulo.opacityProperty(), 0.2)));
+	}
+
+	private void ejecutarAnimacionBotonCircular(MouseEvent event, double endValue) {
+		ScrollPane nodo = (ScrollPane) event.getSource();
+		Color color = (Color) nodo.getBackground().getFills().get(0).getFill();
+		SimpleDoubleProperty prop = new SimpleDoubleProperty(color.getOpacity());
+		StringExpression concat = new SimpleStringProperty("-fx-background-color: rgba(0.0,171.0,235.0,")
+				.concat(Bindings.format(Locale.US, "%.3f", prop))
+				.concat(");-fx-background-radius:100;-fx-min-width: " + nodo.getMinWidth() + ";");
+		nodo.styleProperty().bind(concat);
+
+		Timeline animacionHoverCirculo = new Timeline();
+		KeyValue keyValue = new KeyValue(prop, endValue);
+		animacionHoverCirculo.getKeyFrames().add(new KeyFrame(Duration.millis(100), keyValue));
+		animacionHoverCirculo.playFromStart();
+	}
+
+	private void ejecutarAnimacionBotonCircularReleased(MouseEvent event) {
+		ScrollPane nodo = (ScrollPane) event.getSource();
+		Color color = (Color) nodo.getBackground().getFills().get(0).getFill();
+		SimpleDoubleProperty prop = new SimpleDoubleProperty(color.getOpacity());
+		StringExpression concat = new SimpleStringProperty("-fx-background-color: rgba(0.0,171.0,235.0,")
+				.concat(Bindings.format(Locale.US, "%.3f", prop))
+				.concat(");-fx-background-radius:100;-fx-min-width: " + nodo.getMinWidth() + ";");
+
+		nodo.styleProperty().bind(concat);
+		KeyValue keyValue = new KeyValue(prop, nodo.contains(event.getX(), event.getY()) ? 0.2 : 0);
+		Timeline animacionHoverCirculo = new Timeline();
+		animacionHoverCirculo.getKeyFrames().add(new KeyFrame(Duration.millis(100), keyValue));
+		animacionHoverCirculo.playFromStart();
+
 	}
 
 	private void desplegarPerfilAction() {
+		estaPerfilDesplegado = !estaPerfilDesplegado;
 		animarTriangulo();
 		// TODO desplegar barra
 		// TODO desplegar barra
 		// TODO desplegar barra
 		// TODO desplegar barra
 		// TODO desplegar barra
-		estaPerfilDesplegado = !estaPerfilDesplegado;
+
 	}
 
 	private void animarTriangulo() {
-
-		animacionRotarPerfil.setFromAngle(estaPerfilDesplegado ? 180 : 0);
-		animacionRotarPerfil.setToAngle(estaPerfilDesplegado ? 0 : 180);
+		animacionRotarPerfil.setFromAngle(estaPerfilDesplegado ? 0 : 180);
+		animacionRotarPerfil.setToAngle(estaPerfilDesplegado ? 180 : 0);
 		animacionRotarPerfil.play();
 	}
 
 	private void desplegarMenuAction() {
 		estaMenuDesplegado = !estaMenuDesplegado;
-		animarBarra();
-		// TODO desplegar menu
-		// TODO desplegar menu
-		// TODO desplegar menu
-		// TODO desplegar menu
-		// TODO desplegar menu
-		// TODO desplegar menu
+		ejecutarAnimacionMenu();
 	}
 
-	private void animarBarra() {
-		animacionRotarMenuMid.getKeyFrames().clear();
-		animacionRotarMenuMid2.getKeyFrames().clear();
-		animacionRotarMenuInf.getKeyFrames().clear();
-
-		animacionRotarMenuMid.getKeyFrames().add(new KeyFrame(Duration.millis(100),
-				new KeyValue(rectanguloMid.widthProperty(), estaMenuDesplegado ? 17 : 22)));
-		animacionRotarMenuMid2.getKeyFrames().add(new KeyFrame(Duration.millis(100),
-				new KeyValue(rectanguloMid.xProperty(), estaMenuDesplegado ? 15 : 0)));
-		animacionRotarMenuInf.getKeyFrames().add(new KeyFrame(Duration.millis(100),
-				new KeyValue(rectanguloInf.widthProperty(), estaMenuDesplegado ? 32 : 12)));
-		animacionRotarMenu.playFromStart();
-
+	private void ejecutarAnimacionMenu() {
+		List<KeyValue> keyValues = menuIzq.getChildren().stream()
+				.map(node -> new KeyValue(((ScrollPane) node).minWidthProperty(), estaMenuDesplegado ? 250 : 84))
+				.collect(Collectors.toList());
+		keyValues.add(new KeyValue(rectanguloMid.widthProperty(), estaMenuDesplegado ? 17 : 22));
+		keyValues.add(new KeyValue(rectanguloMid.xProperty(), estaMenuDesplegado ? 15 : 0));
+		keyValues.add(new KeyValue(rectanguloInf.widthProperty(), estaMenuDesplegado ? 32 : 12));
+		Timeline timeline = new Timeline(
+				new KeyFrame(Duration.millis(100), (KeyValue[]) keyValues.toArray(new KeyValue[keyValues.size()])));
+		timeline.playFromStart();
 	}
-
 }
