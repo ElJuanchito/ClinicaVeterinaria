@@ -1,0 +1,10 @@
+.boton{
+	-fx-text-fill: #14133b;
+	-fx-font-weight: bold;
+	-fx-font-size: 1em;
+	-fx-border-color: #14133b;
+	-fx-border-width: 0.2em;
+	-fx-border-radius: 0.5em;
+	-fx-background-radius: 0.5em;
+	-fx-background-color: white;
+}

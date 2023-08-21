@@ -2,6 +2,7 @@ package co.edu.uniquindio.clinicaVeterinaria.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -480,5 +481,29 @@ public class Clinica implements Serializable {
 	 */
 	public List<AtencionVeterinaria> citasEnRangoDeDias(LocalDate inicio, LocalDate fin) {
 		return citas.values().stream().filter(cita -> cita.enRangoDeFecha(inicio, fin)).collect(Collectors.toList());
+	}
+	
+	/**
+	 * Retorna una List con las citas.
+	 * @return
+	 */
+	public List<AtencionVeterinaria> getListaCitas() {
+		return new ArrayList<AtencionVeterinaria>(citas.values());
+	}
+	
+	/**
+	 * Retorna una List con las facturas.
+	 * @return
+	 */
+	public List<Factura> getListaFacturas(){
+		return new ArrayList<Factura>(facturas.values());
+	}
+	
+	/**
+	 * Retorna una List con los clientes.
+	 * @return
+	 */
+	public List<Cliente> getListClientes(){
+		return new ArrayList<Cliente>(clientes.values());
 	}
 }
