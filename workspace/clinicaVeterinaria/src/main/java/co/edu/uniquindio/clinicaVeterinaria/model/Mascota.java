@@ -91,6 +91,20 @@ public class Mascota implements Serializable{
 	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
+	
+	/**
+	 * @return the dueno
+	 */
+	public Cliente getDueno() {
+		return dueno;
+	}
+
+	/**
+	 * @param dueno the dueno to set
+	 */
+	public void setDueno(Cliente dueno) {
+		this.dueno = dueno;
+	}
 
 	@Override
 	public int hashCode() {
@@ -114,23 +128,5 @@ public class Mascota implements Serializable{
 		return "Mascota [codigo=" + codigo + ", nombre=" + nombre + ", edad=" + edad + ", raza=" + raza + ", tipo="
 				+ tipo + ", sexo=" + sexo + "]";
 	}
-
-	/**
-	 * @return the dueno
-	 */
-	public Cliente getDueno() {
-		return dueno;
-	}
-
-	/**
-	 * @param dueno the dueno to set
-	 */
-	public void setDueno(Cliente dueno) {
-		this.dueno = dueno;
-	}
-	
-	
-	
-	
 	
 }
