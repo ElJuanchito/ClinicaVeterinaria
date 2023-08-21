@@ -2,7 +2,6 @@ package co.edu.uniquindio.clinicaVeterinaria.services;
 
 import java.util.concurrent.CountDownLatch;
 
-import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 

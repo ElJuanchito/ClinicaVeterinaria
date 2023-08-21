@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class TestProfileSelector extends Application {
+public class TestVentanas extends Application {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -19,7 +19,7 @@ public class TestProfileSelector extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
-		Scene scena = new Scene(loadFXML("profileSelector"));
+		Scene scena = new Scene(loadFXML("registroMascota"));
 		//scena.getStylesheets().add(getClass().getResource("/co/edu/uniquindio/clinicaVeterinaria/styles/textStyle.css").toExternalForm());
 		primaryStage.setScene(scena);
 		primaryStage.show();
