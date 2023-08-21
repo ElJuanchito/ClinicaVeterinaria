@@ -4,6 +4,8 @@
 package co.edu.uniquindio.clinicaVeterinaria.controllers;
 
 import co.edu.uniquindio.clinicaVeterinaria.dao.ClinicaDao;
+import co.edu.uniquindio.clinicaVeterinaria.exceptions.ClienteNoExistenteException;
+import co.edu.uniquindio.clinicaVeterinaria.model.Cliente;
 import co.edu.uniquindio.clinicaVeterinaria.model.Clinica;
 
 /**

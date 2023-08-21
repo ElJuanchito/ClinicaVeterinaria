@@ -1,6 +1,8 @@
 package co.edu.uniquindio.clinicaVeterinaria.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -11,7 +13,7 @@ import co.edu.uniquindio.clinicaVeterinaria.exceptions.MascotaYaExistenteExcepti
  * @author juanp
  */
 
-public class Cliente extends Persona{
+public class Cliente extends Persona {
 
 	/**
 	 * 
@@ -23,6 +25,7 @@ public class Cliente extends Persona{
 
 	/**
 	 * Constructor con parametros de la clase <b>Cliente</b>
+	 * 
 	 * @param nombre
 	 * @param correo
 	 * @param telefono
@@ -77,36 +80,46 @@ public class Cliente extends Persona{
 		return "Cliente [cedula=" + cedula + ", direccion=" + direccion + ", getNombre()=" + getNombre()
 				+ ", getCorreo()=" + getCorreo() + ", getTelefono()=" + getTelefono() + "]";
 	}
-	
+
 	/**
-	 * Verifica si una mascota ya existe en la lista. Retorna un valor booleano dependiendo de la busqueda.
+	 * Verifica si una mascota ya existe en la lista. Retorna un valor booleano
+	 * dependiendo de la busqueda.
+	 * 
 	 * @param codigo
 	 * @return
 	 */
 	public boolean verificarMascota(String codigo) {
 		return mascotas.containsKey(codigo) && mascotas.get(codigo) != null;
 	}
-	
+
 	/**
 	 * Lanza una expcetion si el mascota no existe en la lista.
+	 * 
 	 * @param codigo
 	 * @throws MascotaNoEncontradaExpcetion
 	 */
 	private void throwMascotaNoEncontrada(String codigo) throws MascotaNoEncontradaExpcetion {
-		if(!verificarMascota(codigo)) throw new MascotaNoEncontradaExpcetion("La mascota identificada con el codigo: " + codigo + ", no existe en la lista");
+		if (!verificarMascota(codigo))
+			throw new MascotaNoEncontradaExpcetion(
+					"La mascota identificada con el codigo: " + codigo + ", no existe en la lista");
 	}
-	
+
 	/**
 	 * Lanza una expcetion si el mascota ya existe en la lista.
+	 * 
 	 * @param codigo
 	 * @throws MascotaYaExistenteException
 	 */
-	private void throwMascotaYaExistente(String codigo) throws MascotaYaExistenteException{
-		if(verificarMascota(codigo)) throw new MascotaYaExistenteException("La mascota identificada con el codigo: " + codigo + ", ya existe en la lista");
+	private void throwMascotaYaExistente(String codigo) throws MascotaYaExistenteException {
+		if (verificarMascota(codigo))
+			throw new MascotaYaExistenteException(
+					"La mascota identificada con el codigo: " + codigo + ", ya existe en la lista");
 	}
-	
+
 	/**
-	 * Busca una <b>mascota</b> en la lista y lo retorna, lanza una exception si la mascota no existe.
+	 * Busca una <b>mascota</b> en la lista y lo retorna, lanza una exception si la
+	 * mascota no existe.
+	 * 
 	 * @param codigo
 	 * @return
 	 * @throws MascotaNoEncontradaExpcetion
@@ -115,9 +128,10 @@ public class Cliente extends Persona{
 		throwMascotaNoEncontrada(codigo);
 		return mascotas.get(codigo);
 	}
-	
+
 	/**
 	 * Agrega una nueva mascota a la lista. Lanza una exception si ya existe.
+	 * 
 	 * @param mascota
 	 * @throws MascotaYaExistenteException
 	 */
@@ -125,9 +139,11 @@ public class Cliente extends Persona{
 		throwMascotaYaExistente(mascota.getCodigo());
 		mascotas.put(mascota.getCodigo(), mascota);
 	}
-	
+
 	/**
-	 * Elimina una mascota de la lista y la retorna. Lanza una exception si no existe en la lista.
+	 * Elimina una mascota de la lista y la retorna. Lanza una exception si no
+	 * existe en la lista.
+	 * 
 	 * @param codigo
 	 * @return
 	 * @throws MascotaNoEncontradaExpcetion
@@ -136,9 +152,10 @@ public class Cliente extends Persona{
 		throwMascotaNoEncontrada(codigo);
 		return mascotas.remove(codigo);
 	}
-	
+
 	/**
 	 * actualiza los datos de la mascota. Lanza una exception si no existe
+	 * 
 	 * @param mascota
 	 * @throws MascotaYaExistenteException
 	 */
@@ -146,15 +163,24 @@ public class Cliente extends Persona{
 		throwMascotaNoEncontrada(mascota.getCodigo());
 		mascotas.put(mascota.getCodigo(), mascota);
 	}
-	
+
 	/**
 	 * Busca y retorna una mascota segun su nombre.
+	 * 
 	 * @param nombre
 	 * @return
 	 * @author ElJuancho
 	 */
 	public Mascota buscarMascotaPorNombre(String nombre) {
 		return mascotas.values().stream().filter(m -> m.getNombre().equals(nombre)).findFirst().orElse(null);
+	}
+
+	/**
+	 * Retorna la lista de mascotas.
+	 * @return
+	 */
+	public List<Mascota> getListaMascotas() {
+		return new ArrayList<Mascota>(mascotas.values());
 	}
 
 }
