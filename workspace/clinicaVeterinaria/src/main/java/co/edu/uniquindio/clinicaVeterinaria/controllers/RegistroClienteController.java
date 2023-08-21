@@ -1,53 +1,52 @@
 package co.edu.uniquindio.clinicaVeterinaria.controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.control.TextField;
 
 public class RegistroClienteController {
 
+    @FXML
+    private ResourceBundle resources;
 
     @FXML
-    private TextField txtCorreoCliente;
+    private URL location;
 
     @FXML
-    private TextField txtTelefonoCliente;
+    private TextField txtNombre;
 
     @FXML
-    private Label lblCorreoCliente;
+    private TextField txtDireccion;
 
     @FXML
-    private Label lblNombreCliente;
+    private TextField txtTelefono;
 
     @FXML
-    private Button btnRegistrarCliente;
+    private TextField txtCedula;
 
     @FXML
-    private TextField txtNombreCliente;
+    private Button btnRegistrar;
 
     @FXML
-    private Label lblCedulaCliente;
+    private TextField txtCorreo;
 
     @FXML
-    private Label lblDireccionCliente;
-
-    @FXML
-    private TextField txtCedulaCliente;
-
-    @FXML
-    private TextField txtDireccionCliente;
-
-    @FXML
-    private Label lblTelefonoCliente;
-
-    @FXML
-    private Label lblTitleCliente;
-
-    @FXML
-    void registrarCliente(MouseEvent event) {
+    void registrarEvent(ActionEvent event) {
 
     }
 
+    @FXML
+    void initialize() {
+        assert txtNombre != null : "fx:id=\"txtNombre\" was not injected: check your FXML file 'registroCliente.fxml'.";
+        assert txtDireccion != null : "fx:id=\"txtDireccion\" was not injected: check your FXML file 'registroCliente.fxml'.";
+        assert txtTelefono != null : "fx:id=\"txtTelefono\" was not injected: check your FXML file 'registroCliente.fxml'.";
+        assert txtCedula != null : "fx:id=\"txtCedula\" was not injected: check your FXML file 'registroCliente.fxml'.";
+        assert btnRegistrar != null : "fx:id=\"btnRegistrar\" was not injected: check your FXML file 'registroCliente.fxml'.";
+        assert txtCorreo != null : "fx:id=\"txtCorreo\" was not injected: check your FXML file 'registroCliente.fxml'.";
+
+    }
 }

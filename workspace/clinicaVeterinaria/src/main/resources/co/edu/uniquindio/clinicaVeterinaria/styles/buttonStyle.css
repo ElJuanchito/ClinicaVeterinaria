@@ -8,3 +8,12 @@
 	-fx-background-radius: 0.5em;
 	-fx-background-color: white;
 }
+
+.boton:hover{
+	-fx-border-width: 0.25em;
+}
+
+.boton:pressed {
+    -fx-text-fill: white;
+	-fx-background-color: #14133b;
+}
