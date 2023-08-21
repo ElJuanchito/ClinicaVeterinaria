@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.FinalizarAtencionController">
    <children>
       <HBox alignment="CENTER" prefHeight="79.0" prefWidth="600.0">
          <children>
-            <Label text="Label" />
+            <Label text="Finalizar Atencion">
+               <HBox.margin>
+                  <Insets bottom="20.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <GridPane>
@@ -24,22 +27,74 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="303.0" text="Label" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="308.0" text="Label" GridPane.rowIndex="1" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="309.0" text="Label" GridPane.rowIndex="2" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="318.0" text="Label" GridPane.rowIndex="3" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="312.0" text="Label" GridPane.rowIndex="4" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="346.0" text="Label" GridPane.rowIndex="5" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="303.0" text="Estado" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="308.0" text="Fecha" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="309.0" text="Hora" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="318.0" text="Veterinario" GridPane.rowIndex="4" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="312.0" text="Diagnostico" GridPane.rowIndex="5" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="346.0" text="Tratamiento" GridPane.rowIndex="6" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="320.0" text="Mascota" GridPane.rowIndex="3" />
+            <TextArea fx:id="txtDiagnosticoAtencion" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextArea>
+            <TextArea fx:id="txtTratamientoAtencion" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextArea>
+            <ComboBox fx:id="comboEstadoAtencion" prefHeight="25.0" prefWidth="302.0" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <DatePicker fx:id="dateFechaAtencion" prefHeight="25.0" prefWidth="258.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </DatePicker>
+            <TextField fx:id="txtHoraAtencion" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="txtMascotaAtencion" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="txtVeterinarioAtencion" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
          </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin>
       </GridPane>
       <TableView prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+            <TableColumn fx:id="columnaCodigoAtencion" prefWidth="75.0" text="Codigo" />
+          <TableColumn fx:id="columnaFechaAtencion" prefWidth="75.0" text="Fecha" />
+          <TableColumn fx:id="columnaHoraAtencion" prefWidth="75.0" text="Hora" />
+            <TableColumn fx:id="columnaMascotaAtencion" prefWidth="75.0" text="Mascota" />
+            <TableColumn fx:id="columnaTipoAtencion" prefWidth="75.0" text="Tipo" />
+            <TableColumn fx:id="columnaSexoAtencion" prefWidth="75.0" text="Sexo" />
+            <TableColumn fx:id="columnaVeterinarioAtencion" prefWidth="75.0" text="Veterinario" />
         </columns>
       </TableView>
-      <Button mnemonicParsing="false" text="Button" />
+      <HBox alignment="CENTER">
+         <children>
+            <Button fx:id="btnFinalizarAtencion" mnemonicParsing="false" onMouseClicked="#finalizarAtencion" text="Finalizar" />
+         </children>
+      </HBox>
    </children>
 </VBox>
