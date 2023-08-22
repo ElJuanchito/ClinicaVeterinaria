@@ -74,6 +74,7 @@ public class RegistroMascotaController {
 							Integer.valueOf(txtEdad.getText()), txtRaza.getText().trim(), cbTipo.getValue(),
 							cbSexo.getValue()));
 			ModelFactoryController.getInstance().saveData();
+			vaciarCampos();
 		} catch (ClienteNoExistenteException e) {
 			new Alert(AlertType.WARNING, "No existe ningun cliente con esta cedula").show();
 		} catch (NumberFormatException e) {
@@ -91,5 +92,14 @@ public class RegistroMascotaController {
 			return false;
 		}
 		return true;
+	}
+	
+	private void vaciarCampos() {
+		txtNombre.clear();
+		cbSexo.setValue(null);
+		txtRaza.clear();
+		txtEdad.clear();
+		txtCedula.clear();
+		cbTipo.setValue(null);
 	}
 }

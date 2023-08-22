@@ -27,6 +27,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.util.StringConverter;
 
 public class CreacionAtencionController {
@@ -103,7 +104,7 @@ public class CreacionAtencionController {
 	}
 
 	@FXML
-	void seleccionarEvent(ActionEvent event) {
+	void seleccionarEvent(MouseEvent event) {
 		seleccionarAction();
 	}
 
@@ -122,6 +123,7 @@ public class CreacionAtencionController {
 		try {
 			ModelFactoryController.getInstance().getClinica().agregarCita(cita);
 			ModelFactoryController.getInstance().saveData();
+			vaciarCampos();
 		} catch (AtencionExistenteException e) {
 			new Alert(AlertType.WARNING, e.getMessage()).show();
 		}
@@ -173,6 +175,14 @@ public class CreacionAtencionController {
 			return false;
 		}
 		return true;
+	}
+	
+	private void vaciarCampos() {
+		txtDate.setValue(null);
+		cbVeterinario.setValue(null);
+		txtCliente.clear();
+		txtTime.clear();
+		txtMascota.setText("");
 	}
 
 }
