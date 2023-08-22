@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1082.0" prefWidth="733.0" style="-fx-background-color: white;" stylesheets="@../styles/factura.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="84.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sources/logo-no-text.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="445.0" layoutX="98.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sources/patitas-peludas.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="546.0" layoutY="13.0" orientation="VERTICAL" prefHeight="58.0" prefWidth="10.0" />
+      <VBox alignment="CENTER" layoutX="582.0" layoutY="18.0" style="-fx-border-width: 1; -fx-border-radius: 5; -fx-border-color: black;">
+         <children>
+            <Label layoutX="556.0" layoutY="25.0" text="Codigo de Factura: " />
+            <Label fx:id="lblCodFactura" styleClass="dato" text="\%lblCodFactura%" />
+         </children>
+         <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </padding>
+      </VBox>
+      <Separator layoutX="31.0" layoutY="71.0" prefHeight="27.0" prefWidth="671.0" />
+   </children>
+</AnchorPane>
