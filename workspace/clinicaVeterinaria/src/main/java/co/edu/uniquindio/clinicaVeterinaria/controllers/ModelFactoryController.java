@@ -1,6 +1,3 @@
-/**
- * 
- */
 package co.edu.uniquindio.clinicaVeterinaria.controllers;
 
 import co.edu.uniquindio.clinicaVeterinaria.dao.ClinicaDao;
