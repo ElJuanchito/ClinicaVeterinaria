@@ -116,6 +116,7 @@ public class FinalizarAtencionController {
 				citaSelecciona.getMascota().getDueno(), citaSelecciona);
 		try {
 			ModelFactoryController.getInstance().getClinica().agregarFactura(factura);
+			ModelFactoryController.getInstance().loadData();
 		} catch (FacturaYaExistenteException e) {
 			new Alert(AlertType.ERROR, e.getMessage()).show();
 		}

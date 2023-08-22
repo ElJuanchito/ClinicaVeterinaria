@@ -121,6 +121,7 @@ public class CreacionAtencionController {
 		}
 		try {
 			ModelFactoryController.getInstance().getClinica().agregarCita(cita);
+			ModelFactoryController.getInstance().saveData();
 		} catch (AtencionExistenteException e) {
 			new Alert(AlertType.WARNING, e.getMessage()).show();
 		}

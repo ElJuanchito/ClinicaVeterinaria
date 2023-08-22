@@ -41,6 +41,7 @@ public class RegistroClienteController {
 
 	@FXML
 	void initialize() {
+		ModelFactoryController.getInstance().loadData();
 		FxUtility.setAsIntegerTextfield(txtTelefono);
 		FxUtility.setAsIntegerTextfield(txtCedula);
 	}
@@ -59,6 +60,7 @@ public class RegistroClienteController {
 			ModelFactoryController.getInstance().getClinica()
 					.agregarCliente(new Cliente(txtNombre.getText().trim(), txtCorreo.getText().trim(),
 							txtTelefono.getText().trim(), txtCedula.getText().trim(), txtDireccion.getText().trim()));
+			ModelFactoryController.getInstance().saveData();
 		} catch (ClienteExistenteException e) {
 			new Alert(AlertType.WARNING, "El cliente ya existe en el sistema.").show();
 		}
