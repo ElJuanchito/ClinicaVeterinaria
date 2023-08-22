@@ -2,6 +2,7 @@ package co.edu.uniquindio.clinicaVeterinaria.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Mascota implements Serializable{
 	
@@ -9,6 +10,7 @@ public class Mascota implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static final AtomicLong cuentaM = new AtomicLong(0);
 	private String codigo;
 	private Cliente dueno;
 	private String nombre;
@@ -33,9 +35,9 @@ public class Mascota implements Serializable{
 	 * @param tipo
 	 * @param sexo
 	 */
-	public Mascota(String codigo, Cliente dueno, String nombre, Integer edad, String raza, Tipo tipo, Sexo sexo) {
+	public Mascota(Cliente dueno, String nombre, Integer edad, String raza, Tipo tipo, Sexo sexo) {
 		super();
-		this.codigo = codigo;
+		this.codigo = String.valueOf(cuentaM.incrementAndGet());
 		this.dueno = dueno;
 		this.nombre = nombre;
 		this.edad = edad;
@@ -46,10 +48,6 @@ public class Mascota implements Serializable{
 
 	public String getCodigo() {
 		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
 	}
 
 	public String getNombre() {

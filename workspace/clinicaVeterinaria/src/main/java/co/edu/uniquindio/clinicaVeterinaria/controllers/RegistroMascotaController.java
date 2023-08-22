@@ -42,9 +42,6 @@ public class RegistroMascotaController {
 	private TextField txtCedula;
 
 	@FXML
-	private TextField txtCodigo;
-
-	@FXML
 	private Button btnRegistrar;
 
 	@FXML
@@ -57,7 +54,6 @@ public class RegistroMascotaController {
 		cbTipo.getItems().addAll(Tipo.values());
 		FxUtility.setAsIntegerTextfield(txtEdad);
 		FxUtility.setAsIntegerTextfield(txtCedula);
-		FxUtility.setAsIntegerTextfield(txtCodigo);
 	}
 
 	@FXML
@@ -74,7 +70,7 @@ public class RegistroMascotaController {
 			Cliente cliente = ModelFactoryController.getInstance().getClinica()
 					.buscarCliente(txtCedula.getText().trim());
 			ModelFactoryController.getInstance().getClinica().agregarMascota(cliente,
-					new Mascota(txtCodigo.getText().trim(), cliente, txtNombre.getText().trim(),
+					new Mascota(cliente, txtNombre.getText().trim(),
 							Integer.valueOf(txtEdad.getText()), txtRaza.getText().trim(), cbTipo.getValue(),
 							cbSexo.getValue()));
 			ModelFactoryController.getInstance().saveData();
@@ -91,7 +87,7 @@ public class RegistroMascotaController {
 	private boolean verificarCampos() {
 		if (txtNombre.getText().trim().isEmpty() || txtRaza.getText().trim().isEmpty()
 				|| txtEdad.getText().trim().isEmpty() || txtCedula.getText().trim().isEmpty()
-				|| cbSexo.getValue() == null || cbTipo.getValue() == null || txtCodigo.getText().trim().isEmpty()) {
+				|| cbSexo.getValue() == null || cbTipo.getValue() == null) {
 			return false;
 		}
 		return true;
