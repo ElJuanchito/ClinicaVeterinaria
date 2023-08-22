@@ -52,6 +52,7 @@ public class RegistroMascotaController {
 
 	@FXML
 	void initialize() {
+		ModelFactoryController.getInstance().loadData();
 		cbSexo.getItems().addAll(Sexo.values());
 		cbTipo.getItems().addAll(Tipo.values());
 		FxUtility.setAsIntegerTextfield(txtEdad);
@@ -64,23 +65,19 @@ public class RegistroMascotaController {
 		registrarAction();
 	}
 
-	private boolean verificarCampos() {
-		if (txtNombre.getText().trim().isEmpty() || txtRaza.getText().trim().isEmpty()
-				|| txtEdad.getText().trim().isEmpty() || txtCedula.getText().trim().isEmpty()
-				|| cbSexo.getValue() == null || cbTipo.getValue() == null || txtCodigo.getText().trim().isEmpty()) {
-			return false;
-		}
-		return true;
-	}
-
 	private void registrarAction() {
-		if(!verificarCampos()) {
+		if (!verificarCampos()) {
 			new Alert(AlertType.WARNING, "Llene todos los campos").show();
 			return;
 		}
 		try {
-			Cliente cliente = ModelFactoryController.getInstance().getClinica().buscarCliente(txtCedula.getText().trim());
-			ModelFactoryController.getInstance().getClinica().agregarMascota(cliente, new Mascota(txtCodigo.getText().trim(), cliente, txtNombre.getText().trim(), Integer.valueOf(txtEdad.getText()), txtRaza.getText().trim(), cbTipo.getValue(), cbSexo.getValue()));
+			Cliente cliente = ModelFactoryController.getInstance().getClinica()
+					.buscarCliente(txtCedula.getText().trim());
+			ModelFactoryController.getInstance().getClinica().agregarMascota(cliente,
+					new Mascota(txtCodigo.getText().trim(), cliente, txtNombre.getText().trim(),
+							Integer.valueOf(txtEdad.getText()), txtRaza.getText().trim(), cbTipo.getValue(),
+							cbSexo.getValue()));
+			ModelFactoryController.getInstance().saveData();
 		} catch (ClienteNoExistenteException e) {
 			new Alert(AlertType.WARNING, "No existe ningun cliente con esta cedula").show();
 		} catch (NumberFormatException e) {
@@ -88,8 +85,15 @@ public class RegistroMascotaController {
 		} catch (MascotaYaExistenteException e) {
 			new Alert(AlertType.WARNING, e.getMessage()).show();
 		}
-		
-		
-		
+
+	}
+	
+	private boolean verificarCampos() {
+		if (txtNombre.getText().trim().isEmpty() || txtRaza.getText().trim().isEmpty()
+				|| txtEdad.getText().trim().isEmpty() || txtCedula.getText().trim().isEmpty()
+				|| cbSexo.getValue() == null || cbTipo.getValue() == null || txtCodigo.getText().trim().isEmpty()) {
+			return false;
+		}
+		return true;
 	}
 }
