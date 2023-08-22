@@ -5,20 +5,20 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.FinalizarAtencionController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.FinalizarAtencionController">
    <children>
-      <HBox alignment="CENTER" prefHeight="79.0" prefWidth="600.0">
+      <HBox alignment="CENTER">
          <children>
-            <Label text="Finalizar Atencion">
+            <Label id="titulo" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Finalizar Atencion">
                <HBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets />
                </HBox.margin></Label>
          </children>
       </HBox>
-      <GridPane>
+      <GridPane alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -26,48 +26,46 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="303.0" text="Estado" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="308.0" text="Fecha" GridPane.rowIndex="1" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="309.0" text="Hora" GridPane.rowIndex="2" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="318.0" text="Veterinario" GridPane.rowIndex="4" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="312.0" text="Diagnostico" GridPane.rowIndex="5" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="346.0" text="Tratamiento" GridPane.rowIndex="6" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="320.0" text="Mascota" GridPane.rowIndex="3" />
-            <TextArea fx:id="txtDiagnosticoAtencion" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="20.0" right="20.0" />
-               </GridPane.margin>
-            </TextArea>
-            <TextArea fx:id="txtTratamientoAtencion" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets left="20.0" right="20.0" />
-               </GridPane.margin>
-            </TextArea>
-            <ComboBox fx:id="comboEstadoAtencion" prefHeight="25.0" prefWidth="302.0" GridPane.columnIndex="1">
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="303.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Estado:" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="308.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Fecha:" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="309.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Hora:" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="318.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Veterinario" GridPane.rowIndex="4" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="312.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Diagnostico:" GridPane.rowIndex="5" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="346.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Tratamiento:" GridPane.rowIndex="6" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="320.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Mascota" GridPane.rowIndex="3" />
+            <ComboBox fx:id="cbEstado" prefHeight="25.0" prefWidth="302.0" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </ComboBox>
-            <DatePicker fx:id="dateFechaAtencion" prefHeight="25.0" prefWidth="258.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <DatePicker fx:id="txtFecha" editable="false" prefHeight="29.0" prefWidth="274.0" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </DatePicker>
-            <TextField fx:id="txtHoraAtencion" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="lblHora" style="-fx-font-weight: bold; -fx-font-size: 1.2em;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="lblMascota" style="-fx-font-weight: bold; -fx-font-size: 1.2em;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="lblVeterinario" style="-fx-font-weight: bold; -fx-font-size: 1.2em;" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="txtDiagnostico" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtMascotaAtencion" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="txtTratamiento" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="txtVeterinarioAtencion" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label styleClass="texto" stylesheets="@../styles/textStyle.css" text="Costo:" GridPane.rowIndex="7" />
+            <TextField fx:id="txtCosto" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" text="70000" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
@@ -80,20 +78,23 @@
             <Insets bottom="20.0" />
          </VBox.margin>
       </GridPane>
-      <TableView prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="tblCitas" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#seleccionarEvent" stylesheets="@../styles/tableStyle.css">
         <columns>
-            <TableColumn fx:id="columnaCodigoAtencion" prefWidth="75.0" text="Codigo" />
-          <TableColumn fx:id="columnaFechaAtencion" prefWidth="75.0" text="Fecha" />
-          <TableColumn fx:id="columnaHoraAtencion" prefWidth="75.0" text="Hora" />
-            <TableColumn fx:id="columnaMascotaAtencion" prefWidth="75.0" text="Mascota" />
-            <TableColumn fx:id="columnaTipoAtencion" prefWidth="75.0" text="Tipo" />
-            <TableColumn fx:id="columnaSexoAtencion" prefWidth="75.0" text="Sexo" />
-            <TableColumn fx:id="columnaVeterinarioAtencion" prefWidth="75.0" text="Veterinario" />
+            <TableColumn fx:id="colCodigo" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="90.0" text="Codigo" />
+          <TableColumn fx:id="colFecha" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="90.0" text="Fecha" />
+          <TableColumn fx:id="colHora" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="90.0" text="Hora" />
+            <TableColumn fx:id="colMascota" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="90.0" text="Mascota" />
+            <TableColumn fx:id="colTipo" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="90.0" text="Tipo" />
+            <TableColumn fx:id="colSexo" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="90.0" text="Sexo" />
+            <TableColumn fx:id="colVeterinario" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="90.0" text="Veterinario" />
         </columns>
       </TableView>
       <HBox alignment="CENTER">
          <children>
-            <Button fx:id="btnFinalizarAtencion" mnemonicParsing="false" onMouseClicked="#finalizarAtencion" text="Finalizar" />
+            <Button fx:id="btnFinalizar" mnemonicParsing="false" onAction="#finalizarEvent" styleClass="boton" stylesheets="@../styles/buttonStyle.css" text="Finalizar">
+               <HBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </HBox.margin></Button>
          </children>
       </HBox>
    </children>

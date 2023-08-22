@@ -1,6 +1,3 @@
-/**
- * 
- */
 package co.edu.uniquindio.clinicaVeterinaria.controllers;
 
 import co.edu.uniquindio.clinicaVeterinaria.dao.ClinicaDao;
@@ -24,15 +21,21 @@ public class ModelFactoryController {
 
 	/**
 	 * Obtiene una instancia de la clinica por medio del patron Singleton.
+	 * 
 	 * @return
 	 * @author ElJuancho
 	 */
 	public Clinica getClinica() {
-		if (clinica == null)
-			loadData();
+		if (clinica == null) {
+			this.clinica = new Clinica();
+			saveData();
+		}
+
+		loadData();
 		return clinica;
+
 	}
-	
+
 	/**
 	 * Carga los datos y actualiza la clinica.
 	 * 
@@ -42,7 +45,7 @@ public class ModelFactoryController {
 		ClinicaDao dao = new ClinicaDao();
 		clinica = dao.loadData();
 	}
-	
+
 	/**
 	 * Guarda los datos de la clinica.
 	 * 
