@@ -38,6 +38,10 @@ public class Clinica implements Serializable {
 	 */
 	public Clinica() {
 		veterinarios = new Veterinario[4];
+		veterinarios[0] = new Veterinario("Dr. Perdomo", "juanm.perdomo@uqvirtual.edu.co", "3225179118", "0001", null);
+		veterinarios[1] = new Veterinario("Dr. Bayter", "breynera.sanchezq@uqvirtual.edu.co", "3006123593", "0002", null);
+		veterinarios[2] = new Veterinario("Dr. Quintero", "santiago.quinterou@uqvirtual.edu.co", "3147830068", "0003", null);
+		veterinarios[3] = new Veterinario("Dr. Amador", "juanm.amadorr@uqvirtual.edu.co", "3136253916", "0004", null);
 		citas = new HashMap<Long, AtencionVeterinaria>();
 		facturas = new HashMap<Long, Factura>();
 		clientes = new HashMap<String, Cliente>();
@@ -471,9 +475,10 @@ public class Clinica implements Serializable {
 
 	// La clínica desea saber cuántas citas se han solicitado en un rango de días.
 	// Se debe indicar la fecha de inicio y de fin.
-	
+
 	/**
 	 * Retorna una lista con las citas solicitadas en un rango de fechas.
+	 * 
 	 * @param inicio
 	 * @param fin
 	 * @return
@@ -482,28 +487,40 @@ public class Clinica implements Serializable {
 	public List<AtencionVeterinaria> citasEnRangoDeDias(LocalDate inicio, LocalDate fin) {
 		return citas.values().stream().filter(cita -> cita.enRangoDeFecha(inicio, fin)).collect(Collectors.toList());
 	}
-	
+
 	/**
 	 * Retorna una List con las citas.
+	 * 
 	 * @return
 	 */
 	public List<AtencionVeterinaria> getListaCitas() {
 		return new ArrayList<AtencionVeterinaria>(citas.values());
 	}
-	
+
 	/**
 	 * Retorna una List con las facturas.
+	 * 
 	 * @return
 	 */
-	public List<Factura> getListaFacturas(){
+	public List<Factura> getListaFacturas() {
 		return new ArrayList<Factura>(facturas.values());
+	}
+
+	/**
+	 * Retorna una List con los clientes.
+	 * 
+	 * @return
+	 */
+	public List<Cliente> getListClientes() {
+		return new ArrayList<Cliente>(clientes.values());
 	}
 	
 	/**
-	 * Retorna una List con los clientes.
+	 * Retorna una List con los veterinarios.
+	 * 
 	 * @return
 	 */
-	public List<Cliente> getListClientes(){
-		return new ArrayList<Cliente>(clientes.values());
+	public List<Veterinario> getListaVeterinarios() {
+		return Arrays.asList(veterinarios);
 	}
 }

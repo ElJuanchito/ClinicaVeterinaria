@@ -45,6 +45,30 @@ public class FxUtility {
 		});
 	}
 
+	public static void setAsIntegerWithSymbolTextField(TextField tf) {
+		tf.textProperty().addListener(new ChangeListener<String>() {
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (!newValue.matches("[\\d:]*")) {
+					tf.setText(newValue.replaceAll("[^\\d:]", ""));
+					abrirContextMenu(tf, "Este campo solo permite enteros y el símbolo ':'");
+				}
+			}
+		});
+	}
+
+	public static void setAsHourTextField(TextField tf) {
+		tf.setText("00:00");
+
+		tf.textProperty().addListener(new ChangeListener<String>() {
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (!newValue.matches(":|[0-9]{1,2}:[0-9]{0,2}")) {
+					tf.setText("00:00");
+					abrirContextMenu(tf, "Ingresa la hora en formato 'HH:mm'");
+				}
+			}
+		});
+	}
+
 	private static void abrirContextMenu(Node nodo, String msg) {
 		final ContextMenu menu = new ContextMenu();
 		menu.setStyle("-fx-text-fill: black;");
@@ -126,16 +150,16 @@ public class FxUtility {
 		if (boton == ButtonType.OK)
 			metodo.run();
 	}
-	
+
 	public static void setMaximumTextSize(TextField tf, int tamanio) {
-        tf.setTextFormatter(new TextFormatter<String>(cambio -> {
-            if (cambio.isContentChange()) {
-                if (cambio.getControlNewText().length() > tamanio) {
-                    abrirContextMenu(tf, "Este campo puede tener maximo " + tamanio + " caracteres");
-                    return null;
-                }
-            }
-            return cambio;
-        }));
-    }
+		tf.setTextFormatter(new TextFormatter<String>(cambio -> {
+			if (cambio.isContentChange()) {
+				if (cambio.getControlNewText().length() > tamanio) {
+					abrirContextMenu(tf, "Este campo puede tener maximo " + tamanio + " caracteres");
+					return null;
+				}
+			}
+			return cambio;
+		}));
+	}
 }

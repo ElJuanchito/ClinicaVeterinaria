@@ -1,64 +1,156 @@
 package co.edu.uniquindio.clinicaVeterinaria.controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import co.edu.uniquindio.clinicaVeterinaria.exceptions.FacturaYaExistenteException;
+import co.edu.uniquindio.clinicaVeterinaria.model.AtencionVeterinaria;
+import co.edu.uniquindio.clinicaVeterinaria.model.Estado;
+import co.edu.uniquindio.clinicaVeterinaria.model.Factura;
+import co.edu.uniquindio.clinicaVeterinaria.utils.FxUtility;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Alert.AlertType;
 
 public class FinalizarAtencionController {
 
-    @FXML
-    private TableColumn<?, ?> columnaCodigoAtencion;
+	@FXML
+	private ResourceBundle resources;
 
-    @FXML
-    private TextArea txtTratamientoAtencion;
+	@FXML
+	private URL location;
 
-    @FXML
-    private TextField txtVeterinarioAtencion;
+	@FXML
+	private TableColumn<AtencionVeterinaria, String> colFecha;
 
-    @FXML
-    private TableColumn<?, ?> columnaHoraAtencion;
+	@FXML
+	private TableColumn<AtencionVeterinaria, String> colMascota;
 
-    @FXML
-    private TableColumn<?, ?> columnaSexoAtencion;
+	@FXML
+	private TableColumn<AtencionVeterinaria, String> colCodigo;
 
-    @FXML
-    private Button btnFinalizarAtencion;
+	@FXML
+	private ComboBox<Estado> cbEstado;
 
-    @FXML
-    private TextArea txtDiagnosticoAtencion;
+	@FXML
+	private TableColumn<AtencionVeterinaria, String> colSexo;
 
-    @FXML
-    private DatePicker dateFechaAtencion;
+	@FXML
+	private Button btnFinalizar;
 
-    @FXML
-    private TableColumn<?, ?> columnaTipoAtencion;
+	@FXML
+	private TextField txtDiagnostico;
 
-    @FXML
-    private TableColumn<?, ?> columnaFechaAtencion;
+	@FXML
+	private TableColumn<AtencionVeterinaria, String> colHora;
 
-    @FXML
-    private TextField txtMascotaAtencion;
+	@FXML
+	private TextField txtTratamiento;
 
-    @FXML
-    private TableColumn<?, ?> columnaMascotaAtencion;
+	@FXML
+	private TableColumn<AtencionVeterinaria, String> colVeterinario;
 
-    @FXML
-    private TableColumn<?, ?> columnaVeterinarioAtencion;
+	@FXML
+	private Label lblMascota;
 
-    @FXML
-    private ComboBox<?> comboEstadoAtencion;
+	@FXML
+	private TableColumn<AtencionVeterinaria, String> colTipo;
 
-    @FXML
-    private TextField txtHoraAtencion;
+	@FXML
+	private Label lblVeterinario;
 
-    @FXML
-    void finalizarAtencion(MouseEvent event) {
+	@FXML
+	private TableView<AtencionVeterinaria> tblCitas;
 
-    }
+	@FXML
+	private Label lblHora;
 
+	@FXML
+	private DatePicker txtFecha;
+
+	@FXML
+	private TextField txtCosto;
+
+	private ObservableList<AtencionVeterinaria> listaObservable;
+
+	private AtencionVeterinaria citaSelecciona;
+
+	@FXML
+	void initialize() {
+		actualizarTabla();
+		
+		cbEstado.getItems().add(Estado.ATENDIDA);
+		cbEstado.getItems().add(Estado.CANCELADA);
+		
+		FxUtility.setAsNumberTextfield(txtCosto);
+	}
+
+	@FXML
+	void finalizarEvent(ActionEvent event) {
+		finalizarAction();
+	}
+
+	@FXML
+	void seleccionarEvent(ActionEvent event) {
+		seleccionarAction();
+	}
+
+	private void finalizarAction() {
+		if(!verificarCampos()) {
+			new Alert(AlertType.ERROR, "Llene todos los campos").show();
+			return;
+		}
+		Factura factura = new Factura(Double.valueOf(txtCosto.getText().trim()), citaSelecciona.getFecha(),
+				txtDiagnostico.getText().trim(), txtTratamiento.getText().trim(),
+				citaSelecciona.getMascota().getDueno(), citaSelecciona);
+		try {
+			ModelFactoryController.getInstance().getClinica().agregarFactura(factura);
+		} catch (FacturaYaExistenteException e) {
+			new Alert(AlertType.ERROR, e.getMessage()).show();
+		}
+	}
+
+	private void seleccionarAction() {
+		citaSelecciona = tblCitas.getSelectionModel().getSelectedItem();
+
+		cbEstado.setValue(citaSelecciona.getEstado());
+		txtFecha.setValue(citaSelecciona.getFecha().toLocalDate());
+		lblHora.setText(citaSelecciona.getFecha().toLocalTime().toString());
+		lblMascota.setText(citaSelecciona.getMascota().getNombre());
+		lblVeterinario.setText(citaSelecciona.getVeterinario().getNombre());
+	}
+
+	private void actualizarTabla() {
+		ModelFactoryController.getInstance().loadData();
+		listaObservable = FXCollections
+				.observableList(ModelFactoryController.getInstance().getClinica().getListaCitas());
+		tblCitas.setItems(listaObservable);
+		colCodigo.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getCodigo().toString()));
+		colFecha.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getFecha().toLocalDate().toString()));
+		colHora.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getFecha().toLocalTime().toString()));
+		colMascota.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getMascota().getNombre()));
+		colTipo.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getMascota().getTipo().toString()));
+		colSexo.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getMascota().getSexo().toString()));
+		colVeterinario.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getVeterinario().getNombre()));
+		tblCitas.refresh();
+	}
+
+	private boolean verificarCampos() {
+		if (txtCosto.getText().trim().isEmpty() || txtDiagnostico.getText().trim().isEmpty()
+				|| txtTratamiento.getText().trim().isEmpty() || cbEstado.getValue() == null) {
+			return false;
+		}
+		return true;
+	}
 }

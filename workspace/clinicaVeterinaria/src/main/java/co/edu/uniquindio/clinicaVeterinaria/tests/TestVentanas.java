@@ -19,7 +19,7 @@ public class TestVentanas extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
-		Scene scena = new Scene(loadFXML("registroMascota"));
+		Scene scena = new Scene(loadFXML("FinalizarAtencion"));
 		//scena.getStylesheets().add(getClass().getResource("/co/edu/uniquindio/clinicaVeterinaria/styles/textStyle.css").toExternalForm());
 		primaryStage.setScene(scena);
 		primaryStage.show();

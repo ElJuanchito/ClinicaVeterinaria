@@ -1,36 +1,39 @@
 package co.edu.uniquindio.clinicaVeterinaria.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Factura implements Serializable{
-	
+public class Factura implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	private Double costo;
-	private LocalDate fecha;
-	private String observaciones;
+	private LocalDateTime fecha;
+	private String diagnostico;
+	private String tratamiento;
 	private Cliente cliente;
 	private AtencionVeterinaria atencionVeterinaria;
-	
+
 	/**
 	 * Constructor con parametros de la clase <b>Factura</b>
+	 * 
 	 * @param costo
 	 * @param fecha
 	 * @param observaciones
 	 * @param cliente
 	 * @param atencionVeterinaria
 	 */
-	public Factura(Double costo, LocalDate fecha, String observaciones, Cliente cliente,
+	public Factura(Double costo, LocalDateTime fecha, String diagnostico, String tratamiento, Cliente cliente,
 			AtencionVeterinaria atencionVeterinaria) {
 		super();
 		this.costo = costo;
 		this.fecha = fecha;
-		this.observaciones = observaciones;
+		this.diagnostico = diagnostico;
+		this.tratamiento = tratamiento;
 		this.cliente = cliente;
 		this.atencionVeterinaria = atencionVeterinaria;
 	}
@@ -42,7 +45,7 @@ public class Factura implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public void setCosto(Double costo) {
 		this.costo = costo;
 	}
@@ -51,20 +54,12 @@ public class Factura implements Serializable{
 		return costo;
 	}
 
-	public LocalDate getFecha() {
+	public LocalDateTime getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
-	}
-
-	public String getObservaciones() {
-		return observaciones;
-	}
-
-	public void setObservaciones(String observaciones) {
-		this.observaciones = observaciones;
 	}
 
 	public Cliente getCliente() {
@@ -81,6 +76,22 @@ public class Factura implements Serializable{
 
 	public void setAtencionVeterinaria(AtencionVeterinaria atencionVeterinaria) {
 		this.atencionVeterinaria = atencionVeterinaria;
+	}
+
+	public String getDiagnostico() {
+		return diagnostico;
+	}
+
+	public void setDiagnostico(String diagnostico) {
+		this.diagnostico = diagnostico;
+	}
+
+	public String getTratamiento() {
+		return tratamiento;
+	}
+
+	public void setTratamiento(String tratamiento) {
+		this.tratamiento = tratamiento;
 	}
 
 	@Override
@@ -102,10 +113,9 @@ public class Factura implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Factura [id=" + id + ", costo=" + costo + ", fecha=" + fecha + ", observaciones=" + observaciones
-				+ ", cliente=" + cliente + ", atencionVeterinaria=" + atencionVeterinaria + "]";
+		return "Factura [id=" + id + ", costo=" + costo + ", fecha=" + fecha + ", diagnostico=" + diagnostico
+				+ ", tratamiento=" + tratamiento + ", cliente=" + cliente + ", atencionVeterinaria="
+				+ atencionVeterinaria + "]";
 	}
-	
-	
-	
+
 }

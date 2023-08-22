@@ -12,23 +12,26 @@
             <Label id="titulo" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Creacion de atencion veterinaria" />
          </children>
       </HBox>
-      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+      <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="309.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Veterinario:" GridPane.rowIndex="3" />
-            <Label fx:id="lblVeterinario" alignment="TOP_CENTER" prefHeight="17.0" prefWidth="301.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <DatePicker fx:id="txtDate" prefHeight="25.0" prefWidth="201.0" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" />
+                  <DatePicker fx:id="txtDate" maxWidth="1.7976931348623157E308" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin></DatePicker>
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
@@ -37,21 +40,31 @@
                </children>
             </VBox>
             <Label styleClass="texto" stylesheets="@../styles/textStyle.css" text="Hora:" GridPane.rowIndex="2" />
-            <TextField fx:id="txtTime" promptText="HH:mm" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="txtTime" maxWidth="1.7976931348623157E308" promptText="HH:mm" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="50.0" right="50.0" />
+                  <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
             <Label styleClass="texto" stylesheets="@../styles/textStyle.css" text="Ingresa la cedula de cliente:" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="8.0" GridPane.columnIndex="1">
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="45.0" GridPane.columnIndex="1">
                <children>
-                  <TextField fx:id="txtCliente" prefHeight="25.0" prefWidth="150.0" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" />
-                  <Button fx:id="btnBuscar" mnemonicParsing="false" onAction="#buscarEvent" styleClass="boton" stylesheets="@../styles/buttonStyle.css" text="Buscar" />
+                  <TextField fx:id="txtCliente" maxWidth="1.7976931348623157E308" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></TextField>
+                  <Button fx:id="btnBuscar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buscarEvent" styleClass="boton" stylesheets="@../styles/buttonStyle.css" text="Buscar" />
                </children>
             </HBox>
+            <ComboBox fx:id="cbVeterinario" maxWidth="1.7976931348623157E308" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <Label styleClass="texto" stylesheets="@../styles/textStyle.css" text="Mascota:" GridPane.rowIndex="4" />
+            <Label fx:id="txtMascota" style="-fx-font-size: 1.2em; -fx-font-weight: bold;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <TableView fx:id="tblMascotas" prefHeight="217.0" prefWidth="600.0" stylesheets="@../styles/tableStyle.css">
+      <TableView fx:id="tblMascotas" onMouseClicked="#seleccionarEvent" prefHeight="217.0" prefWidth="600.0" stylesheets="@../styles/tableStyle.css">
         <columns>
           <TableColumn fx:id="colNombre" maxWidth="1.7976931348623157E308" minWidth="120.0" prefWidth="-1.0" text="Nombre" />
           <TableColumn fx:id="colEdad" minWidth="120.0" prefWidth="-1.0" text="Edad" />

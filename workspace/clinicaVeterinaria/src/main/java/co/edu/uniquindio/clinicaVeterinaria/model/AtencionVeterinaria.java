@@ -4,16 +4,19 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * 
  * @author ElJuancho
  */
-public class AtencionVeterinaria implements Serializable{
+public class AtencionVeterinaria implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static final AtomicLong cuenta = new AtomicLong(0);
 	private Long codigo;
 	private LocalDateTime fecha;
 	private Estado estado;
@@ -36,22 +39,17 @@ public class AtencionVeterinaria implements Serializable{
 	 * @param mascota
 	 * @param veterinario
 	 */
-	public AtencionVeterinaria(Long codigo, LocalDateTime fecha, Estado estado, Mascota mascota,
-			Veterinario veterinario) {
+	public AtencionVeterinaria(LocalDateTime fecha, Mascota mascota, Veterinario veterinario) {
 		super();
-		this.codigo = codigo;
+		this.codigo = cuenta.incrementAndGet();
 		this.fecha = fecha;
-		this.estado = estado;
+		this.estado = Estado.CREADA;
 		this.mascota = mascota;
 		this.veterinario = veterinario;
 	}
 
 	public Long getCodigo() {
 		return codigo;
-	}
-
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
 	}
 
 	public LocalDateTime getFecha() {
@@ -108,7 +106,7 @@ public class AtencionVeterinaria implements Serializable{
 		return "AtencionVeterinaria [codigo=" + codigo + ", fecha=" + fecha + ", estado=" + estado + ", mascota="
 				+ mascota + ", veterinario=" + veterinario + "]";
 	}
-	
+
 	public boolean enRangoDeFecha(LocalDate inicio, LocalDate fin) {
 		return fecha.toLocalDate().isAfter(inicio) && fecha.toLocalDate().isBefore(fin);
 	}
