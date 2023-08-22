@@ -1,9 +1,9 @@
 package co.edu.uniquindio.clinicaVeterinaria.controllers;
 
 import co.edu.uniquindio.clinicaVeterinaria.application.App;
-import co.edu.uniquindio.clinicaVeterinaria.application.App.ESCENA;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.EscenaNotFoundException;
 import co.edu.uniquindio.clinicaVeterinaria.services.CustomFxThread;
+import co.edu.uniquindio.clinicaVeterinaria.services.Pestanas;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -79,7 +79,7 @@ public class LoadController {
 		timeline.playFromStart();
 		timeline.setOnFinished((e) -> {
 			try {
-				App.cambiarEscena(ESCENA.LOGIN);
+				App.cambiarEscena(Pestanas.LOGIN);
 			} catch (EscenaNotFoundException e1) {
 				e1.printStackTrace();
 			}

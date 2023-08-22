@@ -3,8 +3,10 @@ package co.edu.uniquindio.clinicaVeterinaria.application;
 import java.io.IOException;
 import java.util.HashMap;
 
+import com.jpro.webapi.JProApplication;
+
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.EscenaNotFoundException;
-import javafx.application.Application;
+import co.edu.uniquindio.clinicaVeterinaria.services.Pestanas;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,9 +17,9 @@ import javafx.stage.Stage;
 /**
  * JavaFX App
  */
-public class App extends Application {
+public class App extends JProApplication {
 
-	private static HashMap<ESCENA, Parent> escenas = new HashMap<>();
+	private static HashMap<Pestanas, Parent> escenas = new HashMap<>();
 	private static Scene scena;
 	private static BorderPane panel;
 
@@ -40,27 +42,28 @@ public class App extends Application {
 
 	public static void cargarEscenas(Runnable accionTerminado) {
 		try {
-			cargarEscena(ESCENA.INICIO, "principal");
-			cargarEscena(ESCENA.LOGIN, "profileSelector");
+			Pestanas[] pestanas = Pestanas.values();
+			for (Pestanas pestana : pestanas)
+				cargarEscena(pestana);
 			Platform.runLater(() -> accionTerminado.run());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private static void cargarEscena(ESCENA escena, String fxml) throws IOException {
-		escenas.put(escena, loadFXML(fxml));
+	private static void cargarEscena(Pestanas escena) throws IOException {
+		escenas.put(escena, loadFXML(escena.getFxml()));
 	}
 
-	public static void cambiarEscena(ESCENA escena) throws EscenaNotFoundException {
+	public static void cambiarEscena(Pestanas escena) throws EscenaNotFoundException {
 		Parent escenaEncontrada = escenas.getOrDefault(escena, null);
 		if (escenaEncontrada == null)
 			throw new EscenaNotFoundException("La escena seleccionada no fue encontrada");
-		if (escena == ESCENA.LOGIN) {
+		if (escena == Pestanas.LOGIN) {
 			scena.setRoot(escenaEncontrada);
 			return;
 		}
-		if (escena == ESCENA.INICIO) {
+		if (escena == Pestanas.INICIO) {
 			scena.setRoot(escenaEncontrada);
 			panel = (BorderPane) escenaEncontrada;
 			return;
@@ -68,10 +71,6 @@ public class App extends Application {
 		if (panel == null)
 			return;
 		panel.setCenter(escenaEncontrada);
-	}
-
-	public static enum ESCENA {
-		INICIO, LOGIN;
 	}
 
 }
