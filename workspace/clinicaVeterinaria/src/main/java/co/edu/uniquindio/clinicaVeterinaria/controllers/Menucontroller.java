@@ -15,7 +15,6 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringExpression;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
@@ -47,46 +46,31 @@ public class Menucontroller {
 
 	@FXML
 	private SVGPath trianguloDesplieguePerfil;
-	
-	@FXML
-    private ScrollPane opcMascota;
-
-    @FXML
-    private ScrollPane opcCita;
-    
-    @FXML
-    private ScrollPane opcFactura;
-
-    @FXML
-    private ScrollPane opcCasita;
-
-    @FXML
-    private ScrollPane opcCliente;
-    
-    @FXML
-    void casitaEvent(MouseEvent event) {
-    	casitaAction();
-    }
 
 	@FXML
-    void mascotaEvent(MouseEvent event) {
+	void casitaEvent(MouseEvent event) {
+		casitaAction();
+	}
+
+	@FXML
+	void mascotaEvent(MouseEvent event) {
 		mascotaAction();
-    }
-    
-    @FXML
-    void clienteEvent(MouseEvent event) {
-    	clienteAction();
-    }
-    
-    @FXML
-    void citaEvent(MouseEvent event) {
-    	citaAction();
-    }
-    
-    @FXML
-    void facturaEvent(MouseEvent event) {
-    	facturaAction();
-    }
+	}
+
+	@FXML
+	void clienteEvent(MouseEvent event) {
+		clienteAction();
+	}
+
+	@FXML
+	void citaEvent(MouseEvent event) {
+		citaAction();
+	}
+
+	@FXML
+	void facturaEvent(MouseEvent event) {
+		facturaAction();
+	}
 
 	@FXML
 	void eventoEnteredMenuAnimacion(MouseEvent event) {
@@ -119,52 +103,60 @@ public class Menucontroller {
 	}
 
 	@FXML
+	void masFuncionesEvent(MouseEvent event) {
+		masFuncionesAction();
+	}
+
+	@FXML
 	void initialize() {
 		animacionRotarPerfil = new RotateTransition(Duration.millis(100), trianguloDesplieguePerfil);
 	}
-	
+
 	private void casitaAction() {
 		System.out.println("hola");
-    	try {
+		try {
 			App.cambiarEscena(Pestanas.INICIO);
 		} catch (EscenaNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void mascotaAction() {
 		try {
 			App.cambiarEscena(Pestanas.MASCOTA);
 		} catch (EscenaNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void clienteAction() {
 		try {
 			App.cambiarEscena(Pestanas.CLIENTE);
 		} catch (EscenaNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void citaAction() {
 		try {
 			App.cambiarEscena(Pestanas.CITA);
 		} catch (EscenaNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void facturaAction() {
 		try {
 			App.cambiarEscena(Pestanas.FACTURA);
 		} catch (EscenaNotFoundException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private void masFuncionesAction() {
+		try {
+			App.cambiarEscena(Pestanas.MORE);
+		} catch (EscenaNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
