@@ -90,7 +90,7 @@ public class CreacionAtencionController {
 		establecerNombres();
 		FxUtility.setAsIntegerTextfield(txtCliente);
 		FxUtility.setAsHourTextField(txtTime);
-		FxUtility.setMaximumTextSize(txtTime, 5);
+		FxUtility.setMaxLengthHourSize(txtTime, 5);
 	}
 
 	@FXML

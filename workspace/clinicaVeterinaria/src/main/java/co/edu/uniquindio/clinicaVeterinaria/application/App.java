@@ -44,15 +44,11 @@ public class App extends JProApplication {
 		try {
 			Pestanas[] pestanas = Pestanas.values();
 			for (Pestanas pestana : pestanas)
-				cargarEscena(pestana);
+				escenas.put(pestana, loadFXML(pestana.getFxml()));
 			Platform.runLater(() -> accionTerminado.run());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	private static void cargarEscena(Pestanas escena) throws IOException {
-		escenas.put(escena, loadFXML(escena.getFxml()));
 	}
 
 	public static void cambiarEscena(Pestanas escena) throws EscenaNotFoundException {
@@ -65,7 +61,7 @@ public class App extends JProApplication {
 		}
 		if (escena == Pestanas.INICIO) {
 			scena.setRoot(escenaEncontrada);
-			panel = (BorderPane) escenaEncontrada;
+			panel = ((BorderPane) ((BorderPane) escenaEncontrada).getCenter());
 			return;
 		}
 		if (panel == null)

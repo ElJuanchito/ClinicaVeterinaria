@@ -152,10 +152,17 @@ public class FxUtility {
 	}
 
 	public static void setMaximumTextSize(TextField tf, int tamanio) {
+		setMaximumTextSize(tf, tamanio, "Este campo puede tener maximo " + tamanio + " caracteres");
+	}
+	public static void setMaxLengthHourSize(TextField tf, int tamanio) {
+		setMaximumTextSize(tf, tamanio, "Ingresa la hora en formato 'HH:mm'");
+	}
+
+	public static void setMaximumTextSize(TextField tf, int tamanio, String msg) {
 		tf.setTextFormatter(new TextFormatter<String>(cambio -> {
 			if (cambio.isContentChange()) {
 				if (cambio.getControlNewText().length() > tamanio) {
-					abrirContextMenu(tf, "Este campo puede tener maximo " + tamanio + " caracteres");
+					abrirContextMenu(tf, msg);
 					return null;
 				}
 			}
