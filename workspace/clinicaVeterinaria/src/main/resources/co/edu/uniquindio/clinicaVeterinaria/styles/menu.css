@@ -16,7 +16,6 @@
 }
 .menu-button {
     -fx-background-color: rgba(0.0,171.0,235.0,0);
-    -fx-min-width: 84.0;
     -fx-background-radius: 100.0;    
 }
 .menu-button:hover .button-fill {

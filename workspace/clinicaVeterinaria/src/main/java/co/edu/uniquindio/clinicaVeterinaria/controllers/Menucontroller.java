@@ -65,36 +65,6 @@ public class Menucontroller {
 	private SVGPath trianguloDesplieguePerfil;
 
 	@FXML
-	void casitaEvent(MouseEvent event) {
-		// TODO remove
-	}
-
-	@FXML
-	void mascotaEvent(MouseEvent event) {
-		// TODO remove
-	}
-
-	@FXML
-	void clienteEvent(MouseEvent event) {
-		// TODO remove
-	}
-
-	@FXML
-	void citaEvent(MouseEvent event) {
-		// TODO remove
-	}
-
-	@FXML
-	void facturaEvent(MouseEvent event) {
-		// TODO remove
-	}
-
-	@FXML
-	void masFuncionesEvent(MouseEvent event) {
-		// TODO remove
-	}
-
-	@FXML
 	void eventoEnteredMenuAnimacion(MouseEvent event) {
 		ejecutarAnimacionBotonCircular(event, 0.2);
 	}
