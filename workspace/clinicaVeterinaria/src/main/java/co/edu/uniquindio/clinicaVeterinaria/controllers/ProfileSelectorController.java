@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import co.edu.uniquindio.clinicaVeterinaria.application.App;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.EscenaNotFoundException;
+import co.edu.uniquindio.clinicaVeterinaria.services.InAppData;
 import co.edu.uniquindio.clinicaVeterinaria.services.Pestanas;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -45,7 +46,7 @@ public class ProfileSelectorController {
 
 	@FXML
 	void selectUser1Event(MouseEvent event) {
-		lblUser1.setText("Arcangel la maravilla");
+		ModelFactoryController.getInstance().setVeterinario(0);
 		try {
 			App.cambiarEscena(Pestanas.INICIO);
 		} catch (EscenaNotFoundException e) {
@@ -56,7 +57,7 @@ public class ProfileSelectorController {
 
 	@FXML
 	void selectUser2Event(MouseEvent event) {
-		lblUser2.setText("El negrito ojos claros");
+		ModelFactoryController.getInstance().setVeterinario(1);
 		try {
 			App.cambiarEscena(Pestanas.INICIO);
 		} catch (EscenaNotFoundException e) {
@@ -67,7 +68,7 @@ public class ProfileSelectorController {
 
 	@FXML
 	void selectUser3Event(MouseEvent event) {
-		lblUser3.setText("Msmsmsm wou weeeer");
+		ModelFactoryController.getInstance().setVeterinario(2);
 		try {
 			App.cambiarEscena(Pestanas.INICIO);
 		} catch (EscenaNotFoundException e) {
@@ -78,7 +79,7 @@ public class ProfileSelectorController {
 
 	@FXML
 	void selectUser4Event(MouseEvent event) {
-		lblUser4.setText("Sooo Nasty");
+		ModelFactoryController.getInstance().setVeterinario(3);
 		try {
 			App.cambiarEscena(Pestanas.INICIO);
 		} catch (EscenaNotFoundException e) {
