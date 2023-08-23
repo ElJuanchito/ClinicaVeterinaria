@@ -81,7 +81,7 @@
          <center>
             <VBox fx:id="menuIzq" alignment="BOTTOM_CENTER" maxHeight="-Infinity" spacing="10.0" styleClass="menu-izq" BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#casitaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                  <ScrollPane fx:id="btnCasita" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#casitaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
                      <content>
                         <HBox alignment="CENTER_LEFT" spacing="40.0">
                            <children>
@@ -105,7 +105,7 @@
                         <Insets left="20.0" right="20.0" />
                      </padding>
                   </ScrollPane>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="508.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#mascotaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                  <ScrollPane fx:id="btnMascota" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="508.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#mascotaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
                      <content>
                         <HBox alignment="CENTER_LEFT" spacing="20.0">
                            <children>
@@ -127,7 +127,7 @@
                         <Insets left="20.0" right="20.0" />
                      </padding>
                   </ScrollPane>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="602.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="250.0" onMouseClicked="#clienteEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                  <ScrollPane fx:id="btnUsuario" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="602.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="250.0" onMouseClicked="#clienteEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
                      <content>
                         <HBox alignment="CENTER_LEFT" spacing="45.0">
                            <children>
@@ -149,7 +149,7 @@
                         <Insets left="20.0" right="20.0" />
                      </padding>
                   </ScrollPane>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="506.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="250.0" onMouseClicked="#citaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                  <ScrollPane fx:id="btnCita" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="506.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="250.0" onMouseClicked="#citaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
                      <content>
                         <HBox alignment="CENTER_LEFT" spacing="42.0">
                            <children>
@@ -171,7 +171,7 @@
                         <Insets left="20.0" right="20.0" />
                      </padding>
                   </ScrollPane>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="408.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="250.0" onMouseClicked="#facturaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                  <ScrollPane fx:id="btnFactura" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="408.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="250.0" onMouseClicked="#facturaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
                      <content>
                         <HBox alignment="CENTER_LEFT" spacing="42.0">
                            <children>
@@ -193,7 +193,7 @@
                         <Insets left="20.0" right="20.0" />
                      </padding>
                   </ScrollPane>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="406.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="250.0" onMouseClicked="#masFuncionesEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                  <ScrollPane fx:id="btnMas" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="406.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="250.0" onMouseClicked="#masFuncionesEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
                      <content>
                         <HBox alignment="CENTER_LEFT" spacing="42.0">
                            <children>

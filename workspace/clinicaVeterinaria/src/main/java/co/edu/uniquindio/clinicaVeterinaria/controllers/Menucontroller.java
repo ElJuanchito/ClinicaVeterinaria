@@ -4,13 +4,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
-import co.edu.uniquindio.clinicaVeterinaria.application.App;
-import co.edu.uniquindio.clinicaVeterinaria.exceptions.EscenaNotFoundException;
-import co.edu.uniquindio.clinicaVeterinaria.services.Pestanas;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringExpression;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -25,12 +23,31 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
+import one.jpro.routing.LinkUtil;
+import one.jpro.routing.LinkUtil.ExtendNodeWithLink;
 
 public class Menucontroller {
 
 	private boolean estaPerfilDesplegado = false;
 	private boolean estaMenuDesplegado = false;
 	private RotateTransition animacionRotarPerfil;
+
+	@FXML
+	private ScrollPane btnCasita;
+
+	@FXML
+	private ScrollPane btnMascota;
+
+	@FXML
+	private ScrollPane btnFactura;
+	@FXML
+	private ScrollPane btnUsuario;
+
+	@FXML
+	private ScrollPane btnCita;
+
+	@FXML
+	private ScrollPane btnMas;
 
 	@FXML
 	private VBox menuIzq;
@@ -49,27 +66,32 @@ public class Menucontroller {
 
 	@FXML
 	void casitaEvent(MouseEvent event) {
-		casitaAction();
+		// TODO remove
 	}
 
 	@FXML
 	void mascotaEvent(MouseEvent event) {
-		mascotaAction();
+		// TODO remove
 	}
 
 	@FXML
 	void clienteEvent(MouseEvent event) {
-		clienteAction();
+		// TODO remove
 	}
 
 	@FXML
 	void citaEvent(MouseEvent event) {
-		citaAction();
+		// TODO remove
 	}
 
 	@FXML
 	void facturaEvent(MouseEvent event) {
-		facturaAction();
+		// TODO remove
+	}
+
+	@FXML
+	void masFuncionesEvent(MouseEvent event) {
+		// TODO remove
 	}
 
 	@FXML
@@ -103,62 +125,16 @@ public class Menucontroller {
 	}
 
 	@FXML
-	void masFuncionesEvent(MouseEvent event) {
-		masFuncionesAction();
-	}
-
-	@FXML
 	void initialize() {
 		animacionRotarPerfil = new RotateTransition(Duration.millis(100), trianguloDesplieguePerfil);
-	}
-
-	private void casitaAction() {
-		System.out.println("hola");
-		try {
-			App.cambiarEscena(Pestanas.INICIO);
-		} catch (EscenaNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void mascotaAction() {
-		try {
-			App.cambiarEscena(Pestanas.MASCOTA);
-		} catch (EscenaNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void clienteAction() {
-		try {
-			App.cambiarEscena(Pestanas.CLIENTE);
-		} catch (EscenaNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void citaAction() {
-		try {
-			App.cambiarEscena(Pestanas.CITA);
-		} catch (EscenaNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void facturaAction() {
-		try {
-			App.cambiarEscena(Pestanas.FACTURA);
-		} catch (EscenaNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void masFuncionesAction() {
-		try {
-			App.cambiarEscena(Pestanas.MORE);
-		} catch (EscenaNotFoundException e) {
-			e.printStackTrace();
-		}
+		Platform.runLater(() -> {
+			LinkUtil.setLink(btnCasita, "/");
+			LinkUtil.setLink(btnMascota, "/mascota");
+			LinkUtil.setLink(btnUsuario, "/cliente");
+			LinkUtil.setLink(btnCita, "/cita");
+			LinkUtil.setLink(btnFactura, "/factura");
+			LinkUtil.setLink(btnMas, "/mas");
+		});
 	}
 
 	private void ejecutarAnimacionBotonCircular(MouseEvent event, double endValue) {
@@ -215,7 +191,9 @@ public class Menucontroller {
 	}
 
 	private void ejecutarAnimacionMenu() {
+
 		List<KeyValue> keyValues = menuIzq.getChildren().stream()
+				.filter(nodo -> nodo.getClass().equals(ScrollPane.class))
 				.map(node -> new KeyValue(((ScrollPane) node).minWidthProperty(), estaMenuDesplegado ? 250 : 84))
 				.collect(Collectors.toList());
 		keyValues.add(new KeyValue(rectanguloMid.widthProperty(), estaMenuDesplegado ? 17 : 22));
