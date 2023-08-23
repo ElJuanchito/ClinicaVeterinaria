@@ -81,7 +81,7 @@
          <center>
             <VBox fx:id="menuIzq" alignment="BOTTOM_CENTER" maxHeight="-Infinity" spacing="10.0" styleClass="menu-izq" BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane fx:id="opcCasita" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#casitaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#casitaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
                      <content>
                         <HBox alignment="CENTER_LEFT" spacing="40.0">
                            <children>
@@ -105,7 +105,7 @@
                         <Insets left="20.0" right="20.0" />
                      </padding>
                   </ScrollPane>
-                  <ScrollPane fx:id="opcMascota" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="508.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#mascotaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="508.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#mascotaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
                      <content>
                         <HBox alignment="CENTER_LEFT" spacing="20.0">
                            <children>
@@ -127,7 +127,7 @@
                         <Insets left="20.0" right="20.0" />
                      </padding>
                   </ScrollPane>
-                  <ScrollPane fx:id="opcCliente" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="602.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="250.0" onMouseClicked="#clienteEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="602.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="250.0" onMouseClicked="#clienteEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
                      <content>
                         <HBox alignment="CENTER_LEFT" spacing="45.0">
                            <children>
@@ -149,7 +149,7 @@
                         <Insets left="20.0" right="20.0" />
                      </padding>
                   </ScrollPane>
-                  <ScrollPane fx:id="opcCita" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="506.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="250.0" onMouseClicked="#citaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="506.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="250.0" onMouseClicked="#citaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
                      <content>
                         <HBox alignment="CENTER_LEFT" spacing="42.0">
                            <children>
@@ -171,7 +171,7 @@
                         <Insets left="20.0" right="20.0" />
                      </padding>
                   </ScrollPane>
-                  <ScrollPane fx:id="opcFactura" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="408.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="250.0" onMouseClicked="#facturaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="408.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="250.0" onMouseClicked="#facturaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
                      <content>
                         <HBox alignment="CENTER_LEFT" spacing="42.0">
                            <children>
@@ -182,6 +182,28 @@
                                  </children>
                               </StackPane>
                               <Label ellipsisString="" text="Generar Factura" textOverrun="CLIP">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </content>
+                     <padding>
+                        <Insets left="20.0" right="20.0" />
+                     </padding>
+                  </ScrollPane>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="406.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="250.0" onMouseClicked="#masFuncionesEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                     <content>
+                        <HBox alignment="CENTER_LEFT" spacing="42.0">
+                           <children>
+                              <StackPane translateX="12.0">
+                                 <children>
+                                    <SVGPath content="M2.119,14.085a3.824,3.824,0,0,0,0,5.4A3.744,3.744,0,0,0,3.6,20.4a3.744,3.744,0,0,0,.911,1.482,3.82,3.82,0,0,0,6.272-4.06L12,16.605l1.216,1.216a3.835,3.835,0,0,0,.869,4.06,3.819,3.819,0,0,0,5.4,0A3.742,3.742,0,0,0,20.4,20.4a3.737,3.737,0,0,0,1.482-.911,3.821,3.821,0,0,0-4.061-6.272L16.605,12l1.215-1.216a3.821,3.821,0,0,0,4.061-6.272A3.737,3.737,0,0,0,20.4,3.6a3.73,3.73,0,0,0-.912-1.482,3.911,3.911,0,0,0-5.4,0,3.835,3.835,0,0,0-.869,4.06L12,7.4,10.784,6.179a3.82,3.82,0,0,0-6.272-4.06A3.744,3.744,0,0,0,3.6,3.6a3.744,3.744,0,0,0-1.482.911,3.82,3.82,0,0,0,4.06,6.272L7.4,12,6.179,13.216A3.837,3.837,0,0,0,2.119,14.085Zm16.057,1.183a1.819,1.819,0,1,1,1.256,3.311,1,1,0,0,0-.853.854,1.8,1.8,0,0,1-.506,1.034,1.865,1.865,0,0,1-2.574,0,1.824,1.824,0,0,1-.231-2.29,1,1,0,0,0-.127-1.26l-1.727-1.726,1.777-1.777,1.726,1.727A1,1,0,0,0,18.176,15.268ZM7.083,8.859a1,1,0,0,0-1.26-.126A1.819,1.819,0,1,1,4.568,5.421a1,1,0,0,0,.853-.853A1.816,1.816,0,1,1,8.733,5.823a1,1,0,0,0,.126,1.26l1.727,1.726L8.809,10.586Zm0,6.282,8.058-8.058a1,1,0,0,0,.127-1.26,1.824,1.824,0,0,1,.231-2.29,1.865,1.865,0,0,1,2.574,0,1.8,1.8,0,0,1,.506,1.034,1,1,0,0,0,.853.854,1.816,1.816,0,1,1-1.256,3.311,1,1,0,0,0-1.259.127L8.859,16.917a1,1,0,0,0-.126,1.26,1.819,1.819,0,1,1-3.312,1.255,1,1,0,0,0-.853-.853,1.815,1.815,0,1,1,1.255-3.312A1,1,0,0,0,7.083,15.141Z" fill="#14133b" fillRule="EVEN_ODD" scaleX="1.8" scaleY="1.8" stroke="#00abeb" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" styleClass="button-unfill" />
+                                    <SVGPath content="M21.174,5.219a2.821,2.821,0,0,1-3.55,4.348L9.567,17.624a2.821,2.821,0,0,1-4.348,3.55,2.791,2.791,0,0,1-.788-1.605,2.791,2.791,0,0,1-1.6-.788,2.821,2.821,0,0,1,3.55-4.348l8.057-8.057a2.821,2.821,0,0,1,4.348-3.55,2.791,2.791,0,0,1,.788,1.605A2.791,2.791,0,0,1,21.174,5.219Zm-3.55,9.214-1.019-1.019-3.191,3.191,1.019,1.019a2.821,2.821,0,0,0,4.348,3.55,2.791,2.791,0,0,0,.788-1.605,2.791,2.791,0,0,0,1.605-.788,2.821,2.821,0,0,0-3.55-4.348ZM6.376,9.567,7.4,10.586,10.586,7.4,9.567,6.376a2.821,2.821,0,0,0-4.348-3.55,2.791,2.791,0,0,0-.788,1.605,2.791,2.791,0,0,0-1.6.788,2.821,2.821,0,0,0,3.55,4.348Z" fill="#14133b" fillRule="EVEN_ODD" opacity="0.0" scaleX="1.8" scaleY="1.8" strokeWidth="0.0" styleClass="button-fill" />
+                                 </children>
+                              </StackPane>
+                              <Label ellipsisString="" text="Mas Funciones" textOverrun="CLIP">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -204,4 +226,14 @@
          </BorderPane.margin>
       </BorderPane>
    </left>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+      </BorderPane>
+   </center>
 </BorderPane>

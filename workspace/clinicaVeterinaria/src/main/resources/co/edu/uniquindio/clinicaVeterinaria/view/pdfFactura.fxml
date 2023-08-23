@@ -8,20 +8,20 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1082.0" prefWidth="733.0" style="-fx-background-color: white;" stylesheets="@../styles/factura.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.PdfFacturaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1082.0" prefWidth="733.0" style="-fx-background-color: white;" stylesheets="@../styles/factura.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="84.0" fitWidth="84.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="84.0" fitWidth="84.0" layoutX="10.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../sources/logo-no-text.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="35.0" fitWidth="445.0" layoutX="98.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="35.0" fitWidth="445.0" layoutX="94.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../sources/patitas-peludas.png" />
          </image>
       </ImageView>
-      <Separator layoutX="577.0" layoutY="122.0" orientation="VERTICAL" prefHeight="113.0" prefWidth="0.0" />
-      <VBox alignment="CENTER" layoutX="591.0" layoutY="122.0" prefHeight="113.0" prefWidth="125.0" style="-fx-border-width: 1; -fx-border-radius: 5; -fx-border-color: black; -fx-background-color: #060E40;" styleClass="contenedoraxul">
+      <Separator layoutX="550.0" layoutY="122.0" orientation="VERTICAL" prefHeight="113.0" prefWidth="0.0" />
+      <VBox alignment="CENTER" layoutX="570.0" layoutY="122.0" prefHeight="113.0" prefWidth="147.0" style="-fx-border-width: 1; -fx-border-radius: 5; -fx-border-color: black; -fx-background-color: #060E40;" styleClass="contenedoraxul">
          <children>
             <Label layoutX="556.0" layoutY="25.0" styleClass="datossec" text="Codigo de Factura: ">
                <VBox.margin>
@@ -35,14 +35,15 @@
                   <String fx:value="dato" />
                   <String fx:value="datossec" />
                </styleClass></Label>
-            <Label fx:id="lblFacturaChecha" styleClass="datossec" text="\%lblFechaFactura%" />
+            <Label fx:id="lblFacturaFecha" styleClass="datossec" text="\%lblFechaFactura%" />
+            <Label fx:id="lblFacturaHora" styleClass="datossec" text="\%lblFechaFactura%" />
          </children>
          <padding>
             <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
          </padding>
       </VBox>
       <Separator layoutX="31.0" layoutY="88.0" prefHeight="27.0" prefWidth="671.0" />
-      <VBox layoutX="14.0" layoutY="122.0" prefHeight="113.0" prefWidth="543.0" style="-fx-border-width: 1; -fx-border-radius: 5; -fx-border-color: #14133b;">
+      <VBox layoutX="14.0" layoutY="122.0" prefHeight="113.0" prefWidth="517.0" style="-fx-border-width: 1; -fx-border-radius: 5; -fx-border-color: #14133b;">
          <children>
             <Label alignment="TOP_CENTER" prefHeight="32.0" prefWidth="236.0" styleClass="dato" text="Factura Para:">
                <font>
