@@ -61,6 +61,7 @@ public class RegistroClienteController {
 					.agregarCliente(new Cliente(txtNombre.getText().trim(), txtCorreo.getText().trim(),
 							txtTelefono.getText().trim(), txtCedula.getText().trim(), txtDireccion.getText().trim()));
 			ModelFactoryController.getInstance().saveData();
+			new Alert(AlertType.CONFIRMATION, "Cliente agregado con exito").show();
 			vaciarCampos();
 		} catch (ClienteExistenteException e) {
 			new Alert(AlertType.WARNING, "El cliente ya existe en el sistema.").show();
