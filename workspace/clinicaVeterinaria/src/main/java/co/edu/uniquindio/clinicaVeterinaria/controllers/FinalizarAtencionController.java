@@ -7,7 +7,9 @@ import co.edu.uniquindio.clinicaVeterinaria.exceptions.FacturaYaExistenteExcepti
 import co.edu.uniquindio.clinicaVeterinaria.model.AtencionVeterinaria;
 import co.edu.uniquindio.clinicaVeterinaria.model.Estado;
 import co.edu.uniquindio.clinicaVeterinaria.model.Factura;
+import co.edu.uniquindio.clinicaVeterinaria.services.GeneracionPdf;
 import co.edu.uniquindio.clinicaVeterinaria.utils.FxUtility;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -90,12 +92,12 @@ public class FinalizarAtencionController {
 	@FXML
 	void initialize() {
 		ModelFactoryController.getInstance().loadData();
-		
+
 		actualizarTabla();
-		
+
 		cbEstado.getItems().add(Estado.ATENDIDA);
 		cbEstado.getItems().add(Estado.CANCELADA);
-		
+
 		FxUtility.setAsNumberTextfield(txtCosto);
 	}
 
@@ -110,7 +112,7 @@ public class FinalizarAtencionController {
 	}
 
 	private void finalizarAction() {
-		if(!verificarCampos()) {
+		if (!verificarCampos()) {
 			new Alert(AlertType.ERROR, "Llene todos los campos").show();
 			return;
 		}
@@ -121,6 +123,7 @@ public class FinalizarAtencionController {
 		Factura factura = new Factura(Double.valueOf(txtCosto.getText().trim()), citaSelecciona.getFecha(),
 				txtDiagnostico.getText().trim(), txtTratamiento.getText().trim(),
 				citaSelecciona.getMascota().getDueno(), citaSelecciona);
+		Platform.runLater(() -> new GeneracionPdf(factura).ejecutarImpresion());
 		try {
 			ModelFactoryController.getInstance().getClinica().agregarFactura(factura);
 			ModelFactoryController.getInstance().saveData();

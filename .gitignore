@@ -1,2 +1,8 @@
 
 workspace/.metadata
+workspace/clinicaVeterinaria/RUNNING_PID
+workspace/clinicaVeterinaria/logs/jpro.warn.log
+workspace/clinicaVeterinaria/logs/jpro.info.log
+workspace/clinicaVeterinaria/logs/jpro.error.log
+workspace/clinicaVeterinaria/logs/jpro.console.log
+workspace/clinicaVeterinaria/logs/jpro.activity.log

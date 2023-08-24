@@ -79,7 +79,7 @@ public class LoadController {
 		timeline.playFromStart();
 		timeline.setOnFinished((e) -> {
 			try {
-				App.cambiarEscena(Pestanas.LOGIN);
+				App.cambiarEscenaEx(Pestanas.LOGIN);
 			} catch (EscenaNotFoundException e1) {
 				e1.printStackTrace();
 			}

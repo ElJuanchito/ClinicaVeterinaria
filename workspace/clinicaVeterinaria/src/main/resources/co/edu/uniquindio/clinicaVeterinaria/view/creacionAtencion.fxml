@@ -73,15 +73,18 @@
             <Label fx:id="txtMascota" style="-fx-font-size: 1.2em; -fx-font-weight: bold;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <TableView fx:id="tblMascotas" onMouseClicked="#seleccionarEvent" prefHeight="217.0" prefWidth="600.0" stylesheets="@../styles/tableStyle.css">
+      <TableView fx:id="tblMascotas" onMouseClicked="#seleccionarEvent" prefHeight="217.0" stylesheets="@../styles/tableStyle.css">
         <columns>
-          <TableColumn fx:id="colNombre" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" text="Nombre" />
-            <TableColumn fx:id="colCodigo" minWidth="100.0" prefWidth="-1.0" text="Codigo" />
-          <TableColumn fx:id="colEdad" minWidth="100.0" prefWidth="-1.0" text="Edad" />
-            <TableColumn fx:id="colSexo" minWidth="100.0" prefWidth="-1.0" text="Sexo" />
-            <TableColumn fx:id="colTipo" minWidth="100.0" prefWidth="-1.0" text="Tipo" />
-            <TableColumn fx:id="colRaza" minWidth="100.0" prefWidth="-1.0" text="Raza" />
+          <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
+          <TableColumn fx:id="colCodigo" minWidth="100.0" prefWidth="-1.0" text="Codigo" />
+          <TableColumn fx:id="colEdad" minWidth="50.0" prefWidth="-1.0" text="Edad" />
+            <TableColumn fx:id="colSexo" minWidth="50.0" prefWidth="-1.0" text="Sexo" />
+            <TableColumn fx:id="colTipo" minWidth="50.0" prefWidth="-1.0" text="Tipo" />
+            <TableColumn fx:id="colRaza" minWidth="50.0" prefWidth="-1.0" text="Raza" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
       <Button fx:id="btnCrear" mnemonicParsing="false" onAction="#crearEvent" styleClass="boton" stylesheets="@../styles/buttonStyle.css" text="Crear">
          <VBox.margin>

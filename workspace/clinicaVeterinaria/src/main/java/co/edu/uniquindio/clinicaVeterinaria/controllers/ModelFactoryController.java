@@ -2,6 +2,7 @@ package co.edu.uniquindio.clinicaVeterinaria.controllers;
 
 import co.edu.uniquindio.clinicaVeterinaria.dao.ClinicaDao;
 import co.edu.uniquindio.clinicaVeterinaria.model.Clinica;
+import co.edu.uniquindio.clinicaVeterinaria.model.Veterinario;
 
 /**
  * 
@@ -10,6 +11,7 @@ import co.edu.uniquindio.clinicaVeterinaria.model.Clinica;
 public class ModelFactoryController {
 
 	private Clinica clinica;
+	private Veterinario veterinario;
 
 	public static class Singleton {
 		private final static ModelFactoryController eINSTANCE = new ModelFactoryController();
@@ -56,5 +58,14 @@ public class ModelFactoryController {
 		ClinicaDao dao = new ClinicaDao();
 		dao.saveData(clinica);
 		System.out.println("Datos guardados");
+	}
+
+	public void setVeterinario(int i) {
+		Veterinario[] veterinarios = getClinica().getVeterinarios();
+		veterinario = veterinarios[i < 0 || i >= veterinarios.length ? 0 : i];
+	}
+
+	public Veterinario getVeterinario() {
+		return veterinario;
 	}
 }

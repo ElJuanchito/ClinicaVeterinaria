@@ -1,37 +1,42 @@
 package co.edu.uniquindio.clinicaVeterinaria.application;
 
+import static one.jpro.routing.RouteUtils.getNode;
+
 import java.io.IOException;
 import java.util.HashMap;
-
-import com.jpro.webapi.JProApplication;
 
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.EscenaNotFoundException;
 import co.edu.uniquindio.clinicaVeterinaria.services.Pestanas;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
+import one.jpro.routing.Route;
+import one.jpro.routing.RouteApp;
 
 /**
  * JavaFX App
  */
-public class App extends JProApplication {
+public class App extends RouteApp {
 
 	private static HashMap<Pestanas, Parent> escenas = new HashMap<>();
-	private static Scene scena;
 	private static BorderPane panel;
+	private static BorderPane root = new BorderPane();
 
 	public static void main(String[] args) {
-		launch();
+		launch(args);
 	}
 
-	@Override
-	public void start(Stage stage) throws IOException {
-		scena = new Scene(loadFXML("loadScreen"), 1000, 480);
-		stage.setScene(scena);
-		stage.show();
+	public App() {
+		System.out.println("App.App()");
+		Platform.runLater(() -> {
+			try {
+				root.setCenter(loadFXML("loadScreen"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 	}
 
 	private static Parent loadFXML(String fxml) throws IOException {
@@ -44,33 +49,50 @@ public class App extends JProApplication {
 		try {
 			Pestanas[] pestanas = Pestanas.values();
 			for (Pestanas pestana : pestanas)
-				cargarEscena(pestana);
+				escenas.put(pestana, loadFXML(pestana.getFxml()));
 			Platform.runLater(() -> accionTerminado.run());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private static void cargarEscena(Pestanas escena) throws IOException {
-		escenas.put(escena, loadFXML(escena.getFxml()));
-	}
-
-	public static void cambiarEscena(Pestanas escena) throws EscenaNotFoundException {
+	public static void cambiarEscenaEx(Pestanas escena) throws EscenaNotFoundException {
 		Parent escenaEncontrada = escenas.getOrDefault(escena, null);
 		if (escenaEncontrada == null)
 			throw new EscenaNotFoundException("La escena seleccionada no fue encontrada");
 		if (escena == Pestanas.LOGIN) {
-			scena.setRoot(escenaEncontrada);
+			Platform.runLater(() -> root.setCenter(escenaEncontrada));
 			return;
 		}
 		if (escena == Pestanas.INICIO) {
-			scena.setRoot(escenaEncontrada);
-			panel = (BorderPane) escenaEncontrada;
+			root.setCenter(escenaEncontrada);
+			panel = ((BorderPane) ((BorderPane) escenaEncontrada).getCenter());
 			return;
 		}
 		if (panel == null)
 			return;
 		panel.setCenter(escenaEncontrada);
+	}
+
+	@Override
+	public Route createRoute() {
+		return Route.empty()
+				.and(getNode("/", r -> root))
+				.and(getNode("/cliente", r -> obtenerEscena(Pestanas.CLIENTE)))
+				.and(getNode("/mascota", r -> obtenerEscena(Pestanas.MASCOTA)))
+				.and(getNode("/cita", r -> obtenerEscena(Pestanas.CITA)))
+				.and(getNode("/factura", r -> obtenerEscena(Pestanas.FACTURA)))
+				.and(getNode("/mas", r -> obtenerEscena(Pestanas.MORE)));
+
+	}
+
+	private BorderPane obtenerEscena(Pestanas pestana) {
+		try {
+			cambiarEscenaEx(pestana);
+		} catch (EscenaNotFoundException e) {
+			e.printStackTrace();
+		}
+		return root;
 	}
 
 }
