@@ -2,61 +2,63 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="root" stylesheets="@../styles/fondo.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.ProfileSelectorController">
-   <children>
-      <VBox>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.ProfileSelectorController">
+   <center>
+      <HBox fx:id="panelPrincipal" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label id="titulo" alignment="CENTER" prefHeight="50.0" prefWidth="807.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Seleccione el usuario" textAlignment="CENTER" />
-            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="808.0" spacing="60.0">
+            <VBox alignment="CENTER" minHeight="200.0" minWidth="100.0" spacing="20.0">
                <children>
-                  <VBox alignment="CENTER">
+                  <HBox alignment="CENTER" styleClass="imagen" stylesheets="@../styles/imageStyle.css">
                      <children>
-                        <ImageView fx:id="imgUser1" fitHeight="150.0" fitWidth="380.0" onMouseClicked="#selectUser1Event" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../sources/gato1.png" />
-                           </image></ImageView>
-                        <Label fx:id="lblUser1" alignment="TOP_CENTER" prefHeight="17.0" prefWidth="200.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Label" />
+                        <ImageView fx:id="imgVet_1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#selectUser1Event" pickOnBounds="true" preserveRatio="true" />
                      </children>
-                  </VBox>
-                  <VBox alignment="CENTER">
-                     <children>
-                        <ImageView fx:id="imgUser2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#selectUser2Event" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../sources/gato2.png" />
-                           </image></ImageView>
-                        <Label fx:id="lblUser2" alignment="TOP_CENTER" prefHeight="17.0" prefWidth="204.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Label" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER">
-                     <children>
-                        <ImageView fx:id="imgUser3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#selectUser3Event" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../sources/gato3.png" />
-                           </image></ImageView>
-                        <Label fx:id="lblUser3" alignment="TOP_CENTER" prefHeight="17.0" prefWidth="203.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Label" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER">
-                     <children>
-                        <ImageView fx:id="imgUser4" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#selectUser4Event" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../sources/gato4.png" />
-                           </image></ImageView>
-                        <Label fx:id="lblUser4" alignment="TOP_CENTER" prefHeight="17.0" prefWidth="214.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Label" />
-                     </children>
-                  </VBox>
+                  </HBox>
+                  <Label id="titulo" fx:id="lblVet1" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
                </children>
-               <VBox.margin>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-               </VBox.margin>
-            </HBox>
+            </VBox>
+            <VBox alignment="CENTER" minHeight="200.0" minWidth="100.0" spacing="20.0">
+               <children>
+                  <HBox alignment="CENTER" styleClass="imagen" stylesheets="@../styles/imageStyle.css">
+                     <children>
+                        <ImageView fx:id="imgVet_2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#selectUser2Event" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+                  <Label id="titulo" fx:id="lblVet2" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" minHeight="200.0" minWidth="100.0" spacing="20.0">
+               <children>
+                  <HBox alignment="CENTER" styleClass="imagen" stylesheets="@../styles/imageStyle.css">
+                     <children>
+                        <ImageView fx:id="imgVet_3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#selectUser3Event" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+                  <Label id="titulo" fx:id="lblVet3" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" minHeight="200.0" minWidth="100.0" spacing="20.0">
+               <children>
+                  <HBox alignment="CENTER" styleClass="imagen" stylesheets="@../styles/imageStyle.css">
+                     <children>
+                        <ImageView fx:id="imgVet_4" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#selectUser4Event" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+                  <Label id="titulo" fx:id="lblVet4" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
+               </children>
+            </VBox>
          </children>
-      </VBox>
-   </children>
-</AnchorPane>
+      </HBox>
+   </center>
+   <top>
+      <Label id="titulo" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Inicio de Sesion" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+</BorderPane>
