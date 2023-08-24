@@ -73,6 +73,7 @@ public class RegistroMascotaController {
 					new Mascota(cliente, txtNombre.getText().trim(),
 							Integer.valueOf(txtEdad.getText()), txtRaza.getText().trim(), cbTipo.getValue(),
 							cbSexo.getValue()));
+			new Alert(AlertType.CONFIRMATION, "Mascota agregada con exito").show();
 			ModelFactoryController.getInstance().saveData();
 			vaciarCampos();
 		} catch (ClienteNoExistenteException e) {

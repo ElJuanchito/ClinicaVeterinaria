@@ -3,6 +3,7 @@ package co.edu.uniquindio.clinicaVeterinaria.model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class Factura implements Serializable {
 
@@ -10,6 +11,8 @@ public class Factura implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	private static final AtomicLong cuentaF = new AtomicLong(0);
 	private Long id;
 	private Double costo;
 	private LocalDateTime fecha;
@@ -23,13 +26,13 @@ public class Factura implements Serializable {
 	 * 
 	 * @param costo
 	 * @param fecha
-	 * @param observaciones
 	 * @param cliente
 	 * @param atencionVeterinaria
 	 */
 	public Factura(Double costo, LocalDateTime fecha, String diagnostico, String tratamiento, Cliente cliente,
 			AtencionVeterinaria atencionVeterinaria) {
 		super();
+		this.id = cuentaF.incrementAndGet();
 		this.costo = costo;
 		this.fecha = fecha;
 		this.diagnostico = diagnostico;

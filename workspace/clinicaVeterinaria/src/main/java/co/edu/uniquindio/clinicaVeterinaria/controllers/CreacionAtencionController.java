@@ -77,6 +77,9 @@ public class CreacionAtencionController {
 	@FXML
 	private Label txtMascota;
 
+	@FXML
+	private TableColumn<Mascota, String> colCodigo;
+
 	private Mascota mascota;
 
 	private Cliente cliente;
@@ -123,6 +126,7 @@ public class CreacionAtencionController {
 		try {
 			ModelFactoryController.getInstance().getClinica().agregarCita(cita);
 			ModelFactoryController.getInstance().saveData();
+			new Alert(AlertType.CONFIRMATION, "Cita creada con exito").show();
 			vaciarCampos();
 		} catch (AtencionExistenteException e) {
 			new Alert(AlertType.WARNING, e.getMessage()).show();
@@ -131,6 +135,8 @@ public class CreacionAtencionController {
 
 	private void seleccionarAction() {
 		mascota = tblMascotas.getSelectionModel().getSelectedItem();
+
+		if(mascota == null) return;
 		txtMascota.setText(mascota.getNombre());
 	}
 
@@ -147,6 +153,7 @@ public class CreacionAtencionController {
 		ModelFactoryController.getInstance().loadData();
 		listaObservable = FXCollections.observableList(cliente.getListaMascotas());
 		tblMascotas.setItems(listaObservable);
+		colCodigo.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getCodigo()));
 		colNombre.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getNombre()));
 		colEdad.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getEdad().toString()));
 		colSexo.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getSexo().toString()));

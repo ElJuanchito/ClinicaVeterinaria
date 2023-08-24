@@ -116,6 +116,10 @@ public class FinalizarAtencionController {
 			new Alert(AlertType.ERROR, "Llene todos los campos").show();
 			return;
 		}
+		if(cbEstado.getValue() != Estado.CREADA){
+			new Alert(AlertType.ERROR, "Debe cambiar el estado de la cita").show();
+			return;
+		}
 		Factura factura = new Factura(Double.valueOf(txtCosto.getText().trim()), citaSelecciona.getFecha(),
 				txtDiagnostico.getText().trim(), txtTratamiento.getText().trim(),
 				citaSelecciona.getMascota().getDueno(), citaSelecciona);
@@ -123,6 +127,8 @@ public class FinalizarAtencionController {
 		try {
 			ModelFactoryController.getInstance().getClinica().agregarFactura(factura);
 			ModelFactoryController.getInstance().saveData();
+			new Alert(AlertType.CONFIRMATION, "Factura creada con exito").show();
+			vaciarCampos();
 		} catch (FacturaYaExistenteException e) {
 			new Alert(AlertType.ERROR, e.getMessage()).show();
 		}
@@ -130,6 +136,8 @@ public class FinalizarAtencionController {
 
 	private void seleccionarAction() {
 		citaSelecciona = tblCitas.getSelectionModel().getSelectedItem();
+
+		if (citaSelecciona == null) return;
 
 		cbEstado.setValue(citaSelecciona.getEstado());
 		txtFecha.setValue(citaSelecciona.getFecha().toLocalDate());
@@ -159,5 +167,14 @@ public class FinalizarAtencionController {
 			return false;
 		}
 		return true;
+	}
+
+	private void vaciarCampos(){
+		txtFecha.setValue(null);
+		lblHora.setText("");
+		lblVeterinario.setText("");
+		txtDiagnostico.setText("");
+		txtTratamiento.setText("");
+		txtCosto.setText("70000");
 	}
 }
