@@ -18,6 +18,7 @@ import co.edu.uniquindio.clinicaVeterinaria.exceptions.FacturaNoEcontradaExcepti
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.FacturaYaExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.MascotaNoEncontradaExpcetion;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.MascotaYaExistenteException;
+import javafx.scene.image.Image;
 
 /**
  * 
@@ -38,10 +39,10 @@ public class Clinica implements Serializable {
 	 */
 	public Clinica() {
 		veterinarios = new Veterinario[4];
-		veterinarios[0] = new Veterinario("Dr. Perdomo", "juanm.perdomo@uqvirtual.edu.co", "3225179118", "0001", null);
-		veterinarios[1] = new Veterinario("Dr. Bayter", "breynera.sanchezq@uqvirtual.edu.co", "3006123593", "0002", null);
-		veterinarios[2] = new Veterinario("Dr. Quintero", "santiago.quinterou@uqvirtual.edu.co", "3147830068", "0003", null);
-		veterinarios[3] = new Veterinario("Dr. Amador", "juanm.amadorr@uqvirtual.edu.co", "3136253916", "0004", null);
+		veterinarios[0] = new Veterinario("Dr. Perdomo", "juanm.perdomo@uqvirtual.edu.co", "3225179118", "0001", new Image(Clinica.class.getResourceAsStream("/co/edu/uniquindio/clinicaVeterinaria/sources/juancho.png")));
+		veterinarios[1] = new Veterinario("Dr. Bayter", "breynera.sanchezq@uqvirtual.edu.co", "3006123593", "0002", new Image(Clinica.class.getResourceAsStream("/co/edu/uniquindio/clinicaVeterinaria/sources/alejo.png")));
+		veterinarios[2] = new Veterinario("Dr. Quintero", "santiago.quinterou@uqvirtual.edu.co", "3147830068", "0003", new Image(Clinica.class.getResourceAsStream("/co/edu/uniquindio/clinicaVeterinaria/sources/santiago.png")));
+		veterinarios[3] = new Veterinario("Dr. Amador", "juanm.amadorr@uqvirtual.edu.co", "3136253916", "0004", new Image(Clinica.class.getResourceAsStream("/co/edu/uniquindio/clinicaVeterinaria/sources/amador.png")));
 		citas = new HashMap<Long, AtencionVeterinaria>();
 		facturas = new HashMap<Long, Factura>();
 		clientes = new HashMap<String, Cliente>();
@@ -214,7 +215,7 @@ public class Clinica implements Serializable {
 	 * Busca y retorna una mascota en la lista del cliente seleccionado. Lanza una
 	 * exception si el cliente o la mascota no existen.
 	 * 
-	 * @param cliente
+	 * @param cedula
 	 * @param codigo
 	 * @return
 	 * @throws ClienteNoExistenteException

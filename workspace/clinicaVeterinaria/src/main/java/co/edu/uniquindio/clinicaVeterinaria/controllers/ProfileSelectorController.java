@@ -5,11 +5,15 @@ import java.util.ResourceBundle;
 
 import co.edu.uniquindio.clinicaVeterinaria.application.App;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.EscenaNotFoundException;
+import co.edu.uniquindio.clinicaVeterinaria.model.Veterinario;
 import co.edu.uniquindio.clinicaVeterinaria.services.Pestanas;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.HBox;
 
 public class ProfileSelectorController {
 
@@ -20,32 +24,36 @@ public class ProfileSelectorController {
 	private URL location;
 
 	@FXML
-	private ImageView imgUser1;
+	private ImageView imgVet_1;
 
 	@FXML
-	private ImageView imgUser2;
+	private ImageView imgVet_2;
 
 	@FXML
-	private ImageView imgUser3;
+	private ImageView imgVet_3;
 
 	@FXML
-	private ImageView imgUser4;
+	private ImageView imgVet_4;
 
 	@FXML
-	private Label lblUser1;
+	private Label lblVet1;
 
 	@FXML
-	private Label lblUser2;
+	private Label lblVet2;
 
 	@FXML
-	private Label lblUser3;
+	private Label lblVet3;
 
 	@FXML
-	private Label lblUser4;
+	private Label lblVet4;
+
+	@FXML
+	private HBox panelPrincipal;
 
 	@FXML
 	void selectUser1Event(MouseEvent event) {
 		ModelFactoryController.getInstance().setVeterinario(0);
+
 		try {
 			App.cambiarEscenaEx(Pestanas.INICIO);
 		} catch (EscenaNotFoundException e) {
@@ -85,6 +93,21 @@ public class ProfileSelectorController {
 
 	@FXML
 	void initialize() {
+		Veterinario [] veterinarios = ModelFactoryController.getInstance().getClinica().getVeterinarios();
+
+		imgVet_1.setImage(veterinarios[0].getFoto());
+		lblVet1.setText(veterinarios[0].getNombre());
+
+		imgVet_2.setImage(veterinarios[1].getFoto());
+		lblVet2.setText(veterinarios[1].getNombre());
+
+		imgVet_3.setImage(veterinarios[2].getFoto());
+		lblVet3.setText(veterinarios[2].getNombre());
+
+		imgVet_4.setImage(veterinarios[3].getFoto());
+		lblVet4.setText(veterinarios[3].getNombre());
+
+
 	}
 
 }

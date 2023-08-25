@@ -1,7 +1,13 @@
 package co.edu.uniquindio.clinicaVeterinaria.model;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Objects;
 
+import javax.imageio.ImageIO;
+
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 
 public class Veterinario extends Persona{
@@ -11,7 +17,7 @@ public class Veterinario extends Persona{
 	 */
 	private static final long serialVersionUID = 1L;
 	private String codigo;
-	private Image foto;
+	private byte[] imagenData;
 
 	
 
@@ -26,7 +32,7 @@ public class Veterinario extends Persona{
 	public Veterinario(String nombre, String correo, String telefono, String codigo, Image foto) {
 		super(nombre, correo, telefono);
 		this.codigo = codigo;
-		this.foto = foto;
+		this.imagenData = getByteArrayImg(foto);
 	}
 
 	public String getCodigo() {
@@ -41,14 +47,8 @@ public class Veterinario extends Persona{
 	 * @return the foto
 	 */
 	public Image getFoto() {
-		return foto;
-	}
-
-	/**
-	 * @param foto the foto to set
-	 */
-	public void setFoto(Image foto) {
-		this.foto = foto;
+		ByteArrayInputStream bais = new ByteArrayInputStream(imagenData);
+		return new Image(bais);
 	}
 
 	@Override
@@ -73,23 +73,19 @@ public class Veterinario extends Persona{
 
 	@Override
 	public String toString() {
-		return "Veterinario [codigo=" + codigo + ", foto=" + foto + ", Nombre=" + getNombre() + ", Correo="
+		return "Veterinario [codigo=" + codigo + ", Nombre=" + getNombre() + ", Correo="
 				+ getCorreo() + ", Telefono=" + getTelefono() + "]";
 	}
-
 	
-
-	/*
-	private byte[] getByteArrayImg() {
+	private byte[] getByteArrayImg(Image imagen) {
 		try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
-			ImageIO.write(SwingFXUtils.fromFXImage(foto, null), "png", baos);
+			ImageIO.write(SwingFXUtils.fromFXImage(imagen, null), "png", baos);
 			return baos.toByteArray();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return null;
     }
-    */
 	
 	
 }
