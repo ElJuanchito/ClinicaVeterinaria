@@ -48,6 +48,13 @@ public class Clinica implements Serializable {
 		clientes = new HashMap<String, Cliente>();
 	}
 
+	public Veterinario buscarVeterinario(String codigo) {
+		for (Veterinario veterinario : veterinarios)
+			if (veterinario.getCodigo().equals(codigo))
+				return veterinario;
+		return null;
+	}
+
 	public Veterinario[] getVeterinarios() {
 		return veterinarios;
 	}

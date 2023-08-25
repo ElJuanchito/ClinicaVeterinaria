@@ -11,9 +11,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.HBox;
+import one.jpro.routing.LinkUtil;
 
 public class ProfileSelectorController {
 
@@ -52,49 +51,48 @@ public class ProfileSelectorController {
 
 	@FXML
 	void selectUser1Event(MouseEvent event) {
-		ModelFactoryController.getInstance().setVeterinario(0);
-
-		try {
-			App.cambiarEscenaEx(Pestanas.INICIO);
-		} catch (EscenaNotFoundException e) {
-			e.printStackTrace();
-		}
+		selectUser1Action();
 	}
 
 	@FXML
 	void selectUser2Event(MouseEvent event) {
-		ModelFactoryController.getInstance().setVeterinario(1);
-		try {
-			App.cambiarEscenaEx(Pestanas.INICIO);
-		} catch (EscenaNotFoundException e) {
-			e.printStackTrace();
-		}
+		selectUser2Action();
 	}
 
 	@FXML
 	void selectUser3Event(MouseEvent event) {
-		ModelFactoryController.getInstance().setVeterinario(2);
-		try {
-			App.cambiarEscenaEx(Pestanas.INICIO);
-		} catch (EscenaNotFoundException e) {
-			e.printStackTrace();
-		}
+		selectUser3Action();
 	}
 
 	@FXML
 	void selectUser4Event(MouseEvent event) {
-		ModelFactoryController.getInstance().setVeterinario(3);
-		try {
-			App.cambiarEscenaEx(Pestanas.INICIO);
-		} catch (EscenaNotFoundException e) {
-			e.printStackTrace();
-		}
+		selectUser4Action();
+	}
+
+	private void selectUser1Action() {
+		seleccionarUsuarioInicio(imgVet_1, "0001");
+	}
+
+	private void selectUser2Action() {
+		seleccionarUsuarioInicio(imgVet_2, "0002");
+	}
+
+	private void selectUser3Action() {
+		seleccionarUsuarioInicio(imgVet_3, "0003");
+	}
+
+	private void selectUser4Action() {
+		seleccionarUsuarioInicio(imgVet_4, "0004");
+	}
+
+	private void seleccionarUsuarioInicio(ImageView imagen, String codigoVet) {
+		ModelFactoryController.getInstance().setVeterinario(codigoVet);
+		LinkUtil.gotoPage(imagen, "/inicio");
 	}
 
 	@FXML
 	void initialize() {
-		Veterinario [] veterinarios = ModelFactoryController.getInstance().getClinica().getVeterinarios();
-
+		Veterinario[] veterinarios = ModelFactoryController.getInstance().getClinica().getVeterinarios();
 		imgVet_1.setImage(veterinarios[0].getFoto());
 		lblVet1.setText(veterinarios[0].getNombre());
 
@@ -106,7 +104,6 @@ public class ProfileSelectorController {
 
 		imgVet_4.setImage(veterinarios[3].getFoto());
 		lblVet4.setText(veterinarios[3].getNombre());
-
 
 	}
 

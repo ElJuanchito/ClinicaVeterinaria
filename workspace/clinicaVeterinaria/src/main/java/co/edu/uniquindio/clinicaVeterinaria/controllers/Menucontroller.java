@@ -8,14 +8,11 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.RotateTransition;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringExpression;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -26,8 +23,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
 import one.jpro.routing.LinkUtil;
-import one.jpro.routing.LinkUtil.ExtendNodeWithLink;
-//import scala.reflect.internal.Mode;
 
 public class Menucontroller {
 
@@ -68,6 +63,60 @@ public class Menucontroller {
 	private SVGPath trianguloDesplieguePerfil;
 
 	@FXML
+	void casitaEvent(MouseEvent event) {
+		casitaAction();
+	}
+
+	@FXML
+	void mascotaEvent(MouseEvent event) {
+		mascotaAction();
+	}
+
+	@FXML
+	void usuarioEvent(MouseEvent event) {
+		usuarioAction();
+	}
+
+	@FXML
+	void citaEvent(MouseEvent event) {
+		citaAction();
+	}
+
+	@FXML
+	void facturaEvent(MouseEvent event) {
+		facturaAction();
+	}
+
+	@FXML
+	void masEvent(MouseEvent event) {
+		masAction();
+	}
+
+	private void casitaAction() {
+		LinkUtil.gotoPage(btnCasita, "/inicio");
+	}
+
+	private void mascotaAction() {
+		LinkUtil.gotoPage(btnMascota, "/mascota");
+	}
+
+	private void usuarioAction() {
+		LinkUtil.gotoPage(btnUsuario, "/cliente");
+	}
+
+	private void citaAction() {
+		LinkUtil.gotoPage(btnCita, "/cita");
+	}
+
+	private void facturaAction() {
+		LinkUtil.gotoPage(btnFactura, "/factura");
+	}
+
+	private void masAction() {
+		LinkUtil.gotoPage(btnMas, "/mas");
+	}
+
+	@FXML
 	void eventoEnteredMenuAnimacion(MouseEvent event) {
 		ejecutarAnimacionBotonCircular(event, 0.2);
 	}
@@ -101,14 +150,6 @@ public class Menucontroller {
 	void initialize() {
 		animacionRotarPerfil = new RotateTransition(Duration.millis(100), trianguloDesplieguePerfil);
 		imgVeterinario.setImage(ModelFactoryController.getInstance().getVeterinario().getFoto());
-		Platform.runLater(() -> {
-			LinkUtil.setLink(btnCasita, "/");
-			LinkUtil.setLink(btnMascota, "/mascota");
-			LinkUtil.setLink(btnUsuario, "/cliente");
-			LinkUtil.setLink(btnCita, "/cita");
-			LinkUtil.setLink(btnFactura, "/factura");
-			LinkUtil.setLink(btnMas, "/mas");
-		});
 	}
 
 	private void ejecutarAnimacionBotonCircular(MouseEvent event, double endValue) {

@@ -11,6 +11,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
+import one.jpro.routing.LinkUtil;
 import one.jpro.routing.Route;
 import one.jpro.routing.RouteApp;
 
@@ -22,6 +23,7 @@ public class App extends RouteApp {
 	private static HashMap<Pestanas, Parent> escenas = new HashMap<>();
 	private static BorderPane panel;
 	private static BorderPane root = new BorderPane();
+	private Pestanas pestanaActual;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -33,7 +35,6 @@ public class App extends RouteApp {
 			try {
 				root.setCenter(loadFXML("loadScreen"));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		});
@@ -42,6 +43,7 @@ public class App extends RouteApp {
 	private static Parent loadFXML(String fxml) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(
 				App.class.getResource("/co/edu/uniquindio/clinicaVeterinaria/view/" + fxml + ".fxml"));
+		System.out.println("/co/edu/uniquindio/clinicaVeterinaria/view/" + fxml + ".fxml");
 		return fxmlLoader.load();
 	}
 
@@ -56,7 +58,7 @@ public class App extends RouteApp {
 		}
 	}
 
-	public static void cambiarEscenaEx(Pestanas escena) throws EscenaNotFoundException {
+	private static void cambiarEscenaEx(Pestanas escena) throws EscenaNotFoundException {
 		Parent escenaEncontrada = escenas.getOrDefault(escena, null);
 		if (escenaEncontrada == null)
 			throw new EscenaNotFoundException("La escena seleccionada no fue encontrada");
@@ -76,17 +78,18 @@ public class App extends RouteApp {
 
 	@Override
 	public Route createRoute() {
-		return Route.empty()
-				.and(getNode("/", r -> root))
+		return Route.empty().and(getNode("/", r -> root)).and(getNode("/inicio", r -> obtenerEscena(Pestanas.INICIO)))
+				.and(getNode("/login", r -> obtenerEscena(Pestanas.LOGIN)))
 				.and(getNode("/cliente", r -> obtenerEscena(Pestanas.CLIENTE)))
 				.and(getNode("/mascota", r -> obtenerEscena(Pestanas.MASCOTA)))
 				.and(getNode("/cita", r -> obtenerEscena(Pestanas.CITA)))
 				.and(getNode("/factura", r -> obtenerEscena(Pestanas.FACTURA)))
 				.and(getNode("/mas", r -> obtenerEscena(Pestanas.MORE)));
-
 	}
 
 	private BorderPane obtenerEscena(Pestanas pestana) {
+		if (this.pestanaActual == pestana)
+			return root;
 		try {
 			cambiarEscenaEx(pestana);
 		} catch (EscenaNotFoundException e) {
@@ -94,5 +97,6 @@ public class App extends RouteApp {
 		}
 		return root;
 	}
+
 
 }
