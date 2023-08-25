@@ -6,6 +6,8 @@ module co.edu.uniquindio.clinicaVeterinaria {
 	requires one.jpro.routing.core;
 	requires org.apache.pdfbox;
 	requires de.sandec.jmemorybuddy;
+	requires javafx.swing;
+	requires java.desktop;
 
 	exports co.edu.uniquindio.clinicaVeterinaria.application;
 	exports co.edu.uniquindio.clinicaVeterinaria.services;
