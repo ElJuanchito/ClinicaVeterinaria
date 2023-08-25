@@ -14,8 +14,6 @@ import javafx.beans.binding.StringExpression;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -27,7 +25,6 @@ import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
 import one.jpro.routing.LinkUtil;
 import one.jpro.routing.LinkUtil.ExtendNodeWithLink;
-//import scala.reflect.internal.Mode;
 
 public class Menucontroller {
 
@@ -100,7 +97,6 @@ public class Menucontroller {
 	@FXML
 	void initialize() {
 		animacionRotarPerfil = new RotateTransition(Duration.millis(100), trianguloDesplieguePerfil);
-		imgVeterinario.setImage(ModelFactoryController.getInstance().getVeterinario().getFoto());
 		Platform.runLater(() -> {
 			LinkUtil.setLink(btnCasita, "/");
 			LinkUtil.setLink(btnMascota, "/mascota");
