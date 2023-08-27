@@ -29,7 +29,6 @@ public class App extends RouteApp {
 	}
 
 	public App() {
-		System.out.println("App.App()");
 		Platform.runLater(() -> {
 			try {
 				root.setCenter(loadFXML("loadScreen"));
@@ -77,7 +76,8 @@ public class App extends RouteApp {
 
 	@Override
 	public Route createRoute() {
-		return Route.empty().and(getNode("/", r -> root)).and(getNode("/inicio", r -> obtenerEscena(Pestanas.INICIO)))
+		return Route.empty().and(getNode("/", r -> root))
+				.and(getNode("/inicio", r -> obtenerEscena(Pestanas.INICIO)))
 				.and(getNode("/login", r -> obtenerEscena(Pestanas.LOGIN)))
 				.and(getNode("/cliente", r -> obtenerEscena(Pestanas.CLIENTE)))
 				.and(getNode("/mascota", r -> obtenerEscena(Pestanas.MASCOTA)))
