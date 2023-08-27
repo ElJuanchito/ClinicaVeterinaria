@@ -149,7 +149,7 @@ public class Menucontroller {
 	@FXML
 	void initialize() {
 		animacionRotarPerfil = new RotateTransition(Duration.millis(100), trianguloDesplieguePerfil);
-		imgVeterinario.setImage(ModelFactoryController.getInstance().getVeterinario().getFoto());
+		imgVeterinario.imageProperty().bind(ModelFactoryController.getInstance().getVeterinarioFotoProp());
 	}
 
 	private void ejecutarAnimacionBotonCircular(MouseEvent event, double endValue) {

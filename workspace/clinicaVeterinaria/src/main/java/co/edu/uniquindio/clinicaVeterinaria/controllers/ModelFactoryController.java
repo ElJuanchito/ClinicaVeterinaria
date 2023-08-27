@@ -3,6 +3,8 @@ package co.edu.uniquindio.clinicaVeterinaria.controllers;
 import co.edu.uniquindio.clinicaVeterinaria.dao.ClinicaDao;
 import co.edu.uniquindio.clinicaVeterinaria.model.Clinica;
 import co.edu.uniquindio.clinicaVeterinaria.model.Veterinario;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.image.Image;
 
 /**
  * 
@@ -12,6 +14,11 @@ public class ModelFactoryController {
 
 	private Clinica clinica;
 	private Veterinario veterinario;
+	private SimpleObjectProperty<Image> propImgVeterinario;
+
+	public ModelFactoryController() {
+		propImgVeterinario = new SimpleObjectProperty<>();
+	}
 
 	public static class Singleton {
 		private final static ModelFactoryController eINSTANCE = new ModelFactoryController();
@@ -66,11 +73,17 @@ public class ModelFactoryController {
 
 	public void setVeterinario(String codigo) {
 		veterinario = getClinica().buscarVeterinario(codigo);
+		propImgVeterinario.setValue(veterinario.getFoto());
 	}
 
 	public Veterinario getVeterinario() {
 		if (veterinario == null)
-			return getClinica().getVeterinarios()[0];
+			setVeterinario("0001");
 		return veterinario;
+	}
+
+	public SimpleObjectProperty<Image> getVeterinarioFotoProp() {
+		getVeterinario();
+		return propImgVeterinario;
 	}
 }
