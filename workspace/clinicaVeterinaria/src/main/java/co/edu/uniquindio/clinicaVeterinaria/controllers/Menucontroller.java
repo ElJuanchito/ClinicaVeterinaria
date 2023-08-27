@@ -100,7 +100,7 @@ public class Menucontroller {
 	@FXML
 	void initialize() {
 		animacionRotarPerfil = new RotateTransition(Duration.millis(100), trianguloDesplieguePerfil);
-		imgVeterinario.setImage(ModelFactoryController.getInstance().getVeterinario().getFoto());
+		//imgVeterinario.setImage(ModelFactoryController.getInstance().getVeterinario().getFoto());
 		Platform.runLater(() -> {
 			LinkUtil.setLink(btnCasita, "/");
 			LinkUtil.setLink(btnMascota, "/mascota");

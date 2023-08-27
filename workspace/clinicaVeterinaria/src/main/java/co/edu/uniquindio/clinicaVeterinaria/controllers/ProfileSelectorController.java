@@ -5,15 +5,20 @@ import java.util.ResourceBundle;
 
 import co.edu.uniquindio.clinicaVeterinaria.application.App;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.EscenaNotFoundException;
+import co.edu.uniquindio.clinicaVeterinaria.model.Clinica;
 import co.edu.uniquindio.clinicaVeterinaria.model.Veterinario;
 import co.edu.uniquindio.clinicaVeterinaria.services.Pestanas;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 
 public class ProfileSelectorController {
 
@@ -24,16 +29,13 @@ public class ProfileSelectorController {
 	private URL location;
 
 	@FXML
-	private ImageView imgVet_1;
+	private Label lblVet3;
 
 	@FXML
-	private ImageView imgVet_2;
+	private BorderPane panelPrincipal;
 
 	@FXML
-	private ImageView imgVet_3;
-
-	@FXML
-	private ImageView imgVet_4;
+	private Label lblVet4;
 
 	@FXML
 	private Label lblVet1;
@@ -42,13 +44,56 @@ public class ProfileSelectorController {
 	private Label lblVet2;
 
 	@FXML
-	private Label lblVet3;
+	private Circle circulito_1;
 
 	@FXML
-	private Label lblVet4;
+	private Circle circulito_2;
 
 	@FXML
-	private HBox panelPrincipal;
+	private Circle circulito_3;
+
+	@FXML
+	private Circle circulito_4;
+
+	@FXML
+	void circulito1HoverOnEvent(MouseEvent event) {
+		circuloHoverOn(circulito_1);
+	}
+
+	@FXML
+	void circulito1HoverOffEvent(MouseEvent event) {
+		circuloHoverOff(circulito_1);
+	}
+
+	@FXML
+	void circulito2HoverOnEvent(MouseEvent event) {
+		circuloHoverOn(circulito_2);
+	}
+
+	@FXML
+	void circulito2HoverOffEvent(MouseEvent event) {
+		circuloHoverOff(circulito_2);
+	}
+
+	@FXML
+	void circulito3HoverOnEvent(MouseEvent event) {
+		circuloHoverOn(circulito_3);
+	}
+
+	@FXML
+	void circulito3HoverOffEvent(MouseEvent event) {
+		circuloHoverOff(circulito_3);
+	}
+
+	@FXML
+	void circulito4HoverOnEvent(MouseEvent event) {
+		circuloHoverOn(circulito_4);
+	}
+
+	@FXML
+	void circulito4HoverOffEvent(MouseEvent event) {
+		circuloHoverOff(circulito_4);
+	}
 
 	@FXML
 	void selectUser1Event(MouseEvent event) {
@@ -93,21 +138,37 @@ public class ProfileSelectorController {
 
 	@FXML
 	void initialize() {
-		Veterinario [] veterinarios = ModelFactoryController.getInstance().getClinica().getVeterinarios();
+		panelPrincipal.setBackground(new Background(new BackgroundImage(
+				new Image(ProfileSelectorController.class
+						.getResourceAsStream("/co/edu/uniquindio/clinicaVeterinaria/sources/background.png")),
+				null, null, null, null)));
 
-		imgVet_1.setImage(veterinarios[0].getFoto());
+		Veterinario[] veterinarios = ModelFactoryController.getInstance().getClinica().getVeterinarios();
+
+		circulito_1.setFill(new ImagePattern(veterinarios[0].getFoto()));
+		circulito_1.setStroke(Color.web("#14133b"));
 		lblVet1.setText(veterinarios[0].getNombre());
 
-		imgVet_2.setImage(veterinarios[1].getFoto());
+		circulito_2.setFill(new ImagePattern(veterinarios[1].getFoto()));
+		circulito_2.setStroke(Color.web("#14133b"));
 		lblVet2.setText(veterinarios[1].getNombre());
 
-		imgVet_3.setImage(veterinarios[2].getFoto());
+		circulito_3.setFill(new ImagePattern(veterinarios[2].getFoto()));
+		circulito_3.setStroke(Color.web("#14133b"));
 		lblVet3.setText(veterinarios[2].getNombre());
 
-		imgVet_4.setImage(veterinarios[3].getFoto());
+		circulito_4.setFill(new ImagePattern(veterinarios[3].getFoto()));
+		circulito_4.setStroke(Color.web("#14133b"));
 		lblVet4.setText(veterinarios[3].getNombre());
 
+	}
 
+	private void circuloHoverOn(Circle circulo) {
+		circulo.setStroke(Color.web("#6fc1c4"));
+	}
+
+	private void circuloHoverOff(Circle circulo) {
+		circulo.setStroke(Color.web("#14133b"));
 	}
 
 }
