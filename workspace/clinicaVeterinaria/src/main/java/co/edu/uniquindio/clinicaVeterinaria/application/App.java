@@ -11,7 +11,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
-import one.jpro.routing.LinkUtil;
 import one.jpro.routing.Route;
 import one.jpro.routing.RouteApp;
 
