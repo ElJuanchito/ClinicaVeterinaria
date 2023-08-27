@@ -24,6 +24,7 @@ public class TestVentanas extends Application {
 		Scene scena = new Scene(loadFXML("profileSelector"));
 		//scena.getStylesheets().add(getClass().getResource("/co/edu/uniquindio/clinicaVeterinaria/styles/textStyle.css").toExternalForm());
 		primaryStage.setScene(scena);
+		primaryStage.setFullScreen(true);
 		primaryStage.show();
 		
 	}

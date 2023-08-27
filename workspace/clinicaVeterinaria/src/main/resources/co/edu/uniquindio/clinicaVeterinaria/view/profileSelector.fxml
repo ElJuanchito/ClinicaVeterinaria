@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
@@ -7,48 +13,47 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.ProfileSelectorController">
+<BorderPane fx:id="panelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.ProfileSelectorController">
    <center>
-      <HBox fx:id="panelPrincipal" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="CENTER" minHeight="200.0" minWidth="100.0" spacing="20.0">
                <children>
-                  <HBox alignment="CENTER" styleClass="imagen" stylesheets="@../styles/imageStyle.css">
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="imgVet_1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#selectUser1Event" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </HBox>
-                  <Label id="titulo" fx:id="lblVet1" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
+                        <Circle fx:id="circulito_1" centerX="100.0" centerY="100.0" fill="DODGERBLUE" onMouseClicked="#selectUser1Event" onMouseEntered="#circulito1HoverOnEvent" onMouseExited="#circulito1HoverOffEvent" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+                     </children></StackPane>
+                  <Label id="titulo" fx:id="lblVet1" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
                </children>
             </VBox>
             <VBox alignment="CENTER" minHeight="200.0" minWidth="100.0" spacing="20.0">
                <children>
-                  <HBox alignment="CENTER" styleClass="imagen" stylesheets="@../styles/imageStyle.css">
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="imgVet_2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#selectUser2Event" pickOnBounds="true" preserveRatio="true" />
+                        <Circle fx:id="circulito_2" fill="DODGERBLUE" onMouseClicked="#selectUser2Event" onMouseEntered="#circulito2HoverOnEvent" onMouseExited="#circulito2HoverOffEvent" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
                      </children>
-                  </HBox>
-                  <Label id="titulo" fx:id="lblVet2" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
+                  </StackPane>
+                  <Label id="titulo" fx:id="lblVet2" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
                </children>
             </VBox>
             <VBox alignment="CENTER" minHeight="200.0" minWidth="100.0" spacing="20.0">
                <children>
-                  <HBox alignment="CENTER" styleClass="imagen" stylesheets="@../styles/imageStyle.css">
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="imgVet_3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#selectUser3Event" pickOnBounds="true" preserveRatio="true" />
+                        <Circle fx:id="circulito_3" fill="DODGERBLUE" onMouseClicked="#selectUser3Event" onMouseEntered="#circulito3HoverOnEvent" onMouseExited="#circulito3HoverOffEvent" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
                      </children>
-                  </HBox>
-                  <Label id="titulo" fx:id="lblVet3" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
+                  </StackPane>
+                  <Label id="titulo" fx:id="lblVet3" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
                </children>
             </VBox>
             <VBox alignment="CENTER" minHeight="200.0" minWidth="100.0" spacing="20.0">
                <children>
-                  <HBox alignment="CENTER" styleClass="imagen" stylesheets="@../styles/imageStyle.css">
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="imgVet_4" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#selectUser4Event" pickOnBounds="true" preserveRatio="true" />
+                        <Circle fx:id="circulito_4" fill="DODGERBLUE" onMouseClicked="#selectUser4Event" onMouseEntered="#circulito4HoverOnEvent" onMouseExited="#circulito4HoverOffEvent" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
                      </children>
-                  </HBox>
-                  <Label id="titulo" fx:id="lblVet4" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
+                  </StackPane>
+                  <Label id="titulo" fx:id="lblVet4" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
                </children>
             </VBox>
          </children>
