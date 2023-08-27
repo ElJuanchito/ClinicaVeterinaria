@@ -1,9 +1,7 @@
 package co.edu.uniquindio.clinicaVeterinaria.controllers;
 
 import co.edu.uniquindio.clinicaVeterinaria.application.App;
-import co.edu.uniquindio.clinicaVeterinaria.exceptions.EscenaNotFoundException;
 import co.edu.uniquindio.clinicaVeterinaria.services.CustomFxThread;
-import co.edu.uniquindio.clinicaVeterinaria.services.Pestanas;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -18,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
+import one.jpro.routing.LinkUtil;
 
 public class LoadController {
 
@@ -77,14 +76,7 @@ public class LoadController {
 				new KeyFrame(Duration.millis(100), new KeyValue(doubleProperty, 1)),
 				new KeyFrame(Duration.millis(300)));
 		timeline.playFromStart();
-		timeline.setOnFinished((e) -> {
-			try {
-				App.cambiarEscenaEx(Pestanas.LOGIN);
-			} catch (EscenaNotFoundException e1) {
-				e1.printStackTrace();
-			}
-		});
-
+		timeline.setOnFinished((e) -> LinkUtil.gotoPage(patita, "/login"));
 	}
 
 	private void agregarKeyFramesTransicion(Timeline transition) {

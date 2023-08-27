@@ -8,6 +8,7 @@ module co.edu.uniquindio.clinicaVeterinaria {
 	requires de.sandec.jmemorybuddy;
 	requires javafx.swing;
 	requires java.desktop;
+	requires javafx.base;
 
 	exports co.edu.uniquindio.clinicaVeterinaria.application;
 	exports co.edu.uniquindio.clinicaVeterinaria.services;

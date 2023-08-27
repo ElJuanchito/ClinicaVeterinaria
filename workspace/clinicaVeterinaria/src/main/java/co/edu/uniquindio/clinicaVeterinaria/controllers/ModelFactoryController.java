@@ -60,12 +60,17 @@ public class ModelFactoryController {
 		System.out.println("Datos guardados");
 	}
 
-	public void setVeterinario(int i) {
-		Veterinario[] veterinarios = getClinica().getVeterinarios();
-		veterinario = veterinarios[i < 0 || i >= veterinarios.length ? 0 : i];
+	public Veterinario buscarVeterinario(String codigo) {
+		return getClinica().buscarVeterinario(codigo);
+	}
+
+	public void setVeterinario(String codigo) {
+		veterinario = getClinica().buscarVeterinario(codigo);
 	}
 
 	public Veterinario getVeterinario() {
+		if (veterinario == null)
+			return getClinica().getVeterinarios()[0];
 		return veterinario;
 	}
 }
