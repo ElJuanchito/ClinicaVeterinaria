@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.control.*?>
@@ -10,9 +11,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="338.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.Menucontroller">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="338.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.Menucontroller">
    <top>
-      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
       	<center>
       		<HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
       			<children>
@@ -60,13 +61,7 @@
       	<right>
       		<HBox alignment="CENTER_RIGHT" onMouseClicked="#eventoDesplieguePerfil" prefHeight="100.0" prefWidth="230.0" spacing="20.0" style="-fx-background-radius: 0 0 0 100;" styleClass="despliegue-perfil">
       			<children>
-      				<Group>
-      					<children>
-      						<ImageView fx:id="imgVeterinario" fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
-      						<SVGPath content="m 0 0 h 100 v 100 h -100 v -100 m 50 5 a 1 1 0 0 0 0 90 a 1 1 0 0 0 0 -90" layoutX="-11.0" layoutY="-12.0" scaleX="0.5" scaleY="0.5" styleClass="imagen-perfil" />
-      						<SVGPath content="m 50 2 a 1 1 0 0 0 0 96 a 1 1 0 0 0 0 -96 m 0 8 a 1 1 0 0 0 0 80 a 1 1 0 0 0 0 -80 z " fill="#14133b" fillRule="EVEN_ODD" layoutX="-11.0" layoutY="-12.0" scaleX="0.5" scaleY="0.5" />
-      					</children>
-      				</Group>
+                  <Circle fx:id="imgCircle" fill="#00abeb" radius="24.0" stroke="#14133b" strokeType="INSIDE" strokeWidth="4.0" />
                   <SVGPath fx:id="trianguloDesplieguePerfil" content="m 20 25 h 60 l -30 40 z" fill="#14133b" scaleX="0.8" scaleY="0.8" />
       			</children>
                <padding>
@@ -76,9 +71,36 @@
       	</right>
       </BorderPane>
    </top>
-   <left>
-      <BorderPane styleClass="left-pane">
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
          <center>
+            <BorderPane BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+               </BorderPane.margin>
+               <center>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView fx:id="imgLogo" fitHeight="124.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true" translateZ="1.0">
+                           <cursor>
+                              <Cursor fx:constant="NONE" />
+                           </cursor>
+                           <image>
+                              <Image url="@../sources/logo.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </center>
+            </BorderPane>
+         </center>
+         <left>
             <VBox fx:id="menuIzq" alignment="BOTTOM_CENTER" maxHeight="-Infinity" spacing="10.0" styleClass="menu-izq" BorderPane.alignment="CENTER">
                <children>
                   <ScrollPane fx:id="btnCasita" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#casitaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
@@ -94,7 +116,8 @@
                               <Label ellipsisString="" text="Menu Principal" textOverrun="CLIP">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
-                                 </font></Label>
+                                 </font>
+                              </Label>
                            </children>
                         </HBox>
                      </content>
@@ -220,20 +243,7 @@
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
             </VBox>
-         </center>
-         <BorderPane.margin>
-            <Insets top="30.0" />
-         </BorderPane.margin>
-      </BorderPane>
-   </left>
-   <center>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-         <padding>
-            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-         </padding>
+         </left>
       </BorderPane>
    </center>
 </BorderPane>

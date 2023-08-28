@@ -3,11 +3,7 @@ package co.edu.uniquindio.clinicaVeterinaria.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.clinicaVeterinaria.application.App;
-import co.edu.uniquindio.clinicaVeterinaria.exceptions.EscenaNotFoundException;
-import co.edu.uniquindio.clinicaVeterinaria.model.Clinica;
 import co.edu.uniquindio.clinicaVeterinaria.model.Veterinario;
-import co.edu.uniquindio.clinicaVeterinaria.services.PestanasMenu;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -15,10 +11,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import one.jpro.routing.LinkUtil;
 
 public class ProfileSelectorController {
 
@@ -116,24 +112,24 @@ public class ProfileSelectorController {
 	}
 
 	private void selectUser1Action() {
-		seleccionarUsuarioInicio(imgVet_1, "0001");
+		seleccionarUsuarioInicio(circulito_1, "0001");
 	}
 
 	private void selectUser2Action() {
-		seleccionarUsuarioInicio(imgVet_2, "0002");
+		seleccionarUsuarioInicio(circulito_2, "0002");
 	}
 
 	private void selectUser3Action() {
-		seleccionarUsuarioInicio(imgVet_3, "0003");
+		seleccionarUsuarioInicio(circulito_3, "0003");
 	}
 
 	private void selectUser4Action() {
-		seleccionarUsuarioInicio(imgVet_4, "0004");
+		seleccionarUsuarioInicio(circulito_4, "0004");
 	}
 
-	private void seleccionarUsuarioInicio(ImageView imagen, String codigoVet) {
+	private void seleccionarUsuarioInicio(Circle circulito, String codigoVet) {
 		ModelFactoryController.getInstance().setVeterinario(codigoVet);
-		LinkUtil.gotoPage(imagen, "/inicio");
+		LinkUtil.gotoPage(circulito, "/inicio");
 	}
 
 	@FXML

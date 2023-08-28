@@ -46,8 +46,8 @@ public class LoadController {
 		Timeline transition = new Timeline();
 		agregarKeyFramesTransicion(transition);
 
-		transition.play();
 		Platform.runLater(() -> {
+			transition.play();
 			CustomFxThread.crearHilo(() -> cargarEscenas(transition)).iniciarActividad();
 		});
 	}
@@ -76,7 +76,7 @@ public class LoadController {
 				new KeyFrame(Duration.millis(100), new KeyValue(doubleProperty, 1)),
 				new KeyFrame(Duration.millis(300)));
 		timeline.playFromStart();
-		timeline.setOnFinished((e) -> LinkUtil.gotoPage(patita, "/login"));
+		timeline.setOnFinished((e) -> Platform.runLater(() -> LinkUtil.gotoPage(patita, "/login")));
 	}
 
 	private void agregarKeyFramesTransicion(Timeline transition) {

@@ -1,9 +1,7 @@
 package co.edu.uniquindio.clinicaVeterinaria.services;
 
 public enum PestanasMenu {
-	INICIO("principal"), LOGIN("profileSelector"), CLIENTE("registroCliente"), MASCOTA("registroMascota"),
-	CITA("creacionAtencion"), FACTURA("FinalizarAtencion"), MORE("masFunciones"), HFECHAS("historialCitas"),
-	HCLINICO("historialClinico");
+	INICIO("registroCliente"), CLIENTE("registroCliente"), MASCOTA("registroMascota"), CITA("creacionAtencion"), FACTURA("FinalizarAtencion"),MORE("masFunciones");
 
 	private String fxml;
 
