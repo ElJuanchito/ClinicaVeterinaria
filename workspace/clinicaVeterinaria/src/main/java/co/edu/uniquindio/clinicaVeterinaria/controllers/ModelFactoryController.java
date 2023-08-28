@@ -53,7 +53,6 @@ public class ModelFactoryController {
 	public void loadData() {
 		ClinicaDao dao = new ClinicaDao();
 		clinica = dao.loadData();
-		System.out.println("Datos cargados");
 	}
 
 	/**
@@ -64,7 +63,6 @@ public class ModelFactoryController {
 	public void saveData() {
 		ClinicaDao dao = new ClinicaDao();
 		dao.saveData(clinica);
-		System.out.println("Datos guardados");
 	}
 
 	public Veterinario buscarVeterinario(String codigo) {
