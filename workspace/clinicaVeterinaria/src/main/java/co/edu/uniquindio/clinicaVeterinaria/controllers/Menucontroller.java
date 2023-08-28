@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
+import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.RotateTransition;
+import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringExpression;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -19,6 +22,8 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
@@ -29,6 +34,9 @@ public class Menucontroller {
 	private boolean estaPerfilDesplegado = false;
 	private boolean estaMenuDesplegado = false;
 	private RotateTransition animacionRotarPerfil;
+
+	@FXML
+	private ImageView imgLogo;
 
 	@FXML
 	private ScrollPane btnCasita;
@@ -57,7 +65,7 @@ public class Menucontroller {
 	private Rectangle rectanguloInf;
 
 	@FXML
-	private ImageView imgVeterinario;
+	private Circle imgCircle;
 
 	@FXML
 	private SVGPath trianguloDesplieguePerfil;
@@ -149,7 +157,26 @@ public class Menucontroller {
 	@FXML
 	void initialize() {
 		animacionRotarPerfil = new RotateTransition(Duration.millis(100), trianguloDesplieguePerfil);
-		imgVeterinario.imageProperty().bind(ModelFactoryController.getInstance().getVeterinarioFotoProp());
+		ModelFactoryController.getInstance().getVeterinarioFotoProp()
+				.addListener((observable, old, newImage) -> imgCircle.setFill(new ImagePattern(newImage)));
+		crearAnimacionCentro();
+	}
+
+	private void crearAnimacionCentro() {
+		ScaleTransition anim = new ScaleTransition(Duration.seconds(2), imgLogo);
+		anim.setToX(1.2);
+		anim.setToY(1.2);
+		Interpolator interpolator = new Interpolator() {
+
+			@Override
+			protected double curve(double t) {
+				return (Math.cos(Math.PI * (t + 1)) + 1) / 2;
+			}
+		};
+		anim.setInterpolator(interpolator);
+		anim.setAutoReverse(true);
+		anim.setCycleCount(-1);
+		Platform.runLater(() -> anim.play());
 	}
 
 	private void ejecutarAnimacionBotonCircular(MouseEvent event, double endValue) {
