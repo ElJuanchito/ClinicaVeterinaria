@@ -5,12 +5,12 @@
 	-fx-border-color: #14133b;
 	-fx-border-width: 0.2em;
 	-fx-border-radius: 0.5em;
-	-fx-background-radius: 0.5em;
+	-fx-background-radius: 1em;
 	-fx-background-color: white;
 }
 
 .boton:hover{
-	-fx-border-width: 0.25em;
+	-fx-effect: innershadow(gaussian, #6fc1c4, 1em, 0.5, 0.0, 0.0);
 }
 
 .boton:pressed {

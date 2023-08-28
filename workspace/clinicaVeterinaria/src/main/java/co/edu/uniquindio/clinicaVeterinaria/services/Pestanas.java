@@ -1,7 +1,9 @@
 package co.edu.uniquindio.clinicaVeterinaria.services;
 
 public enum Pestanas {
-	INICIO("principal"), LOGIN("profileSelector"), CLIENTE("registroCliente"), MASCOTA("registroMascota"), CITA("creacionAtencion"), FACTURA("FinalizarAtencion"),MORE("masFunciones");
+	INICIO("principal"), LOGIN("profileSelector"), CLIENTE("registroCliente"), MASCOTA("registroMascota"),
+	CITA("creacionAtencion"), FACTURA("FinalizarAtencion"), MORE("masFunciones"), HFECHAS("historialCitas"),
+	HCLINICO("historialClinico");
 
 	private String fxml;
 
