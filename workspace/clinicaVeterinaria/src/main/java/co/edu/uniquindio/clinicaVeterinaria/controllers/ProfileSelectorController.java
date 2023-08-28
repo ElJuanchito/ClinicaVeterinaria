@@ -7,7 +7,7 @@ import co.edu.uniquindio.clinicaVeterinaria.application.App;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.EscenaNotFoundException;
 import co.edu.uniquindio.clinicaVeterinaria.model.Clinica;
 import co.edu.uniquindio.clinicaVeterinaria.model.Veterinario;
-import co.edu.uniquindio.clinicaVeterinaria.services.Pestanas;
+import co.edu.uniquindio.clinicaVeterinaria.services.PestanasMenu;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
