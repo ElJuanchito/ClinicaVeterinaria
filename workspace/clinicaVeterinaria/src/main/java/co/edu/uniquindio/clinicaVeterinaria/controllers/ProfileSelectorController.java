@@ -52,46 +52,6 @@ public class ProfileSelectorController {
 	private Circle circulito_4;
 
 	@FXML
-	void circulito1HoverOnEvent(MouseEvent event) {
-		circuloHoverOn(circulito_1);
-	}
-
-	@FXML
-	void circulito1HoverOffEvent(MouseEvent event) {
-		circuloHoverOff(circulito_1);
-	}
-
-	@FXML
-	void circulito2HoverOnEvent(MouseEvent event) {
-		circuloHoverOn(circulito_2);
-	}
-
-	@FXML
-	void circulito2HoverOffEvent(MouseEvent event) {
-		circuloHoverOff(circulito_2);
-	}
-
-	@FXML
-	void circulito3HoverOnEvent(MouseEvent event) {
-		circuloHoverOn(circulito_3);
-	}
-
-	@FXML
-	void circulito3HoverOffEvent(MouseEvent event) {
-		circuloHoverOff(circulito_3);
-	}
-
-	@FXML
-	void circulito4HoverOnEvent(MouseEvent event) {
-		circuloHoverOn(circulito_4);
-	}
-
-	@FXML
-	void circulito4HoverOffEvent(MouseEvent event) {
-		circuloHoverOff(circulito_4);
-	}
-
-	@FXML
 	void selectUser1Event(MouseEvent event) {
 		selectUser1Action();
 	}
@@ -143,28 +103,28 @@ public class ProfileSelectorController {
 
 		circulito_1.setFill(new ImagePattern(veterinarios[0].getFoto()));
 		circulito_1.setStroke(Color.web("#14133b"));
+		inicializarCirculos(circulito_1);
 		lblVet1.setText(veterinarios[0].getNombre());
 
 		circulito_2.setFill(new ImagePattern(veterinarios[1].getFoto()));
 		circulito_2.setStroke(Color.web("#14133b"));
+		inicializarCirculos(circulito_2);
 		lblVet2.setText(veterinarios[1].getNombre());
 
 		circulito_3.setFill(new ImagePattern(veterinarios[2].getFoto()));
 		circulito_3.setStroke(Color.web("#14133b"));
+		inicializarCirculos(circulito_3);
 		lblVet3.setText(veterinarios[2].getNombre());
 
 		circulito_4.setFill(new ImagePattern(veterinarios[3].getFoto()));
 		circulito_4.setStroke(Color.web("#14133b"));
+		inicializarCirculos(circulito_4);
 		lblVet4.setText(veterinarios[3].getNombre());
 
 	}
-
-	private void circuloHoverOn(Circle circulo) {
-		circulo.setStroke(Color.web("#6fc1c4"));
-	}
-
-	private void circuloHoverOff(Circle circulo) {
-		circulo.setStroke(Color.web("#14133b"));
+	
+	private void inicializarCirculos(Circle circulo) {
+		circulo.setStyle("-fx-effect: innershadow(gaussian, #6fc1c4, 1em, 0.5, 0.0, 0.0);");
 	}
 
 }

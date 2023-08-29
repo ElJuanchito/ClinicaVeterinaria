@@ -1,62 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.SVGPath?>
 
-<BorderPane fx:id="panelPrincipal" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0" minWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.ProfileSelectorController">
+<BorderPane fx:id="panelPrincipal" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0" minWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.ProfileSelectorController">
    <center>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="0.0" prefHeight="400.0" spacing="80.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" minHeight="200.0" minWidth="100.0" spacing="20.0">
+            <VBox alignment="CENTER" spacing="20.0" styleClass="gafete" stylesheets="@../styles/gafeteStyle.css">
                <children>
+                  <SVGPath content="m 10 10 a 1 1 0 0 0 0 10 h 80 a 1 1 0 0 0 0 -10 h -35 a 1 1 0 0 0 -10 0 z" fill="WHITE" scaleX="1.2" scaleY="1.2" stroke="#13144b" strokeWidth="4.0" />
                   <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <Circle fx:id="circulito_1" centerX="100.0" centerY="100.0" fill="DODGERBLUE" onMouseClicked="#selectUser1Event" onMouseEntered="#circulito1HoverOnEvent" onMouseExited="#circulito1HoverOffEvent" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+                        <Circle fx:id="circulito_1" centerX="100.0" centerY="100.0" fill="DODGERBLUE" onMouseClicked="#selectUser1Event" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+                           <StackPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </StackPane.margin></Circle>
                      </children></StackPane>
                   <Label id="titulo" fx:id="lblVet1" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" minHeight="200.0" minWidth="100.0" spacing="20.0">
+            <VBox alignment="CENTER" spacing="20.0" styleClass="gafete" stylesheets="@../styles/gafeteStyle.css">
                <children>
+                  <SVGPath content="m 10 10 a 1 1 0 0 0 0 10 h 80 a 1 1 0 0 0 0 -10 h -35 a 1 1 0 0 0 -10 0 z" fill="WHITE" scaleX="1.2" scaleY="1.2" stroke="#13144b" strokeWidth="4.0" />
                   <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <Circle fx:id="circulito_2" fill="DODGERBLUE" onMouseClicked="#selectUser2Event" onMouseEntered="#circulito2HoverOnEvent" onMouseExited="#circulito2HoverOffEvent" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+                        <Circle fx:id="circulito_2" fill="DODGERBLUE" onMouseClicked="#selectUser2Event" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+                           <StackPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </StackPane.margin></Circle>
                      </children>
                   </StackPane>
                   <Label id="titulo" fx:id="lblVet2" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" minHeight="200.0" minWidth="100.0" spacing="20.0">
+            <VBox alignment="CENTER" spacing="20.0" styleClass="gafete" stylesheets="@../styles/gafeteStyle.css">
                <children>
+                  <SVGPath content="m 10 10 a 1 1 0 0 0 0 10 h 80 a 1 1 0 0 0 0 -10 h -35 a 1 1 0 0 0 -10 0 z" fill="WHITE" scaleX="1.2" scaleY="1.2" stroke="#13144b" strokeWidth="4.0" />
                   <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <Circle fx:id="circulito_3" fill="DODGERBLUE" onMouseClicked="#selectUser3Event" onMouseEntered="#circulito3HoverOnEvent" onMouseExited="#circulito3HoverOffEvent" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+                        <Circle fx:id="circulito_3" fill="DODGERBLUE" onMouseClicked="#selectUser3Event" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+                           <StackPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </StackPane.margin></Circle>
                      </children>
                   </StackPane>
                   <Label id="titulo" fx:id="lblVet3" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" minHeight="200.0" minWidth="100.0" spacing="20.0">
+            <VBox alignment="CENTER" spacing="20.0" styleClass="gafete" stylesheets="@../styles/gafeteStyle.css">
                <children>
+                  <SVGPath content="m 10 10 a 1 1 0 0 0 0 10 h 80 a 1 1 0 0 0 0 -10 h -35 a 1 1 0 0 0 -10 0 z" fill="WHITE" scaleX="1.2" scaleY="1.2" stroke="#13144b" strokeWidth="4.0" />
                   <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <Circle fx:id="circulito_4" fill="DODGERBLUE" onMouseClicked="#selectUser4Event" onMouseEntered="#circulito4HoverOnEvent" onMouseExited="#circulito4HoverOffEvent" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.5" />
+                        <Circle fx:id="circulito_4" fill="DODGERBLUE" onMouseClicked="#selectUser4Event" radius="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+                           <StackPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </StackPane.margin></Circle>
                      </children>
                   </StackPane>
                   <Label id="titulo" fx:id="lblVet4" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="texto" stylesheets="@../styles/textStyle.css" />
                </children>
             </VBox>
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </HBox>
    </center>
    <top>
