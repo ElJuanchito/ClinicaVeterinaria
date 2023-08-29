@@ -44,7 +44,7 @@
       						<Image url="@../sources/logo-no-text.png" />
       					</image>
       				</ImageView>
-      				<ImageView fitHeight="30.0" fitWidth="388.0" pickOnBounds="true" preserveRatio="true">
+      				<ImageView fitHeight="30.0" fitWidth="489.0" pickOnBounds="true" preserveRatio="true">
       					<image>
       						<Image url="@../sources/patitas-peludas.png" />
       					</image>
