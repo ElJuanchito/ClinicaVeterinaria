@@ -11,79 +11,80 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="338.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.Menucontroller">
-   <top>
-      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
-      	<center>
-      		<HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
-      			<children>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#eventoDespliegueMenu" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
-                     <content>
-                        <HBox alignment="CENTER_LEFT" spacing="30.0">
-                           <children>
-                              <StackPane alignment="CENTER_LEFT">
+
+<StackPane prefHeight="338.0" prefWidth="1000.0" stylesheets="@../styles/menu.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.Menucontroller">
+   <children>
+      <BorderPane prefHeight="338.0" prefWidth="1000.0" style="-fx-background-color: white;">
+         <top>
+            <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+            	<center>
+            		<HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+            			<children>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#eventoDespliegueMenu" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                           <content>
+                              <HBox alignment="CENTER_LEFT" spacing="30.0">
                                  <children>
-                        				<Group styleClass="menu-button" translateX="5.0">
-                        					<children>
-                                          <Rectangle arcHeight="7.5" arcWidth="7.5" fill="#14133b" height="7.0" layoutX="-16.0" layoutY="-15.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
-                                          <Rectangle fx:id="rectanguloMid" arcHeight="7.5" arcWidth="7.5" fill="#14133b" height="7.0" layoutX="-16.0" layoutY="-15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="22.0" y="12.0" />
-                                          <Rectangle fx:id="rectanguloInf" arcHeight="7.5" arcWidth="7.5" fill="#14133b" height="7.0" layoutX="-16.0" layoutY="-15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="12.0" y="24.0" />
-                        					</children>
-                        				</Group>
+                                    <StackPane alignment="CENTER_LEFT">
+                                       <children>
+                              				<Group styleClass="menu-button" translateX="5.0">
+                              					<children>
+                                                <Rectangle arcHeight="7.5" arcWidth="7.5" fill="#14133b" height="7.0" layoutX="-16.0" layoutY="-15.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
+                                                <Rectangle fx:id="rectanguloMid" arcHeight="7.5" arcWidth="7.5" fill="#14133b" height="7.0" layoutX="-16.0" layoutY="-15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="22.0" y="12.0" />
+                                                <Rectangle fx:id="rectanguloInf" arcHeight="7.5" arcWidth="7.5" fill="#14133b" height="7.0" layoutX="-16.0" layoutY="-15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="12.0" y="24.0" />
+                              					</children>
+                              				</Group>
+                                       </children>
+                                    </StackPane>
                                  </children>
-                              </StackPane>
-                           </children>
-                        </HBox>
-                     </content>
+                              </HBox>
+                           </content>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </ScrollPane>
+            				<ImageView fitHeight="78.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
+            					<image>
+            						<Image url="@../sources/logo-no-text.png" />
+            					</image>
+            				</ImageView>
+            				<ImageView fitHeight="30.0" fitWidth="388.0" pickOnBounds="true" preserveRatio="true">
+            					<image>
+            						<Image url="@../sources/patitas-peludas.png" />
+            					</image>
+            				</ImageView>
+            			</children>
+            			<BorderPane.margin>
+            				<Insets />
+            			</BorderPane.margin>
+            			<padding>
+            				<Insets left="20.0" right="20.0" />
+            			</padding>
+            		</HBox>
+            	</center>
+            	<right>
+            		<HBox fx:id="menuDesplegable" alignment="CENTER_RIGHT" onMouseClicked="#eventoDesplieguePerfil" prefHeight="100.0" prefWidth="230.0" spacing="20.0" style="-fx-background-radius: 0 0 0 100;" styleClass="despliegue-perfil">
+            			<children>
+                        <Circle fx:id="imgCircle" fill="#00abeb" radius="24.0" stroke="#14133b" strokeType="INSIDE" strokeWidth="4.0" />
+                        <SVGPath fx:id="trianguloDesplieguePerfil" content="m 20 25 h 60 l -30 40 z" fill="#14133b" scaleX="0.8" scaleY="0.8" />
+            			</children>
                      <padding>
-                        <Insets left="20.0" right="20.0" />
+                        <Insets right="20.0" />
                      </padding>
-                  </ScrollPane>
-      				<ImageView fitHeight="78.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
-      					<image>
-      						<Image url="@../sources/logo-no-text.png" />
-      					</image>
-      				</ImageView>
-      				<ImageView fitHeight="30.0" fitWidth="489.0" pickOnBounds="true" preserveRatio="true">
-      					<image>
-      						<Image url="@../sources/patitas-peludas.png" />
-      					</image>
-      				</ImageView>
-      			</children>
-      			<BorderPane.margin>
-      				<Insets />
-      			</BorderPane.margin>
-      			<padding>
-      				<Insets left="20.0" right="20.0" />
-      			</padding>
-      		</HBox>
-      	</center>
-      	<right>
-      		<HBox alignment="CENTER_RIGHT" onMouseClicked="#eventoDesplieguePerfil" prefHeight="100.0" prefWidth="230.0" spacing="20.0" style="-fx-background-radius: 0 0 0 100;" styleClass="despliegue-perfil">
-      			<children>
-                  <Circle fx:id="imgCircle" fill="#00abeb" radius="24.0" stroke="#14133b" strokeType="INSIDE" strokeWidth="4.0" />
-                  <SVGPath fx:id="trianguloDesplieguePerfil" content="m 20 25 h 60 l -30 40 z" fill="#14133b" scaleX="0.8" scaleY="0.8" />
-      			</children>
-               <padding>
-                  <Insets right="20.0" />
-               </padding>
-      		</HBox>
-      	</right>
-      </BorderPane>
-   </top>
-   <center>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
+            		</HBox>
+            	</right>
+            </BorderPane>
+         </top>
          <center>
-            <BorderPane BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
-                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                  <Insets />
                </BorderPane.margin>
                <center>
-                  <HBox alignment="CENTER">
-                     <children>
+                  <BorderPane fx:id="centerPane" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </BorderPane.margin>
+                     <center>
                         <ImageView fx:id="imgLogo" fitHeight="124.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true" translateZ="1.0">
                            <cursor>
                               <Cursor fx:constant="NONE" />
@@ -95,155 +96,172 @@
                               <Rectangle2D />
                            </viewport>
                         </ImageView>
-                     </children>
-                  </HBox>
+                     </center>
+                  </BorderPane>
                </center>
+               <left>
+                  <VBox fx:id="menuIzq" alignment="BOTTOM_CENTER" maxHeight="-Infinity" spacing="10.0" styleClass="menu-izq" BorderPane.alignment="CENTER">
+                     <children>
+                        <ScrollPane fx:id="btnCasita" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#casitaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                           <content>
+                              <HBox alignment="CENTER_LEFT" spacing="40.0">
+                                 <children>
+                                    <StackPane>
+                                       <children>
+                                          <SVGPath content="M379.79996,578 L376.649968,578 L376.649968,574 L370.349983,574 L370.349983,578 L367.19999,578 L367.19999,568.813 L373.489475,562.823 L379.79996,568.832 L379.79996,578 Z M381.899955,568.004 L381.899955,568 L381.899955,568 L373.502075,560 L363,569.992 L364.481546,571.406 L365.099995,570.813 L365.099995,580 L372.449978,580 L372.449978,576 L374.549973,576 L374.549973,580 L381.899955,580 L381.899955,579.997 L381.899955,570.832 L382.514204,571.416 L384.001,570.002 L381.899955,568.004 Z" fill="#14133b" fillRule="EVEN_ODD" scaleX="2.2" scaleY="2.2" stroke="#14133b" strokeLineCap="BUTT" strokeLineJoin="BEVEL" strokeMiterLimit="1.0" strokeType="OUTSIDE" strokeWidth="0.0" translateX="10.0" />
+                                          <SVGPath content="M 381.9 568.004 L 381.9 568 L 373.502 560 L 363 569.992 L 364.482 571.406 L 365.1 570.813 L 365.1 580 L 372.45 580 L 372.45 576 L 374.55 576 L 374.55 580 L 381.9 580 L 381.9 579.997 L 381.9 570.832 L 382.514 571.416 L 384.001 570.002 L 381.9 568.004 Z" fill="#14133b" fillRule="EVEN_ODD" opacity="0.0" scaleX="2.0" scaleY="2.0" strokeWidth="0.0" styleClass="button-fill" translateX="10.0" />
+                                       </children>
+                                    </StackPane>
+                                    <Label ellipsisString="" text="Menu Principal" textOverrun="CLIP">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </content>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </ScrollPane>
+                        <ScrollPane fx:id="btnMascota" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="508.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#mascotaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                           <content>
+                              <HBox alignment="CENTER_LEFT" spacing="20.0">
+                                 <children>
+                                    <StackPane>
+                                       <children>
+                                          <SVGPath content="M18.48 18.875c2.33-.396 4.058-2.518 4.321-5.053.267-2.578.869-12.938-3.02-12.279-10.088 1.711-9.38 18.702-1.301 17.332zm13.273 0c8.077 1.37 8.785-15.621-1.303-17.333-3.888-.659-3.287 9.701-3.021 12.279.264 2.536 1.994 4.658 4.324 5.054zm-17.417 8.005c0-1.348-.481-2.57-1.256-3.459-1.275-1.666-5.328-5.035-6.323-4.172-2.077 1.806-2.01 6.251-.759 9.481.643 1.796 2.196 3.059 4.011 3.059 2.389 0 4.327-2.198 4.327-4.909zm29.137-7.631c-.993-.863-5.046 2.506-6.321 4.172-.775.889-1.257 2.111-1.257 3.459 0 2.711 1.94 4.909 4.327 4.909 1.816 0 3.37-1.263 4.013-3.059 1.248-3.23 1.317-7.675-.762-9.481zm-8.136 15.277c-3.676-1.833-3.562-5.363-4.398-8.584-.665-2.569-3.02-4.469-5.823-4.469-2.743 0-5.057 1.821-5.779 4.312-.895 3.082-.356 6.67-4.363 8.717-3.255 1.061-4.573 2.609-4.573 6.27 0 2.974 2.553 6.158 5.848 6.554 3.676.554 6.544-.17 8.867-1.494 2.323 1.324 5.189 2.047 8.871 1.494 3.293-.396 5.847-3.568 5.847-6.554-.001-3.741-1.235-5.135-4.497-6.246zm-4.337 4.474h-3.811l.005 4h-4.156l.006-4h-4.044v-4h4.045l-.006-4h4.156l-.005 4h3.81v4z" fill="#14133b00" fillRule="EVEN_ODD" scaleX="0.95" scaleY="0.95" stroke="#14133b" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1.0" strokeWidth="2.5" styleClass="button-unfill" />
+                                          <SVGPath content="M18.48 18.875c2.33-.396 4.058-2.518 4.321-5.053.267-2.578.869-12.938-3.02-12.279-10.088 1.711-9.38 18.702-1.301 17.332zm13.273 0c8.077 1.37 8.785-15.621-1.303-17.333-3.888-.659-3.287 9.701-3.021 12.279.264 2.536 1.994 4.658 4.324 5.054zm-17.417 8.005c0-1.348-.481-2.57-1.256-3.459-1.275-1.666-5.328-5.035-6.323-4.172-2.077 1.806-2.01 6.251-.759 9.481.643 1.796 2.196 3.059 4.011 3.059 2.389 0 4.327-2.198 4.327-4.909zm29.137-7.631c-.993-.863-5.046 2.506-6.321 4.172-.775.889-1.257 2.111-1.257 3.459 0 2.711 1.94 4.909 4.327 4.909 1.816 0 3.37-1.263 4.013-3.059 1.248-3.23 1.317-7.675-.762-9.481zm-8.136 15.277c-3.676-1.833-3.562-5.363-4.398-8.584-.665-2.569-3.02-4.469-5.823-4.469-2.743 0-5.057 1.821-5.779 4.312-.895 3.082-.356 6.67-4.363 8.717-3.255 1.061-4.573 2.609-4.573 6.27 0 2.974 2.553 6.158 5.848 6.554 3.676.554 6.544-.17 8.867-1.494 2.323 1.324 5.189 2.047 8.871 1.494 3.293-.396 5.847-3.568 5.847-6.554-.001-3.741-1.235-5.135-4.497-6.246zm-4.337 4.474h-3.811l.005 4h-4.156l.006-4h-4.044v-4h4.045l-.006-4h4.156l-.005 4h3.81v4z" fill="#14133b" fillRule="EVEN_ODD" opacity="0.0" scaleX="0.95" scaleY="0.95" strokeWidth="0.0" styleClass="button-fill" />
+                                       </children>
+                                    </StackPane>
+                                    <Label ellipsisString="" text="Agregar Mascota" textOverrun="CLIP">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </content>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </ScrollPane>
+                        <ScrollPane fx:id="btnUsuario" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="602.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#usuarioEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                           <content>
+                              <HBox alignment="CENTER_LEFT" spacing="45.0">
+                                 <children>
+                                    <StackPane translateX="15.0">
+                                       <children>
+                                          <SVGPath content="M9 14c1.381 0 2.631-.56 3.536-1.465.904-.904 1.464-2.154 1.464-3.535s-.56-2.631-1.464-3.535c-.905-.905-2.155-1.465-3.536-1.465s-2.631.56-3.536 1.465c-.904.904-1.464 2.154-1.464 3.535s.56 2.631 1.464 3.535c.905.905 2.155 1.465 3.536 1.465zM9 21c3.518 0 6-1 6-2 0-2-2.354-4-6-4-3.75 0-6 2-6 4 0 1 2.25 2 6 2zM21 12h-2v-2c0-.553-.447-1-1-1s-1 .447-1 1v2h-2c-.553 0-1 .447-1 1s.447 1 1 1h2v2c0 .553.447 1 1 1s1-.447 1-1v-2h2c.553 0 1-.447 1-1s-.447-1-1-1z" fill="#14133b" opacity="0.0" scaleX="2.2" scaleY="2.2" strokeWidth="0.0" styleClass="button-fill" />
+                                          <SVGPath content="M21 14h-6c-.553 0-1-.448-1-1s.447-1 1-1h6c.553 0 1 .448 1 1s-.447 1-1 1zM18 17c-.553 0-1-.448-1-1v-6c0-.552.447-1 1-1s1 .448 1 1v6c0 .552-.447 1-1 1zM9 6c1.654 0 3 1.346 3 3s-1.346 3-3 3-3-1.346-3-3 1.346-3 3-3m0-2c-2.764 0-5 2.238-5 5s2.236 5 5 5 5-2.238 5-5-2.236-5-5-5zM9 17c2.021 0 3.301.771 3.783 1.445-.683.26-1.969.555-3.783.555-1.984 0-3.206-.305-3.818-.542.459-.715 1.777-1.458 3.818-1.458m0-2c-3.75 0-6 2-6 4 0 1 2.25 2 6 2 3.518 0 6-1 6-2 0-2-2.354-4-6-4z" fill="#14133b" fillRule="EVEN_ODD" scaleX="2.2" scaleY="2.2" stroke="#00abeb" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" styleClass="button-unfill" />
+                                       </children>
+                                    </StackPane>
+                                    <Label ellipsisString="" text="Agregar Usuario" textOverrun="CLIP">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </content>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </ScrollPane>
+                        <ScrollPane fx:id="btnCita" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="506.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#citaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                           <content>
+                              <HBox alignment="CENTER_LEFT" spacing="42.0">
+                                 <children>
+                                    <StackPane translateX="12.0">
+                                       <children>
+                                          <SVGPath content="m0,-4 v5h18v-5z" fill="#14133b" fillRule="EVEN_ODD" opacity="0.0" scaleX="1.8" scaleY="1.8" stroke="#14133b" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1.0" strokeWidth="0.0" styleClass="button-fill" translateY="-10.0" />
+                                          <SVGPath content="M21 10H3M21 12.5V8.8C21 7.11984 21 6.27976 20.673 5.63803C20.3854 5.07354 19.9265 4.6146 19.362 4.32698C18.7202 4 17.8802 4 16.2 4H7.8C6.11984 4 5.27976 4 4.63803 4.32698C4.07354 4.6146 3.6146 5.07354 3.32698 5.63803C3 6.27976 3 7.11984 3 8.8V17.2C3 18.8802 3 19.7202 3.32698 20.362C3.6146 20.9265 4.07354 21.3854 4.63803 21.673C5.27976 22 6.11984 22 7.8 22H12M16 2V6M8 2V6M14.5 19L16.5 21L21 16.5" fill="#14133b00" fillRule="EVEN_ODD" scaleX="1.8" scaleY="1.8" stroke="#14133b" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1.0" strokeWidth="2.5" />
+                                       </children>
+                                    </StackPane>
+                                    <Label ellipsisString="" text="Agendar Cita" textOverrun="CLIP">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </content>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </ScrollPane>
+                        <ScrollPane fx:id="btnFactura" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="408.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="83.0" onMouseClicked="#facturaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                           <content>
+                              <HBox alignment="CENTER_LEFT" spacing="42.0">
+                                 <children>
+                                    <StackPane translateX="12.0">
+                                       <children>
+                                          <SVGPath content="M9.5,10.5H12a1,1,0,0,0,0-2H11V8A1,1,0,0,0,9,8v.55a2.5,2.5,0,0,0,.5,4.95h1a.5.5,0,0,1,0,1H8a1,1,0,0,0,0,2H9V17a1,1,0,0,0,2,0v-.55a2.5,2.5,0,0,0-.5-4.95h-1a.5.5,0,0,1,0-1ZM21,12H18V3a1,1,0,0,0-.5-.87,1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0A1,1,0,0,0,2,3V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V13A1,1,0,0,0,21,12ZM5,20a1,1,0,0,1-1-1V4.73L6,5.87a1.08,1.08,0,0,0,1,0l3-1.72,3,1.72a1.08,1.08,0,0,0,1,0l2-1.14V19a3,3,0,0,0,.18,1Zm15-1a1,1,0,0,1-2,0V14h2Z" fill="#14133b" fillRule="EVEN_ODD" scaleX="2.0" scaleY="2.0" stroke="#00abeb" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" styleClass="button-unfill" />
+                                          <SVGPath content="M9.5,10.5H12a1,1,0,0,0,0-2H11V8A1,1,0,0,0,9,8v.55a2.5,2.5,0,0,0,.5,4.95h1a.5.5,0,0,1,0,1H8a1,1,0,0,0,0,2H9V17a1,1,0,0,0,2,0v-.55a2.5,2.5,0,0,0-.5-4.95h-1a.5.5,0,0,1,0-1ZM21,12H18V3a1,1,0,0,0-.5-.87,1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0A1,1,0,0,0,2,3V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V13A1,1,0,0,0,21,12ZM20,19a1,1,0,0,1-2,0V14h2Z" fill="#14133b" fillRule="EVEN_ODD" opacity="0.0" scaleX="2.0" scaleY="2.0" strokeWidth="0.0" styleClass="button-fill" />
+                                       </children>
+                                    </StackPane>
+                                    <Label ellipsisString="" text="Generar Factura" textOverrun="CLIP">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </content>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </ScrollPane>
+                        <ScrollPane fx:id="btnMas" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="406.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#masEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
+                           <content>
+                              <HBox alignment="CENTER_LEFT" spacing="42.0">
+                                 <children>
+                                    <StackPane translateX="12.0">
+                                       <children>
+                                          <SVGPath content="M2.119,14.085a3.824,3.824,0,0,0,0,5.4A3.744,3.744,0,0,0,3.6,20.4a3.744,3.744,0,0,0,.911,1.482,3.82,3.82,0,0,0,6.272-4.06L12,16.605l1.216,1.216a3.835,3.835,0,0,0,.869,4.06,3.819,3.819,0,0,0,5.4,0A3.742,3.742,0,0,0,20.4,20.4a3.737,3.737,0,0,0,1.482-.911,3.821,3.821,0,0,0-4.061-6.272L16.605,12l1.215-1.216a3.821,3.821,0,0,0,4.061-6.272A3.737,3.737,0,0,0,20.4,3.6a3.73,3.73,0,0,0-.912-1.482,3.911,3.911,0,0,0-5.4,0,3.835,3.835,0,0,0-.869,4.06L12,7.4,10.784,6.179a3.82,3.82,0,0,0-6.272-4.06A3.744,3.744,0,0,0,3.6,3.6a3.744,3.744,0,0,0-1.482.911,3.82,3.82,0,0,0,4.06,6.272L7.4,12,6.179,13.216A3.837,3.837,0,0,0,2.119,14.085Zm16.057,1.183a1.819,1.819,0,1,1,1.256,3.311,1,1,0,0,0-.853.854,1.8,1.8,0,0,1-.506,1.034,1.865,1.865,0,0,1-2.574,0,1.824,1.824,0,0,1-.231-2.29,1,1,0,0,0-.127-1.26l-1.727-1.726,1.777-1.777,1.726,1.727A1,1,0,0,0,18.176,15.268ZM7.083,8.859a1,1,0,0,0-1.26-.126A1.819,1.819,0,1,1,4.568,5.421a1,1,0,0,0,.853-.853A1.816,1.816,0,1,1,8.733,5.823a1,1,0,0,0,.126,1.26l1.727,1.726L8.809,10.586Zm0,6.282,8.058-8.058a1,1,0,0,0,.127-1.26,1.824,1.824,0,0,1,.231-2.29,1.865,1.865,0,0,1,2.574,0,1.8,1.8,0,0,1,.506,1.034,1,1,0,0,0,.853.854,1.816,1.816,0,1,1-1.256,3.311,1,1,0,0,0-1.259.127L8.859,16.917a1,1,0,0,0-.126,1.26,1.819,1.819,0,1,1-3.312,1.255,1,1,0,0,0-.853-.853,1.815,1.815,0,1,1,1.255-3.312A1,1,0,0,0,7.083,15.141Z" fill="#14133b" fillRule="EVEN_ODD" scaleX="1.8" scaleY="1.8" stroke="#00abeb" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" styleClass="button-unfill" />
+                                          <SVGPath content="M21.174,5.219a2.821,2.821,0,0,1-3.55,4.348L9.567,17.624a2.821,2.821,0,0,1-4.348,3.55,2.791,2.791,0,0,1-.788-1.605,2.791,2.791,0,0,1-1.6-.788,2.821,2.821,0,0,1,3.55-4.348l8.057-8.057a2.821,2.821,0,0,1,4.348-3.55,2.791,2.791,0,0,1,.788,1.605A2.791,2.791,0,0,1,21.174,5.219Zm-3.55,9.214-1.019-1.019-3.191,3.191,1.019,1.019a2.821,2.821,0,0,0,4.348,3.55,2.791,2.791,0,0,0,.788-1.605,2.791,2.791,0,0,0,1.605-.788,2.821,2.821,0,0,0-3.55-4.348ZM6.376,9.567,7.4,10.586,10.586,7.4,9.567,6.376a2.821,2.821,0,0,0-4.348-3.55,2.791,2.791,0,0,0-.788,1.605,2.791,2.791,0,0,0-1.6.788,2.821,2.821,0,0,0,3.55,4.348Z" fill="#14133b" fillRule="EVEN_ODD" opacity="0.0" scaleX="1.8" scaleY="1.8" strokeWidth="0.0" styleClass="button-fill" />
+                                       </children>
+                                    </StackPane>
+                                    <Label ellipsisString="" text="Mas Funciones" textOverrun="CLIP">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </content>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </ScrollPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
+               </left>
             </BorderPane>
          </center>
-         <left>
-            <VBox fx:id="menuIzq" alignment="BOTTOM_CENTER" maxHeight="-Infinity" spacing="10.0" styleClass="menu-izq" BorderPane.alignment="CENTER">
-               <children>
-                  <ScrollPane fx:id="btnCasita" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#casitaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
-                     <content>
-                        <HBox alignment="CENTER_LEFT" spacing="40.0">
-                           <children>
-                              <StackPane>
-                                 <children>
-                                    <SVGPath content="M379.79996,578 L376.649968,578 L376.649968,574 L370.349983,574 L370.349983,578 L367.19999,578 L367.19999,568.813 L373.489475,562.823 L379.79996,568.832 L379.79996,578 Z M381.899955,568.004 L381.899955,568 L381.899955,568 L373.502075,560 L363,569.992 L364.481546,571.406 L365.099995,570.813 L365.099995,580 L372.449978,580 L372.449978,576 L374.549973,576 L374.549973,580 L381.899955,580 L381.899955,579.997 L381.899955,570.832 L382.514204,571.416 L384.001,570.002 L381.899955,568.004 Z" fill="#14133b" fillRule="EVEN_ODD" scaleX="2.2" scaleY="2.2" stroke="#14133b" strokeLineCap="BUTT" strokeLineJoin="BEVEL" strokeMiterLimit="1.0" strokeType="OUTSIDE" strokeWidth="0.0" translateX="10.0" />
-                                    <SVGPath content="M 381.9 568.004 L 381.9 568 L 373.502 560 L 363 569.992 L 364.482 571.406 L 365.1 570.813 L 365.1 580 L 372.45 580 L 372.45 576 L 374.55 576 L 374.55 580 L 381.9 580 L 381.9 579.997 L 381.9 570.832 L 382.514 571.416 L 384.001 570.002 L 381.9 568.004 Z" fill="#14133b" fillRule="EVEN_ODD" opacity="0.0" scaleX="2.0" scaleY="2.0" strokeWidth="0.0" styleClass="button-fill" translateX="10.0" />
-                                 </children>
-                              </StackPane>
-                              <Label ellipsisString="" text="Menu Principal" textOverrun="CLIP">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </content>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <padding>
-                        <Insets left="20.0" right="20.0" />
-                     </padding>
-                  </ScrollPane>
-                  <ScrollPane fx:id="btnMascota" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="508.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#mascotaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
-                     <content>
-                        <HBox alignment="CENTER_LEFT" spacing="20.0">
-                           <children>
-                              <StackPane>
-                                 <children>
-                                    <SVGPath content="M18.48 18.875c2.33-.396 4.058-2.518 4.321-5.053.267-2.578.869-12.938-3.02-12.279-10.088 1.711-9.38 18.702-1.301 17.332zm13.273 0c8.077 1.37 8.785-15.621-1.303-17.333-3.888-.659-3.287 9.701-3.021 12.279.264 2.536 1.994 4.658 4.324 5.054zm-17.417 8.005c0-1.348-.481-2.57-1.256-3.459-1.275-1.666-5.328-5.035-6.323-4.172-2.077 1.806-2.01 6.251-.759 9.481.643 1.796 2.196 3.059 4.011 3.059 2.389 0 4.327-2.198 4.327-4.909zm29.137-7.631c-.993-.863-5.046 2.506-6.321 4.172-.775.889-1.257 2.111-1.257 3.459 0 2.711 1.94 4.909 4.327 4.909 1.816 0 3.37-1.263 4.013-3.059 1.248-3.23 1.317-7.675-.762-9.481zm-8.136 15.277c-3.676-1.833-3.562-5.363-4.398-8.584-.665-2.569-3.02-4.469-5.823-4.469-2.743 0-5.057 1.821-5.779 4.312-.895 3.082-.356 6.67-4.363 8.717-3.255 1.061-4.573 2.609-4.573 6.27 0 2.974 2.553 6.158 5.848 6.554 3.676.554 6.544-.17 8.867-1.494 2.323 1.324 5.189 2.047 8.871 1.494 3.293-.396 5.847-3.568 5.847-6.554-.001-3.741-1.235-5.135-4.497-6.246zm-4.337 4.474h-3.811l.005 4h-4.156l.006-4h-4.044v-4h4.045l-.006-4h4.156l-.005 4h3.81v4z" fill="#14133b00" fillRule="EVEN_ODD" scaleX="0.95" scaleY="0.95" stroke="#14133b" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1.0" strokeWidth="2.5" styleClass="button-unfill" />
-                                    <SVGPath content="M18.48 18.875c2.33-.396 4.058-2.518 4.321-5.053.267-2.578.869-12.938-3.02-12.279-10.088 1.711-9.38 18.702-1.301 17.332zm13.273 0c8.077 1.37 8.785-15.621-1.303-17.333-3.888-.659-3.287 9.701-3.021 12.279.264 2.536 1.994 4.658 4.324 5.054zm-17.417 8.005c0-1.348-.481-2.57-1.256-3.459-1.275-1.666-5.328-5.035-6.323-4.172-2.077 1.806-2.01 6.251-.759 9.481.643 1.796 2.196 3.059 4.011 3.059 2.389 0 4.327-2.198 4.327-4.909zm29.137-7.631c-.993-.863-5.046 2.506-6.321 4.172-.775.889-1.257 2.111-1.257 3.459 0 2.711 1.94 4.909 4.327 4.909 1.816 0 3.37-1.263 4.013-3.059 1.248-3.23 1.317-7.675-.762-9.481zm-8.136 15.277c-3.676-1.833-3.562-5.363-4.398-8.584-.665-2.569-3.02-4.469-5.823-4.469-2.743 0-5.057 1.821-5.779 4.312-.895 3.082-.356 6.67-4.363 8.717-3.255 1.061-4.573 2.609-4.573 6.27 0 2.974 2.553 6.158 5.848 6.554 3.676.554 6.544-.17 8.867-1.494 2.323 1.324 5.189 2.047 8.871 1.494 3.293-.396 5.847-3.568 5.847-6.554-.001-3.741-1.235-5.135-4.497-6.246zm-4.337 4.474h-3.811l.005 4h-4.156l.006-4h-4.044v-4h4.045l-.006-4h4.156l-.005 4h3.81v4z" fill="#14133b" fillRule="EVEN_ODD" opacity="0.0" scaleX="0.95" scaleY="0.95" strokeWidth="0.0" styleClass="button-fill" />
-                                 </children>
-                              </StackPane>
-                              <Label ellipsisString="" text="Agregar Mascota" textOverrun="CLIP">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </content>
-                     <padding>
-                        <Insets left="20.0" right="20.0" />
-                     </padding>
-                  </ScrollPane>
-                  <ScrollPane fx:id="btnUsuario" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="602.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#usuarioEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
-                     <content>
-                        <HBox alignment="CENTER_LEFT" spacing="45.0">
-                           <children>
-                              <StackPane translateX="15.0">
-                                 <children>
-                                    <SVGPath content="M9 14c1.381 0 2.631-.56 3.536-1.465.904-.904 1.464-2.154 1.464-3.535s-.56-2.631-1.464-3.535c-.905-.905-2.155-1.465-3.536-1.465s-2.631.56-3.536 1.465c-.904.904-1.464 2.154-1.464 3.535s.56 2.631 1.464 3.535c.905.905 2.155 1.465 3.536 1.465zM9 21c3.518 0 6-1 6-2 0-2-2.354-4-6-4-3.75 0-6 2-6 4 0 1 2.25 2 6 2zM21 12h-2v-2c0-.553-.447-1-1-1s-1 .447-1 1v2h-2c-.553 0-1 .447-1 1s.447 1 1 1h2v2c0 .553.447 1 1 1s1-.447 1-1v-2h2c.553 0 1-.447 1-1s-.447-1-1-1z" fill="#14133b" opacity="0.0" scaleX="2.2" scaleY="2.2" strokeWidth="0.0" styleClass="button-fill" />
-                                    <SVGPath content="M21 14h-6c-.553 0-1-.448-1-1s.447-1 1-1h6c.553 0 1 .448 1 1s-.447 1-1 1zM18 17c-.553 0-1-.448-1-1v-6c0-.552.447-1 1-1s1 .448 1 1v6c0 .552-.447 1-1 1zM9 6c1.654 0 3 1.346 3 3s-1.346 3-3 3-3-1.346-3-3 1.346-3 3-3m0-2c-2.764 0-5 2.238-5 5s2.236 5 5 5 5-2.238 5-5-2.236-5-5-5zM9 17c2.021 0 3.301.771 3.783 1.445-.683.26-1.969.555-3.783.555-1.984 0-3.206-.305-3.818-.542.459-.715 1.777-1.458 3.818-1.458m0-2c-3.75 0-6 2-6 4 0 1 2.25 2 6 2 3.518 0 6-1 6-2 0-2-2.354-4-6-4z" fill="#14133b" fillRule="EVEN_ODD" scaleX="2.2" scaleY="2.2" stroke="#00abeb" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" styleClass="button-unfill" />
-                                 </children>
-                              </StackPane>
-                              <Label ellipsisString="" text="Agregar Usuario" textOverrun="CLIP">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </content>
-                     <padding>
-                        <Insets left="20.0" right="20.0" />
-                     </padding>
-                  </ScrollPane>
-                  <ScrollPane fx:id="btnCita" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="506.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#citaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
-                     <content>
-                        <HBox alignment="CENTER_LEFT" spacing="42.0">
-                           <children>
-                              <StackPane translateX="12.0">
-                                 <children>
-                                    <SVGPath content="m0,-4 v5h18v-5z" fill="#14133b" fillRule="EVEN_ODD" opacity="0.0" scaleX="1.8" scaleY="1.8" stroke="#14133b" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1.0" strokeWidth="0.0" styleClass="button-fill" translateY="-10.0" />
-                                    <SVGPath content="M21 10H3M21 12.5V8.8C21 7.11984 21 6.27976 20.673 5.63803C20.3854 5.07354 19.9265 4.6146 19.362 4.32698C18.7202 4 17.8802 4 16.2 4H7.8C6.11984 4 5.27976 4 4.63803 4.32698C4.07354 4.6146 3.6146 5.07354 3.32698 5.63803C3 6.27976 3 7.11984 3 8.8V17.2C3 18.8802 3 19.7202 3.32698 20.362C3.6146 20.9265 4.07354 21.3854 4.63803 21.673C5.27976 22 6.11984 22 7.8 22H12M16 2V6M8 2V6M14.5 19L16.5 21L21 16.5" fill="#14133b00" fillRule="EVEN_ODD" scaleX="1.8" scaleY="1.8" stroke="#14133b" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1.0" strokeWidth="2.5" />
-                                 </children>
-                              </StackPane>
-                              <Label ellipsisString="" text="Agendar Cita" textOverrun="CLIP">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </content>
-                     <padding>
-                        <Insets left="20.0" right="20.0" />
-                     </padding>
-                  </ScrollPane>
-                  <ScrollPane fx:id="btnFactura" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="408.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="83.0" onMouseClicked="#facturaEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
-                     <content>
-                        <HBox alignment="CENTER_LEFT" spacing="42.0">
-                           <children>
-                              <StackPane translateX="12.0">
-                                 <children>
-                                    <SVGPath content="M9.5,10.5H12a1,1,0,0,0,0-2H11V8A1,1,0,0,0,9,8v.55a2.5,2.5,0,0,0,.5,4.95h1a.5.5,0,0,1,0,1H8a1,1,0,0,0,0,2H9V17a1,1,0,0,0,2,0v-.55a2.5,2.5,0,0,0-.5-4.95h-1a.5.5,0,0,1,0-1ZM21,12H18V3a1,1,0,0,0-.5-.87,1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0A1,1,0,0,0,2,3V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V13A1,1,0,0,0,21,12ZM5,20a1,1,0,0,1-1-1V4.73L6,5.87a1.08,1.08,0,0,0,1,0l3-1.72,3,1.72a1.08,1.08,0,0,0,1,0l2-1.14V19a3,3,0,0,0,.18,1Zm15-1a1,1,0,0,1-2,0V14h2Z" fill="#14133b" fillRule="EVEN_ODD" scaleX="2.0" scaleY="2.0" stroke="#00abeb" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" styleClass="button-unfill" />
-                                    <SVGPath content="M9.5,10.5H12a1,1,0,0,0,0-2H11V8A1,1,0,0,0,9,8v.55a2.5,2.5,0,0,0,.5,4.95h1a.5.5,0,0,1,0,1H8a1,1,0,0,0,0,2H9V17a1,1,0,0,0,2,0v-.55a2.5,2.5,0,0,0-.5-4.95h-1a.5.5,0,0,1,0-1ZM21,12H18V3a1,1,0,0,0-.5-.87,1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0l-3,1.72-3-1.72a1,1,0,0,0-1,0A1,1,0,0,0,2,3V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V13A1,1,0,0,0,21,12ZM20,19a1,1,0,0,1-2,0V14h2Z" fill="#14133b" fillRule="EVEN_ODD" opacity="0.0" scaleX="2.0" scaleY="2.0" strokeWidth="0.0" styleClass="button-fill" />
-                                 </children>
-                              </StackPane>
-                              <Label ellipsisString="" text="Generar Factura" textOverrun="CLIP">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </content>
-                     <padding>
-                        <Insets left="20.0" right="20.0" />
-                     </padding>
-                  </ScrollPane>
-                  <ScrollPane fx:id="btnMas" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="406.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="84.0" minWidth="84.0" onMouseClicked="#masEvent" onMouseEntered="#eventoEnteredMenuAnimacion" onMouseExited="#eventoExitedMenuAnimacion" onMousePressed="#eventoPressedMenuAnimacion" onMouseReleased="#eventoReleasedMenuAnimacion" prefHeight="0.0" prefWidth="0.0" styleClass="menu-button" vbarPolicy="NEVER">
-                     <content>
-                        <HBox alignment="CENTER_LEFT" spacing="42.0">
-                           <children>
-                              <StackPane translateX="12.0">
-                                 <children>
-                                    <SVGPath content="M2.119,14.085a3.824,3.824,0,0,0,0,5.4A3.744,3.744,0,0,0,3.6,20.4a3.744,3.744,0,0,0,.911,1.482,3.82,3.82,0,0,0,6.272-4.06L12,16.605l1.216,1.216a3.835,3.835,0,0,0,.869,4.06,3.819,3.819,0,0,0,5.4,0A3.742,3.742,0,0,0,20.4,20.4a3.737,3.737,0,0,0,1.482-.911,3.821,3.821,0,0,0-4.061-6.272L16.605,12l1.215-1.216a3.821,3.821,0,0,0,4.061-6.272A3.737,3.737,0,0,0,20.4,3.6a3.73,3.73,0,0,0-.912-1.482,3.911,3.911,0,0,0-5.4,0,3.835,3.835,0,0,0-.869,4.06L12,7.4,10.784,6.179a3.82,3.82,0,0,0-6.272-4.06A3.744,3.744,0,0,0,3.6,3.6a3.744,3.744,0,0,0-1.482.911,3.82,3.82,0,0,0,4.06,6.272L7.4,12,6.179,13.216A3.837,3.837,0,0,0,2.119,14.085Zm16.057,1.183a1.819,1.819,0,1,1,1.256,3.311,1,1,0,0,0-.853.854,1.8,1.8,0,0,1-.506,1.034,1.865,1.865,0,0,1-2.574,0,1.824,1.824,0,0,1-.231-2.29,1,1,0,0,0-.127-1.26l-1.727-1.726,1.777-1.777,1.726,1.727A1,1,0,0,0,18.176,15.268ZM7.083,8.859a1,1,0,0,0-1.26-.126A1.819,1.819,0,1,1,4.568,5.421a1,1,0,0,0,.853-.853A1.816,1.816,0,1,1,8.733,5.823a1,1,0,0,0,.126,1.26l1.727,1.726L8.809,10.586Zm0,6.282,8.058-8.058a1,1,0,0,0,.127-1.26,1.824,1.824,0,0,1,.231-2.29,1.865,1.865,0,0,1,2.574,0,1.8,1.8,0,0,1,.506,1.034,1,1,0,0,0,.853.854,1.816,1.816,0,1,1-1.256,3.311,1,1,0,0,0-1.259.127L8.859,16.917a1,1,0,0,0-.126,1.26,1.819,1.819,0,1,1-3.312,1.255,1,1,0,0,0-.853-.853,1.815,1.815,0,1,1,1.255-3.312A1,1,0,0,0,7.083,15.141Z" fill="#14133b" fillRule="EVEN_ODD" scaleX="1.8" scaleY="1.8" stroke="#00abeb" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" styleClass="button-unfill" />
-                                    <SVGPath content="M21.174,5.219a2.821,2.821,0,0,1-3.55,4.348L9.567,17.624a2.821,2.821,0,0,1-4.348,3.55,2.791,2.791,0,0,1-.788-1.605,2.791,2.791,0,0,1-1.6-.788,2.821,2.821,0,0,1,3.55-4.348l8.057-8.057a2.821,2.821,0,0,1,4.348-3.55,2.791,2.791,0,0,1,.788,1.605A2.791,2.791,0,0,1,21.174,5.219Zm-3.55,9.214-1.019-1.019-3.191,3.191,1.019,1.019a2.821,2.821,0,0,0,4.348,3.55,2.791,2.791,0,0,0,.788-1.605,2.791,2.791,0,0,0,1.605-.788,2.821,2.821,0,0,0-3.55-4.348ZM6.376,9.567,7.4,10.586,10.586,7.4,9.567,6.376a2.821,2.821,0,0,0-4.348-3.55,2.791,2.791,0,0,0-.788,1.605,2.791,2.791,0,0,0-1.6.788,2.821,2.821,0,0,0,3.55,4.348Z" fill="#14133b" fillRule="EVEN_ODD" opacity="0.0" scaleX="1.8" scaleY="1.8" strokeWidth="0.0" styleClass="button-fill" />
-                                 </children>
-                              </StackPane>
-                              <Label ellipsisString="" text="Mas Funciones" textOverrun="CLIP">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </content>
-                     <padding>
-                        <Insets left="20.0" right="20.0" />
-                     </padding>
-                  </ScrollPane>
-               </children>
-               <padding>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-               </padding>
-            </VBox>
-         </left>
       </BorderPane>
-   </center>
-</BorderPane>
+      <VBox alignment="TOP_RIGHT" pickOnBounds="false" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <BorderPane pickOnBounds="false" prefHeight="101.0" prefWidth="1000.0" style="-fx-background-color: #00000000;" visible="false" />
+            <StackPane fx:id="btnCerrarSesion" maxHeight="0.0" maxWidth="200.0" minHeight="0.0" minWidth="0.0" onMouseClicked="#cerrarSesionEvent" prefHeight="70.0" prefWidth="200.0" style="-fx-background-radius: 50;" styleClass="despliegue-perfil">
+               <children>
+                  <Label minHeight="0.0" minWidth="0.0" text="Cerrar Sesión" textAlignment="CENTER" textFill="#14133b" StackPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </Label>
+               </children>
+            </StackPane>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

@@ -4,26 +4,21 @@ import static co.edu.uniquindio.clinicaVeterinaria.application.App.loadFXML;
 
 import java.util.HashMap;
 
+import co.edu.uniquindio.clinicaVeterinaria.controllers.Menucontroller;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.EscenaNotFoundException;
 import co.edu.uniquindio.clinicaVeterinaria.services.PestanasMenu;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import one.jpro.routing.View;
 
 public class VistaMenu extends View {
 	private HashMap<PestanasMenu, Parent> escenas = new HashMap<>();
 	private PestanasMenu pestanaActual = PestanasMenu.INICIO;
-	private BorderPane menuNode;
-	private ImageView imgLogo;
+	private Parent menuNode;
 
 	public VistaMenu() {
-		menuNode = (BorderPane) loadFXML("menu");
-		imgLogo = (ImageView) ((HBox) ((BorderPane) ((BorderPane) menuNode.getCenter()).getCenter()).getCenter())
-				.getChildren().get(0);
+		menuNode = loadFXML("menu");
 	}
 
 	@Override
@@ -65,14 +60,13 @@ public class VistaMenu extends View {
 	}
 
 	private void cambiarEscenaEx(PestanasMenu escena) throws EscenaNotFoundException {
-		Parent escenaEncontrada = escenas.getOrDefault(escena, null);
+		Parent escenaEncontrada = escenas.get(escena);
 		if (escenaEncontrada == null)
 			throw new EscenaNotFoundException("La escena seleccionada no fue encontrada");
 		if (escena == PestanasMenu.INICIO) {
-			((BorderPane) ((BorderPane) menuNode.getCenter()).getCenter()).setCenter(imgLogo);
+			Platform.runLater(() -> Menucontroller.getInstance().goToInicio());
 			return;
 		}
-		Platform.runLater(
-				() -> ((BorderPane) ((BorderPane) menuNode.getCenter()).getCenter()).setCenter(escenaEncontrada));
+		Platform.runLater(() -> Menucontroller.getInstance().setCenter(escenaEncontrada));
 	}
 }
