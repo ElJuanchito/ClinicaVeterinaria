@@ -9,7 +9,7 @@
 
 <VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/moreFunc.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.MasFuncionesController">
    <children>
-      <HBox alignment="CENTER" onMouseClicked="#verHistorialEvent" prefHeight="39.0" prefWidth="229.0" spacing="20.0" styleClass="boton">
+      <HBox fx:id="btnHistorialClinico" alignment="CENTER" onMouseClicked="#verHistorialClinicoEvent" prefHeight="39.0" prefWidth="229.0" spacing="20.0" styleClass="boton">
          <children>
             <StackPane scaleX="1.2" scaleY="1.2">
                <children>
