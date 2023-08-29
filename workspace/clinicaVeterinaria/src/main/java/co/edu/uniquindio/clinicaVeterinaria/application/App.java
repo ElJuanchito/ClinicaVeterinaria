@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
 import one.jpro.routing.Route;
 import one.jpro.routing.RouteApp;
 
@@ -81,7 +82,14 @@ public class App extends RouteApp {
 				.and(get("/mascota", r -> menuPrincipal.cambiarPestana(PestanasMenu.MASCOTA)))
 				.and(get("/cita", r -> menuPrincipal.cambiarPestana(PestanasMenu.CITA)))
 				.and(get("/factura", r -> menuPrincipal.cambiarPestana(PestanasMenu.FACTURA)))
-				.and(get("/mas", r -> menuPrincipal.cambiarPestana(PestanasMenu.MORE)));
+				.and(get("/histoial", r -> menuPrincipal.cambiarPestana(PestanasMenu.FACTURA)))
+				.and(get("/mas", r -> menuPrincipal.cambiarPestana(PestanasMenu.MORE)))
+				.and(get("/historialCitas", r -> menuPrincipal.cambiarPestana(PestanasMenu.HCITAS)))
+				.and(get("/historialClinico", r -> menuPrincipal.cambiarPestana(PestanasMenu.HCLINICO)));
+	}
+	
+	public void cargarFont() {
+		Font.loadFont(getClass().getResource("/co/edu/uniquindio/clinicaVeterinaria/sources/fonts/Rubik-SemiBold.ttf").toExternalForm(), 600);
 	}
 
 }

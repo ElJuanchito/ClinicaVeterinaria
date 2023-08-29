@@ -31,7 +31,8 @@ public class TestVentanas extends Application {
 	
 	private static Parent loadFXML(String fxml) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(
-				App.class.getResource("/co/edu/uniquindio/clinicaVeterinaria/view/" + fxml + ".fxml"));
+				TestVentanas.class.getResource("/co/edu/uniquindio/clinicaVeterinaria/view/" + fxml + ".fxml"));
+		System.out.println(fxmlLoader.getLocation());
 		return fxmlLoader.load();
 	}
 
