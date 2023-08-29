@@ -8,7 +8,15 @@ import one.jpro.routing.LinkUtil;
 public class MasFuncionesController {
 
 	@FXML
+	private HBox btnHistorialCitas;
+
+	@FXML
 	private HBox btnHistorialClinico;
+
+	@FXML
+	void verHistorialCitasEvent(MouseEvent event) {
+		verHistorialCitasAction();
+	}
 
 	@FXML
 	void verHistorialClinicoEvent(MouseEvent event) {
@@ -17,5 +25,10 @@ public class MasFuncionesController {
 
 	private void verHistorialClinicoAction() {
 		LinkUtil.gotoPage(btnHistorialClinico, "/historialClinico");
+	}
+	
+	private void verHistorialCitasAction() {
+		LinkUtil.gotoPage(btnHistorialClinico, "/historialCitas");
+
 	}
 }

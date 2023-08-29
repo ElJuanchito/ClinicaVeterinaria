@@ -36,8 +36,8 @@
       </GridPane>
       <TableView fx:id="tblCliente" prefHeight="217.0" stylesheets="@../styles/tableStyle.css">
         <columns>
-          <TableColumn fx:id="colCedulaCliente" minWidth="50.0" prefWidth="-1.0" text="Cedula" />
-          <TableColumn fx:id="colNombreCliente" minWidth="50.0" prefWidth="-1.0" text="Nombre" />
+          <TableColumn fx:id="colCedulaCliente" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Cedula" />
+          <TableColumn fx:id="colNombreCliente" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Nombre" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

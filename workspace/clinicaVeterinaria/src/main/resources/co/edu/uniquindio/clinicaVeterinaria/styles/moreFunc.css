@@ -14,6 +14,9 @@
 .boton:hover .hour {
 	-fx-stroke: white;
 }
+.boton:hover .calendar {
+	-fx-stroke: white;
+}
 .boton:hover .clock {
 	-fx-fill: white;
 }
