@@ -31,10 +31,6 @@
 
 }
 
-.columna-tabla>.label {
-	-fx-text-fill: white;
-}
-
 .table-view .cell {
 	-fx-text-fill: #14133b;
 }
