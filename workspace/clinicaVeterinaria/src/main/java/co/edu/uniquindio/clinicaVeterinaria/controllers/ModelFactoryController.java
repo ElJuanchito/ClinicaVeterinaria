@@ -1,6 +1,9 @@
 package co.edu.uniquindio.clinicaVeterinaria.controllers;
 
+import java.util.List;
+
 import co.edu.uniquindio.clinicaVeterinaria.dao.ClinicaDao;
+import co.edu.uniquindio.clinicaVeterinaria.model.Cliente;
 import co.edu.uniquindio.clinicaVeterinaria.model.Clinica;
 import co.edu.uniquindio.clinicaVeterinaria.model.Veterinario;
 import javafx.beans.property.SimpleObjectProperty;
@@ -83,5 +86,9 @@ public class ModelFactoryController {
 	public SimpleObjectProperty<Image> getVeterinarioFotoProp() {
 		getVeterinario();
 		return propImgVeterinario;
+	}
+	
+	public List<Cliente> filtrarClienteCedu(String cad) {
+		return getClinica().filtrarClienteCedu(cad);
 	}
 }

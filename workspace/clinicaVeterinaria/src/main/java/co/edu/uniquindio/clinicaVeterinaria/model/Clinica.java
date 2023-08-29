@@ -531,4 +531,14 @@ public class Clinica implements Serializable {
 	public List<Veterinario> getListaVeterinarios() {
 		return Arrays.asList(veterinarios);
 	}
+	
+	
+	/**
+	 *  Retorna una lista filtrada con el parametro ingresado (empieza por)
+	 * @param cedula
+	 * @return
+	 */
+	public List<Cliente> filtrarClienteCedu(String cedula) {
+		return getListClientes().stream().filter(c -> c.cedulaEmpiezaPor(cedula)).collect(Collectors.toList());
+	}
 }

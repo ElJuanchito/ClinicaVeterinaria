@@ -10,13 +10,20 @@ import co.edu.uniquindio.clinicaVeterinaria.model.Mascota;
 import co.edu.uniquindio.clinicaVeterinaria.model.Sexo;
 import co.edu.uniquindio.clinicaVeterinaria.model.Tipo;
 import co.edu.uniquindio.clinicaVeterinaria.utils.FxUtility;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.value.ChangeListener;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.SelectionModel;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 
 public class RegistroMascotaController {
 
@@ -26,27 +33,38 @@ public class RegistroMascotaController {
 	@FXML
 	private URL location;
 
-	@FXML
-	private TextField txtNombre;
+    @FXML
+    private TableView<Cliente> tblCliente;
 
-	@FXML
-	private ComboBox<Sexo> cbSexo;
+    @FXML
+    private TableColumn<Cliente, String> colNombreCliente;
 
-	@FXML
-	private TextField txtRaza;
+    @FXML
+    private TextField txtNombre;
 
-	@FXML
-	private TextField txtEdad;
+    @FXML
+    private ComboBox<Sexo> cbSexo;
 
-	@FXML
-	private TextField txtCedula;
+    @FXML
+    private TextField txtRaza;
 
-	@FXML
-	private Button btnRegistrar;
+    @FXML
+    private TextField txtEdad;
 
-	@FXML
-	private ComboBox<Tipo> cbTipo;
+    @FXML
+    private GridPane gridMascota;
 
+    @FXML
+    private TableColumn<Cliente, String> colCedulaCliente;
+
+    @FXML
+    private TextField txtCedula;
+
+    @FXML
+    private Button btnRegistrar;
+
+    @FXML
+    private ComboBox<Tipo> cbTipo;
 	@FXML
 	void initialize() {
 		ModelFactoryController.getInstance().loadData();
@@ -54,6 +72,22 @@ public class RegistroMascotaController {
 		cbTipo.getItems().addAll(Tipo.values());
 		FxUtility.setAsIntegerTextfield(txtEdad);
 		FxUtility.setAsIntegerTextfield(txtCedula);
+		
+		txtCedula.textProperty().addListener((observable, oldValue, newValue) -> {
+			tblCliente.setItems(FXCollections
+					.observableArrayList(ModelFactoryController.getInstance().filtrarClienteCedu(newValue)));
+			tblCliente.refresh();
+		});
+		colCedulaCliente.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getCedula()));
+		colNombreCliente.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getNombre()));
+		
+		tblCliente.getSelectionModel().selectedItemProperty().addListener( (observable, oldValue, newValue) -> {
+
+			
+			gridMascota.setDisable( newValue== null);
+			
+		
+		});
 	}
 
 	@FXML

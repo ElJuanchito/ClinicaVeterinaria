@@ -182,5 +182,14 @@ public class Cliente extends Persona {
 	public List<Mascota> getListaMascotas() {
 		return new ArrayList<Mascota>(mascotas.values());
 	}
+	
+	/**
+	 * Determina si la cedula empieza por una cadena
+	 * @param cadena
+	 * @return
+	 */
+	public boolean cedulaEmpiezaPor(String cadena) {
+		return this.cedula.startsWith(cadena);
+	}
 
 }
