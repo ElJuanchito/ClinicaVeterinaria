@@ -1,12 +1,16 @@
 package co.edu.uniquindio.clinicaVeterinaria.controllers;
 
+import static one.jpro.routing.LinkUtil.gotoPage;
+
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
+import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
@@ -16,10 +20,14 @@ import javafx.beans.binding.StringExpression;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -27,13 +35,20 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
-import one.jpro.routing.LinkUtil;
 
 public class Menucontroller {
 
 	private boolean estaPerfilDesplegado = false;
 	private boolean estaMenuDesplegado = false;
-	private RotateTransition animacionRotarPerfil;
+	private ParallelTransition animacionPerfil;
+	private static Menucontroller instance;
+
+	public Menucontroller() {
+		instance = this;
+	}
+
+	@FXML
+	private HBox menuDesplegable;
 
 	@FXML
 	private ImageView imgLogo;
@@ -69,6 +84,11 @@ public class Menucontroller {
 
 	@FXML
 	private SVGPath trianguloDesplieguePerfil;
+	@FXML
+	private BorderPane centerPane;
+
+	@FXML
+	private StackPane btnCerrarSesion;
 
 	@FXML
 	void casitaEvent(MouseEvent event) {
@@ -101,27 +121,27 @@ public class Menucontroller {
 	}
 
 	private void casitaAction() {
-		LinkUtil.gotoPage(btnCasita, "/inicio");
+		gotoPage(btnCasita, "/inicio");
 	}
 
 	private void mascotaAction() {
-		LinkUtil.gotoPage(btnMascota, "/mascota");
+		gotoPage(btnMascota, "/mascota");
 	}
 
 	private void usuarioAction() {
-		LinkUtil.gotoPage(btnUsuario, "/cliente");
+		gotoPage(btnUsuario, "/cliente");
 	}
 
 	private void citaAction() {
-		LinkUtil.gotoPage(btnCita, "/cita");
+		gotoPage(btnCita, "/cita");
 	}
 
 	private void facturaAction() {
-		LinkUtil.gotoPage(btnFactura, "/factura");
+		gotoPage(btnFactura, "/factura");
 	}
 
 	private void masAction() {
-		LinkUtil.gotoPage(btnMas, "/mas");
+		gotoPage(btnMas, "/mas");
 	}
 
 	@FXML
@@ -155,11 +175,37 @@ public class Menucontroller {
 	}
 
 	@FXML
+	void cerrarSesionEvent(MouseEvent event) {
+		cerrarSesionAction();
+	}
+
+	@FXML
 	void initialize() {
-		animacionRotarPerfil = new RotateTransition(Duration.millis(100), trianguloDesplieguePerfil);
+
+		RotateTransition animacionRotarPerfil = new RotateTransition(Duration.millis(100), trianguloDesplieguePerfil);
+		FadeTransition animacionBtn = new FadeTransition(Duration.millis(100), btnCerrarSesion);
+		Timeline timeline = new Timeline();
+		timeline.getKeyFrames()
+				.add(new KeyFrame(Duration.millis(0), new KeyValue(btnCerrarSesion.maxHeightProperty(), 0)));
+		timeline.getKeyFrames()
+				.add(new KeyFrame(Duration.millis(100), new KeyValue(btnCerrarSesion.maxHeightProperty(), 70)));
+		animacionPerfil = new ParallelTransition(animacionRotarPerfil, animacionBtn, timeline);
+
+		animacionRotarPerfil.setFromAngle(0);
+		animacionRotarPerfil.setToAngle(180);
+		animacionBtn.setFromValue(0);
+		animacionBtn.setToValue(1);
+
 		ModelFactoryController.getInstance().getVeterinarioFotoProp()
 				.addListener((observable, old, newImage) -> imgCircle.setFill(new ImagePattern(newImage)));
 		crearAnimacionCentro();
+	}
+
+	private void cerrarSesionAction() {
+		Platform.runLater(() -> {
+			desplegarPerfilAction();
+			gotoPage(menuDesplegable, "/login");
+		});
 	}
 
 	private void crearAnimacionCentro() {
@@ -176,7 +222,7 @@ public class Menucontroller {
 		anim.setInterpolator(interpolator);
 		anim.setAutoReverse(true);
 		anim.setCycleCount(-1);
-		Platform.runLater(() -> anim.play());
+		Platform.runLater(anim::play);
 	}
 
 	private void ejecutarAnimacionBotonCircular(MouseEvent event, double endValue) {
@@ -211,20 +257,20 @@ public class Menucontroller {
 	}
 
 	private void desplegarPerfilAction() {
+		animarPerfil();
 		estaPerfilDesplegado = !estaPerfilDesplegado;
-		animarTriangulo();
-		// TODO desplegar barra
-		// TODO desplegar barra
-		// TODO desplegar barra
-		// TODO desplegar barra
-		// TODO desplegar barra
-
 	}
 
-	private void animarTriangulo() {
-		animacionRotarPerfil.setFromAngle(estaPerfilDesplegado ? 0 : 180);
-		animacionRotarPerfil.setToAngle(estaPerfilDesplegado ? 180 : 0);
-		animacionRotarPerfil.play();
+	private void animarPerfil() {
+		if (estaPerfilDesplegado) {
+			animacionPerfil.jumpTo(Duration.millis(100));
+			animacionPerfil.setRate(-1);
+			animacionPerfil.play();
+		} else {
+			animacionPerfil.jumpTo(Duration.ZERO);
+			animacionPerfil.setRate(1);
+			animacionPerfil.play();
+		}
 	}
 
 	private void desplegarMenuAction() {
@@ -232,8 +278,19 @@ public class Menucontroller {
 		ejecutarAnimacionMenu();
 	}
 
-	private void ejecutarAnimacionMenu() {
+	public static Menucontroller getInstance() {
+		return instance;
+	}
 
+	public void setCenter(Node node) {
+		centerPane.setCenter(node);
+	}
+
+	public void goToInicio() {
+		centerPane.setCenter(imgLogo);
+	}
+
+	private void ejecutarAnimacionMenu() {
 		List<KeyValue> keyValues = menuIzq.getChildren().stream()
 				.filter(nodo -> nodo.getClass().equals(ScrollPane.class))
 				.map(node -> new KeyValue(((ScrollPane) node).minWidthProperty(), estaMenuDesplegado ? 250 : 84))

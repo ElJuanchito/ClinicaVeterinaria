@@ -4,6 +4,9 @@
 .imagen-perfil {
 	-fx-fill: col-despliegue;
 }
+.despliegue-perfil .label {
+	-fx-font-size: 20;
+}
 .despliegue-perfil {
 	-fx-background-color: col-despliegue;
 }
