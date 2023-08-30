@@ -543,7 +543,17 @@ public class Clinica implements Serializable {
 	 * @throws ClienteNoExistenteException
 	 * @author ElJuancho
 	 */
-	public List<Mascota> filtrarMascotaPorCliente(String cedula, String nombre) throws ClienteNoExistenteException{
+	public List<Mascota> filtrarMascotaPorCliente(String cedula, String nombre) throws ClienteNoExistenteException {
 		return buscarCliente(cedula).getListaMascotas().stream().filter(m -> m.nombreEmpiezaPor(nombre)).collect(Collectors.toList());
+	}
+
+	/**
+	 * Filtra las citas que existen por las que empiezan por una cedula establecida
+	 * 
+	 * @param cedula
+	 * @return
+	 */
+	public List<AtencionVeterinaria> filtrarCitaPorCedula(String cedula) {
+		return getListaCitas().stream().filter(c -> c.cedulaEmpiezaPor(cedula)).collect(Collectors.toList());
 	}
 }

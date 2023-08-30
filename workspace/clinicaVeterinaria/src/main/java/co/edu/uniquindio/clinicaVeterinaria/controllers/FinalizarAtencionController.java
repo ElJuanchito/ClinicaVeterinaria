@@ -1,9 +1,7 @@
 package co.edu.uniquindio.clinicaVeterinaria.controllers;
 
-import java.net.URL;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.clinicaVeterinaria.exceptions.FacturaYaExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.model.AtencionVeterinaria;
 import co.edu.uniquindio.clinicaVeterinaria.model.Estado;
 import co.edu.uniquindio.clinicaVeterinaria.model.Factura;
@@ -15,8 +13,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -116,25 +112,21 @@ public class FinalizarAtencionController {
 
 	private void finalizarAction() {
 		if (!verificarCampos()) {
-			new Alert(AlertType.ERROR, "Llene todos los campos").show();
+			Menucontroller.getInstance().crearAlerta("Llene todos los campos");
 			return;
 		}
-		if(cbEstado.getValue() != Estado.CREADA){
-			new Alert(AlertType.ERROR, "Debe cambiar el estado de la cita").show();
+		if (cbEstado.getValue() != Estado.CREADA) {
+			Menucontroller.getInstance().crearAlerta("Debe cambiar el estado de la cita");
 			return;
 		}
 		Factura factura = new Factura(Double.valueOf(txtCosto.getText().trim()), citaSelecciona.getFecha(),
 				txtDiagnostico.getText().trim(), txtTratamiento.getText().trim(),
 				citaSelecciona.getMascota().getDueno(), citaSelecciona);
 		Platform.runLater(() -> new GeneracionPdf(factura).ejecutarImpresion());
-		try {
-			ModelFactoryController.getInstance().getClinica().agregarFactura(factura);
-			ModelFactoryController.getInstance().saveData();
-			new Alert(AlertType.CONFIRMATION, "Factura creada con exito").show();
-			vaciarCampos();
-		} catch (FacturaYaExistenteException e) {
-			new Alert(AlertType.ERROR, e.getMessage()).show();
-		}
+		ModelFactoryController.getInstance().getClinica().agregarFactura(factura);
+		ModelFactoryController.getInstance().saveData();
+		Menucontroller.getInstance().crearAlerta("Factura creada con exito");
+		vaciarCampos();
 	}
 
 	private void seleccionarAction() {
@@ -152,7 +144,7 @@ public class FinalizarAtencionController {
 	private void actualizarTabla() {
 		
 		listaObservable = FXCollections
-				.observableList(ModelFactoryController.getInstance().getClinica().getListaCitas());
+				.observableList(ModelFactoryController.getInstance().getClinica().filtrarCitaPorCedula(txtCedula.getText()));
 		tblCitas.setItems(listaObservable);
 		colCodigo.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getCodigo().toString()));
 		colCedula.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getMascota().getDueno().getCedula().toString()));
