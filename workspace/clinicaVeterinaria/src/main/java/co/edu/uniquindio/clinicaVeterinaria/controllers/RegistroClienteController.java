@@ -8,8 +8,6 @@ import co.edu.uniquindio.clinicaVeterinaria.model.Cliente;
 import co.edu.uniquindio.clinicaVeterinaria.utils.FxUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -42,8 +40,10 @@ public class RegistroClienteController {
 	@FXML
 	void initialize() {
 		ModelFactoryController.getInstance().loadData();
-		FxUtility.setAsIntegerTextfield(txtTelefono);
-		FxUtility.setAsIntegerTextfield(txtCedula);
+		FxUtility.setAsNumberTextfield(txtTelefono);
+		FxUtility.setAsNumberTextfield(txtCedula);
+		FxUtility.setMaximumTextSize(txtTelefono, 10, "El maximo de caracteres debe de ser 10");
+		FxUtility.setMaximumTextSize(txtCedula, 10, "El maximo de caracteres debe de ser 10");
 	}
 
 	@FXML
@@ -53,7 +53,7 @@ public class RegistroClienteController {
 
 	private void registrarAction() {
 		if (!verificarCampos()) {
-			new Alert(AlertType.WARNING, "Llene todos los campos antes de enviar").show();
+			Menucontroller.getInstance().crearAlerta("Llene todos los campos antes de enviar");
 			return;
 		}
 		try {
@@ -61,10 +61,10 @@ public class RegistroClienteController {
 					.agregarCliente(new Cliente(txtNombre.getText().trim(), txtCorreo.getText().trim(),
 							txtTelefono.getText().trim(), txtCedula.getText().trim(), txtDireccion.getText().trim()));
 			ModelFactoryController.getInstance().saveData();
-			new Alert(AlertType.CONFIRMATION, "Cliente agregado con exito").show();
+			Menucontroller.getInstance().crearAlerta("Cliente agregado con exito");
 			vaciarCampos();
 		} catch (ClienteExistenteException e) {
-			new Alert(AlertType.WARNING, "El cliente ya existe en el sistema.").show();
+			Menucontroller.getInstance().crearAlerta("El cliente ya existe en el sistema.");
 		}
 
 	}
