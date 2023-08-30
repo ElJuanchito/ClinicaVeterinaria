@@ -81,6 +81,8 @@ public class App extends RouteApp {
 				.and(get("/cliente", r -> menuPrincipal.cambiarPestana(PestanasMenu.CLIENTE)))
 				.and(get("/mascota", r -> menuPrincipal.cambiarPestana(PestanasMenu.MASCOTA)))
 				.and(get("/cita", r -> menuPrincipal.cambiarPestana(PestanasMenu.CITA)))
+				.and(get("/tablaMascota", r -> menuPrincipal.cambiarPestana(PestanasMenu.TMASCOTA)))
+				.and(get("/concretarAtencion", r -> menuPrincipal.cambiarPestana(PestanasMenu.CONCRETAR)))
 				.and(get("/factura", r -> menuPrincipal.cambiarPestana(PestanasMenu.FACTURA)))
 				.and(get("/histoial", r -> menuPrincipal.cambiarPestana(PestanasMenu.FACTURA)))
 				.and(get("/mas", r -> menuPrincipal.cambiarPestana(PestanasMenu.MORE)))

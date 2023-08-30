@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import one.jpro.routing.LinkUtil;
 
 /**
  * 
@@ -74,6 +75,7 @@ public class TablaClienteCitaController {
 		}
 		try {
 			ModelFactoryController.getInstance().setCliente(cliente.getCedula());
+			LinkUtil.gotoPage(btnSiguiente, "/tablaMascota");
 		} catch (ClienteNoExistenteException e) {
 			Menucontroller.getInstance().crearAlerta("El cliente con cedula " + cliente.getCedula() + " no existe");
 		}

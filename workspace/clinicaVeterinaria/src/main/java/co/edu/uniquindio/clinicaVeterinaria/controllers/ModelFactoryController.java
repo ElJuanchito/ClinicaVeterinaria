@@ -97,8 +97,8 @@ public class ModelFactoryController {
 		return getClinica().filtrarClienteCedu(cad);
 	}
 	
-	public void setMascota(String cedula, String codigo) throws ClienteNoExistenteException, MascotaNoEncontradaExpcetion {
-		this.mascota = getClinica().buscarMascota(cedula, codigo);
+	public void setMascota(String codigo) throws ClienteNoExistenteException, MascotaNoEncontradaExpcetion {
+		this.mascota = getClinica().buscarMascota(cliente.getCedula(), codigo);
 	}
 	
 	public Mascota getMascota() {
