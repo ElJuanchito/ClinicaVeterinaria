@@ -105,15 +105,13 @@ public class Cliente extends Persona {
 	}
 
 	/**
-	 * Lanza una expcetion si el mascota ya existe en la lista.
+	 * Busca un codigo libre para la mascota
 	 * 
 	 * @param codigo
-	 * @throws MascotaYaExistenteException
 	 */
-	private void throwMascotaYaExistente(String codigo) throws MascotaYaExistenteException {
-		if (verificarMascota(codigo))
-			throw new MascotaYaExistenteException(
-					"La mascota identificada con el codigo: " + codigo + ", ya existe en la lista");
+	private void crearCodigoLibreMascota() {
+		while (verificarMascota(String.valueOf(Mascota.getLong())))
+			Mascota.incrementLong();
 	}
 
 	/**
@@ -133,11 +131,11 @@ public class Cliente extends Persona {
 	 * Agrega una nueva mascota a la lista. Lanza una exception si ya existe.
 	 * 
 	 * @param mascota
-	 * @throws MascotaYaExistenteException
 	 */
-	public void agregarMascota(Mascota mascota) throws MascotaYaExistenteException {
-		throwMascotaYaExistente(mascota.getCodigo());
-		mascotas.put(mascota.getCodigo(), mascota);
+	public void agregarMascota(Mascota mascota) {
+		crearCodigoLibreMascota();
+		mascota.setCodigo(String.valueOf(Mascota.getLong()));
+		mascotas.put(String.valueOf(Mascota.getLong()), mascota);
 	}
 
 	/**
@@ -157,7 +155,7 @@ public class Cliente extends Persona {
 	 * actualiza los datos de la mascota. Lanza una exception si no existe
 	 * 
 	 * @param mascota
-	 * @throws MascotaYaExistenteException
+	 * @throws MascotaNoEncontradaExpcetion
 	 */
 	public void actualizarMascota(Mascota mascota) throws MascotaNoEncontradaExpcetion {
 		throwMascotaNoEncontrada(mascota.getCodigo());

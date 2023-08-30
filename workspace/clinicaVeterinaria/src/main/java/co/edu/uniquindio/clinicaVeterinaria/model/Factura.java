@@ -32,7 +32,7 @@ public class Factura implements Serializable {
 	public Factura(Double costo, LocalDateTime fecha, String diagnostico, String tratamiento, Cliente cliente,
 			AtencionVeterinaria atencionVeterinaria) {
 		super();
-		this.id = cuentaF.incrementAndGet();
+		this.id = cuentaF.get();
 		this.costo = costo;
 		this.fecha = fecha;
 		this.diagnostico = diagnostico;
@@ -119,6 +119,14 @@ public class Factura implements Serializable {
 		return "Factura [id=" + id + ", costo=" + costo + ", fecha=" + fecha + ", diagnostico=" + diagnostico
 				+ ", tratamiento=" + tratamiento + ", cliente=" + cliente + ", atencionVeterinaria="
 				+ atencionVeterinaria + "]";
+	}
+
+	public static void incrementLong() {
+		cuentaF.incrementAndGet();
+	}
+
+	public static long getLong() {
+		return cuentaF.get();
 	}
 
 }
