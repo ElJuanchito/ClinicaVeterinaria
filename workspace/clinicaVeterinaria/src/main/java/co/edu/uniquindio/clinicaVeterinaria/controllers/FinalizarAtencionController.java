@@ -119,9 +119,8 @@ public class FinalizarAtencionController {
 			Menucontroller.getInstance().crearAlerta("Debe cambiar el estado de la cita");
 			return;
 		}
-		Factura factura = new Factura(Double.valueOf(txtCosto.getText().trim()), citaSelecciona.getFecha(),
-				txtDiagnostico.getText().trim(), txtTratamiento.getText().trim(),
-				citaSelecciona.getMascota().getDueno(), citaSelecciona);
+		Factura factura = new Factura(Double.valueOf(txtCosto.getText().trim()), txtDiagnostico.getText().trim(),
+				txtTratamiento.getText().trim(), citaSelecciona);
 		Platform.runLater(() -> new GeneracionPdf(factura).ejecutarImpresion());
 		ModelFactoryController.getInstance().getClinica().agregarFactura(factura);
 		ModelFactoryController.getInstance().saveData();
