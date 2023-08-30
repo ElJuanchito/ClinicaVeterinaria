@@ -534,4 +534,14 @@ public class Clinica implements Serializable {
 	public List<Cliente> filtrarClienteCedu(String cedula) {
 		return getListClientes().stream().filter(c -> c.cedulaEmpiezaPor(cedula)).collect(Collectors.toList());
 	}
+
+	/**
+	 * Filtra las citas que existen por las que empiezan por una cedula establecida
+	 * 
+	 * @param cedula
+	 * @return
+	 */
+	public List<AtencionVeterinaria> filtrarCitaPorCedula(String cedula) {
+		return getListaCitas().stream().filter(c -> c.cedulaEmpiezaPor(cedula)).collect(Collectors.toList());
+	}
 }

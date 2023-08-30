@@ -144,7 +144,7 @@ public class FinalizarAtencionController {
 	private void actualizarTabla() {
 		
 		listaObservable = FXCollections
-				.observableList(ModelFactoryController.getInstance().getClinica().getListaCitas());
+				.observableList(ModelFactoryController.getInstance().getClinica().filtrarCitaPorCedula(txtCedula.getText()));
 		tblCitas.setItems(listaObservable);
 		colCodigo.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getCodigo().toString()));
 		colCedula.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getMascota().getDueno().getCedula().toString()));

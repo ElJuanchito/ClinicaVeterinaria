@@ -121,4 +121,8 @@ public class AtencionVeterinaria implements Serializable {
 		return cuenta.get();
 	}
 
+	public boolean cedulaEmpiezaPor(String text) {
+		return mascota.getDueno().cedulaEmpiezaPor(text);
+	}
+
 }
