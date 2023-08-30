@@ -6,7 +6,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.clinicaVeterinaria.exceptions.AtencionExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.ClienteNoExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.model.AtencionVeterinaria;
 import co.edu.uniquindio.clinicaVeterinaria.model.Cliente;
@@ -18,8 +17,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -120,17 +117,13 @@ public class CreacionAtencionController {
 		AtencionVeterinaria cita = new AtencionVeterinaria(fechita, mascota, cbVeterinario.getValue());
 
 		if (!verificarCampos()) {
-			new Alert(AlertType.ERROR, "Llene todos los campos").show();
+			Menucontroller.getInstance().crearAlerta("Llene todos los campos");
 			return;
 		}
-		try {
-			ModelFactoryController.getInstance().getClinica().agregarCita(cita);
-			ModelFactoryController.getInstance().saveData();
-			new Alert(AlertType.CONFIRMATION, "Cita creada con exito").show();
-			vaciarCampos();
-		} catch (AtencionExistenteException e) {
-			new Alert(AlertType.WARNING, e.getMessage()).show();
-		}
+		ModelFactoryController.getInstance().getClinica().agregarCita(cita);
+		ModelFactoryController.getInstance().saveData();
+		Menucontroller.getInstance().crearAlerta("Cita creada con exito");
+		vaciarCampos();
 	}
 
 	private void seleccionarAction() {
@@ -145,7 +138,7 @@ public class CreacionAtencionController {
 			cliente = ModelFactoryController.getInstance().getClinica().buscarCliente(txtCliente.getText());
 			actualizarTabla();
 		} catch (ClienteNoExistenteException e) {
-			new Alert(AlertType.ERROR, "El cliente con " + txtCliente.getText() + " no existe.").show();
+			Menucontroller.getInstance().crearAlerta("El cliente con " + txtCliente.getText() + " no existe.");
 		}
 	}
 
