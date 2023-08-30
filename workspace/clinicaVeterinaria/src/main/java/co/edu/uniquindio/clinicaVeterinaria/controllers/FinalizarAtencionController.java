@@ -115,7 +115,7 @@ public class FinalizarAtencionController {
 			Menucontroller.getInstance().crearAlerta("Llene todos los campos");
 			return;
 		}
-		if (cbEstado.getValue() != Estado.CREADA) {
+		if (cbEstado.getValue() == Estado.CREADA) {
 			Menucontroller.getInstance().crearAlerta("Debe cambiar el estado de la cita");
 			return;
 		}

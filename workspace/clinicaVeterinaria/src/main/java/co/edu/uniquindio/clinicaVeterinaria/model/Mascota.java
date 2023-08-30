@@ -137,4 +137,13 @@ public class Mascota implements Serializable{
 				+ tipo + ", sexo=" + sexo + "]";
 	}
 	
+	/**
+	 * Determina si el nombre empieza por una cadena
+	 * @param cadena
+	 * @return
+	 */
+	public boolean nombreEmpiezaPor(String cadena) {
+		return this.nombre.startsWith(cadena);
+	}
+	
 }

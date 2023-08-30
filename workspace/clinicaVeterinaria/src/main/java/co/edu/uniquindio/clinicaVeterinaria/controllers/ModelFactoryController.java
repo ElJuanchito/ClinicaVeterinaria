@@ -3,8 +3,11 @@ package co.edu.uniquindio.clinicaVeterinaria.controllers;
 import java.util.List;
 
 import co.edu.uniquindio.clinicaVeterinaria.dao.ClinicaDao;
+import co.edu.uniquindio.clinicaVeterinaria.exceptions.ClienteNoExistenteException;
+import co.edu.uniquindio.clinicaVeterinaria.exceptions.MascotaNoEncontradaExpcetion;
 import co.edu.uniquindio.clinicaVeterinaria.model.Cliente;
 import co.edu.uniquindio.clinicaVeterinaria.model.Clinica;
+import co.edu.uniquindio.clinicaVeterinaria.model.Mascota;
 import co.edu.uniquindio.clinicaVeterinaria.model.Veterinario;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.image.Image;
@@ -18,6 +21,8 @@ public class ModelFactoryController {
 	private Clinica clinica;
 	private Veterinario veterinario;
 	private SimpleObjectProperty<Image> propImgVeterinario;
+	private Mascota mascota;
+	private Cliente cliente;
 
 	public ModelFactoryController() {
 		propImgVeterinario = new SimpleObjectProperty<>();
@@ -90,5 +95,25 @@ public class ModelFactoryController {
 	
 	public List<Cliente> filtrarClienteCedu(String cad) {
 		return getClinica().filtrarClienteCedu(cad);
+	}
+	
+	public void setMascota(String codigo) throws ClienteNoExistenteException, MascotaNoEncontradaExpcetion {
+		this.mascota = getClinica().buscarMascota(cliente.getCedula(), codigo);
+	}
+	
+	public Mascota getMascota() {
+		return mascota;
+	}
+	
+	public void setCliente(String cedula) throws ClienteNoExistenteException {
+		this.cliente = getClinica().buscarCliente(cedula);
+	}
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+	
+	public List<Mascota> filtrarMascotaPorCliente(String nombre) throws ClienteNoExistenteException{
+		return getClinica().filtrarMascotaPorCliente(cliente.getCedula(), nombre);
 	}
 }
