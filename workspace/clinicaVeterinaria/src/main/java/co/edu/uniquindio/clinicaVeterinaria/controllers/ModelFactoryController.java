@@ -19,13 +19,18 @@ import javafx.scene.image.Image;
 public class ModelFactoryController {
 
 	private Clinica clinica;
-	private Veterinario veterinario;
 	private SimpleObjectProperty<Image> propImgVeterinario;
-	private Mascota mascota;
-	private Cliente cliente;
+	private SimpleObjectProperty<Mascota> propMascotaCreacionCita;
+	private SimpleObjectProperty<Cliente> propClienteCreacionCita;
+	private SimpleObjectProperty<Veterinario> propVeterinarioSel;
 
 	public ModelFactoryController() {
 		propImgVeterinario = new SimpleObjectProperty<>();
+		propMascotaCreacionCita = new SimpleObjectProperty<>();
+		propClienteCreacionCita = new SimpleObjectProperty<>();
+		propVeterinarioSel = new SimpleObjectProperty<>();
+
+		propClienteCreacionCita.addListener((observable, oldValue, newValue) -> propMascotaCreacionCita.setValue(null));
 	}
 
 	public static class Singleton {
@@ -78,42 +83,58 @@ public class ModelFactoryController {
 	}
 
 	public void setVeterinario(String codigo) {
-		veterinario = getClinica().buscarVeterinario(codigo);
-		propImgVeterinario.setValue(veterinario.getFoto());
+		propVeterinarioSel.setValue(getClinica().buscarVeterinario(codigo));
+		propImgVeterinario.setValue(propVeterinarioSel.getValue().getFoto());
 	}
 
 	public Veterinario getVeterinario() {
-		if (veterinario == null)
+		if (propVeterinarioSel.getValue() == null)
 			setVeterinario("0001");
-		return veterinario;
+		return propVeterinarioSel.getValue();
+	}
+
+	public List<Cliente> filtrarClienteCedu(String cad) {
+		return getClinica().filtrarClienteCedu(cad);
+	}
+
+	public void setMascota(String codigo) throws ClienteNoExistenteException, MascotaNoEncontradaExpcetion {
+		if (getCliente() == null)
+			throw new ClienteNoExistenteException("El cliente no ha sido seleccionado");
+		propMascotaCreacionCita.setValue(getClinica().buscarMascota(getCliente().getCedula(), codigo));
+	}
+
+	public Mascota getMascota() {
+		return propMascotaCreacionCita.getValue();
+	}
+
+	public void setCliente(String cedula) throws ClienteNoExistenteException {
+		propClienteCreacionCita.setValue(getClinica().buscarCliente(cedula));
+	}
+
+	public Cliente getCliente() {
+		return propClienteCreacionCita.getValue();
+	}
+
+	public List<Mascota> filtrarMascotaPorCliente(String nombre) throws ClienteNoExistenteException {
+		if (getCliente() == null)
+			throw new ClienteNoExistenteException("El cliente no ha sido seleccionado");
+		return getClinica().filtrarMascotaPorCliente(getCliente().getCedula(), nombre);
 	}
 
 	public SimpleObjectProperty<Image> getVeterinarioFotoProp() {
 		getVeterinario();
 		return propImgVeterinario;
 	}
-	
-	public List<Cliente> filtrarClienteCedu(String cad) {
-		return getClinica().filtrarClienteCedu(cad);
+
+	public SimpleObjectProperty<Cliente> getPropClienteCita() {
+		return propClienteCreacionCita;
 	}
-	
-	public void setMascota(String codigo) throws ClienteNoExistenteException, MascotaNoEncontradaExpcetion {
-		this.mascota = getClinica().buscarMascota(cliente.getCedula(), codigo);
+
+	public SimpleObjectProperty<Mascota> getPropMascotaCita() {
+		return propMascotaCreacionCita;
 	}
-	
-	public Mascota getMascota() {
-		return mascota;
-	}
-	
-	public void setCliente(String cedula) throws ClienteNoExistenteException {
-		this.cliente = getClinica().buscarCliente(cedula);
-	}
-	
-	public Cliente getCliente() {
-		return cliente;
-	}
-	
-	public List<Mascota> filtrarMascotaPorCliente(String nombre) throws ClienteNoExistenteException{
-		return getClinica().filtrarMascotaPorCliente(cliente.getCedula(), nombre);
+
+	public SimpleObjectProperty<Veterinario> getPropVeterinarioSel() {
+		return propVeterinarioSel;
 	}
 }
