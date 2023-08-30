@@ -30,60 +30,56 @@ public class FinalizarAtencionController {
 
 	@FXML
 	private ResourceBundle resources;
+	
+		
 
-	@FXML
-	private URL location;
+	 	@FXML
+	    private TableColumn<AtencionVeterinaria, String> colMascota;
 
-	@FXML
-	private TableColumn<AtencionVeterinaria, String> colFecha;
+	    @FXML
+	    private TableColumn<AtencionVeterinaria, String> colCodigo;
 
-	@FXML
-	private TableColumn<AtencionVeterinaria, String> colMascota;
+	    @FXML
+	    private TableColumn<AtencionVeterinaria, String> colCedula;
 
-	@FXML
-	private TableColumn<AtencionVeterinaria, String> colCodigo;
+	    @FXML
+	    private ComboBox<Estado> cbEstado;
 
-	@FXML
-	private ComboBox<Estado> cbEstado;
+	    @FXML
+	    private Button btnFinalizar;
 
-	@FXML
-	private TableColumn<AtencionVeterinaria, String> colSexo;
+	    @FXML
+	    private TextField txtDiagnostico;
 
-	@FXML
-	private Button btnFinalizar;
+	    @FXML
+	    private TableColumn<AtencionVeterinaria, String> colNombre;
 
-	@FXML
-	private TextField txtDiagnostico;
+	    @FXML
+	    private TextField txtCedula;
 
-	@FXML
-	private TableColumn<AtencionVeterinaria, String> colHora;
+	    @FXML
+	    private TextField txtTratamiento;
 
-	@FXML
-	private TextField txtTratamiento;
+	    @FXML
+	    private Label lblMascota;
 
-	@FXML
-	private TableColumn<AtencionVeterinaria, String> colVeterinario;
+	    @FXML
+	    private TableColumn<AtencionVeterinaria, String> colTipo;
 
-	@FXML
-	private Label lblMascota;
+	    @FXML
+	    private TextField txtCosto;
 
-	@FXML
-	private TableColumn<AtencionVeterinaria, String> colTipo;
+	    @FXML
+	    private Label lblVeterinario;
 
-	@FXML
-	private Label lblVeterinario;
+	    @FXML
+	    private TableView<AtencionVeterinaria> tblCitas;
 
-	@FXML
-	private TableView<AtencionVeterinaria> tblCitas;
+	    @FXML
+	    private Label lblHora;
 
-	@FXML
-	private Label lblHora;
-
-	@FXML
-	private DatePicker txtFecha;
-
-	@FXML
-	private TextField txtCosto;
+	    @FXML
+	    private DatePicker txtFecha;
 
 	private ObservableList<AtencionVeterinaria> listaObservable;
 
@@ -92,6 +88,7 @@ public class FinalizarAtencionController {
 	@FXML
 	void initialize() {
 		ModelFactoryController.getInstance().loadData();
+		
 
 		actualizarTabla();
 
@@ -99,6 +96,12 @@ public class FinalizarAtencionController {
 		cbEstado.getItems().add(Estado.CANCELADA);
 
 		FxUtility.setAsNumberTextfield(txtCosto);
+		
+		
+		txtCedula.textProperty().addListener((observable, oldValue, newValue) -> {
+			actualizarTabla();
+			tblCitas.refresh();
+		});
 	}
 
 	@FXML
@@ -147,17 +150,19 @@ public class FinalizarAtencionController {
 	}
 
 	private void actualizarTabla() {
-		ModelFactoryController.getInstance().loadData();
+		
 		listaObservable = FXCollections
 				.observableList(ModelFactoryController.getInstance().getClinica().getListaCitas());
 		tblCitas.setItems(listaObservable);
 		colCodigo.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getCodigo().toString()));
-		colFecha.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getFecha().toLocalDate().toString()));
-		colHora.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getFecha().toLocalTime().toString()));
+		colCedula.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getMascota().getDueno().getCedula().toString()));
+		colNombre.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getMascota().getDueno().getNombre().toString()));
+		//colFecha.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getFecha().toLocalDate().toString()));
+		//colHora.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getFecha().toLocalTime().toString()));
 		colMascota.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getMascota().getNombre()));
 		colTipo.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getMascota().getTipo().toString()));
-		colSexo.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getMascota().getSexo().toString()));
-		colVeterinario.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getVeterinario().getNombre()));
+		//colSexo.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getMascota().getSexo().toString()));
+		//colVeterinario.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getVeterinario().getNombre()));
 		tblCitas.refresh();
 	}
 
