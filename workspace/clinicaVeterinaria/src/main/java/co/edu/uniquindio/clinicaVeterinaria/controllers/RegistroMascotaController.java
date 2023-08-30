@@ -67,7 +67,9 @@ public class RegistroMascotaController {
 		cbTipo.getItems().addAll(Tipo.values());
 		FxUtility.setAsIntegerTextfield(txtEdad);
 		FxUtility.setAsIntegerTextfield(txtCedula);
-		
+		tblCliente.setItems(
+				FXCollections.observableArrayList(ModelFactoryController.getInstance().filtrarClienteCedu("")));
+
 		txtCedula.textProperty().addListener((observable, oldValue, newValue) -> {
 			tblCliente.setItems(FXCollections
 					.observableArrayList(ModelFactoryController.getInstance().filtrarClienteCedu(newValue)));
