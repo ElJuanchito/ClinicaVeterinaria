@@ -17,7 +17,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import one.jpro.routing.LinkUtil;
 
 /**
@@ -58,37 +57,18 @@ public class TablaMascotaCitaController {
 
 	@FXML
 	private TextField txtMascota;
-	
-	private Mascota mascota;
 
 	@FXML
 	void siguienteEvent(ActionEvent event) {
 		siguienteAction();
 	}
 
-
-	@FXML
-	void seleccionarEvent(MouseEvent event) {
-		seleccionarAction();
-	}
-	
-	/**
-	 * 
-	 * @author ElJuancho
-	 */
-	private void seleccionarAction() {
-		mascota = tblMascota.getSelectionModel().getSelectedItem();
-
-		if (mascota == null)
-			return;	
-	}
-
-
 	/**
 	 * 
 	 * @author ElJuancho
 	 */
 	private void siguienteAction() {
+		Mascota mascota = tblMascota.getSelectionModel().getSelectedItem();
 		if (mascota == null) {
 			Menucontroller.getInstance().crearAlerta("Debe seleccionar una mascota");
 			return;
@@ -97,14 +77,14 @@ public class TablaMascotaCitaController {
 			ModelFactoryController.getInstance().setMascota(mascota.getCodigo());
 			LinkUtil.gotoPage(btnSiguiente, "/concretarAtencion");
 		} catch (ClienteNoExistenteException e) {
-			Menucontroller.getInstance().crearAlerta("El cliente con cedula " + ModelFactoryController.getInstance().getCliente().getCedula() + " no existe");
+			Menucontroller.getInstance().crearAlerta("El cliente con cedula "
+					+ ModelFactoryController.getInstance().getCliente().getCedula() + " no existe");
 		} catch (MascotaNoEncontradaExpcetion e) {
 			Menucontroller.getInstance().crearAlerta("La mascota con codigo " + mascota.getCodigo() + " no existe");
 		}
 
-		
 	}
-	
+
 	@FXML
 	void initialize() {
 		ModelFactoryController.getInstance().loadData();
@@ -114,6 +94,15 @@ public class TablaMascotaCitaController {
 						.observableArrayList(ModelFactoryController.getInstance().filtrarMascotaPorCliente(newValue)));
 			} catch (ClienteNoExistenteException e) {
 				e.printStackTrace();
+			}
+			tblMascota.refresh();
+		});
+		ModelFactoryController.getInstance().getPropClienteCita().addListener((observable, oldValue, newValue) -> {
+			System.out.println("cambio");
+			if (newValue == null) {
+				tblMascota.setItems(FXCollections.emptyObservableList());
+			} else {
+				tblMascota.setItems(FXCollections.observableArrayList(newValue.getListaMascotas()));
 			}
 			tblMascota.refresh();
 		});

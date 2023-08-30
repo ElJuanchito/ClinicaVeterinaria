@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -11,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.TablaClienteCitaController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.TablaClienteCitaController">
    <children>
       <Label id="titulo" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Filtrar Cliente" />
       <GridPane>
@@ -34,7 +38,7 @@
             <Label fx:id="lblDueno" styleClass="texto" stylesheets="@../styles/textStyle.css" text="No elegida" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <TableView fx:id="tblCliente" onMouseClicked="#seleccionarEvent" stylesheets="@../styles/tableStyle.css">
+      <TableView fx:id="tblCliente" stylesheets="@../styles/tableStyle.css">
         <columns>
           <TableColumn fx:id="colNombre" prefWidth="75.0" styleClass="columna-tabla" text="Nombre" />
           <TableColumn fx:id="colCorreo" prefWidth="75.0" styleClass="columna-tabla" text="Correo" />

@@ -11,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import one.jpro.routing.LinkUtil;
 
 /**
@@ -47,21 +46,17 @@ public class TablaClienteCitaController {
 	@FXML
 	private TextField txtCedula;
 
-	private Cliente cliente;
 
-	@FXML
-	void seleccionarEvent(MouseEvent event) {
-		seleccionarAction();
+	private TablaClienteCitaController instance;
+
+	public TablaClienteCitaController() {
+		instance = this;
 	}
-
-	private void seleccionarAction() {
-		cliente = tblCliente.getSelectionModel().getSelectedItem();
-
-		if (cliente == null)
-			return;
-
-		lblDueno.setText(cliente.getNombre());
+	
+	public TablaClienteCitaController getInstance() {
+		return instance;
 	}
+	
 
 	@FXML
 	void siguienteEvent(ActionEvent event) {
@@ -69,6 +64,8 @@ public class TablaClienteCitaController {
 	}
 
 	private void siguienteAction() {
+		Cliente cliente;
+		cliente = tblCliente.getSelectionModel().getSelectedItem();
 		if (cliente == null) {
 			Menucontroller.getInstance().crearAlerta("Debe seleccionar un cliente");
 			return;
@@ -89,6 +86,8 @@ public class TablaClienteCitaController {
 					.observableArrayList(ModelFactoryController.getInstance().filtrarClienteCedu(newValue)));
 			tblCliente.refresh();
 		});
+		tblCliente.getSelectionModel().selectedItemProperty().addListener(
+				(observable, oldValue, newValue) -> lblDueno.setText(newValue == null ? "" : newValue.getNombre()));
 		colNombre.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getNombre()));
 		colCorreo.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getCorreo()));
 		colTelefono.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getTelefono()));
