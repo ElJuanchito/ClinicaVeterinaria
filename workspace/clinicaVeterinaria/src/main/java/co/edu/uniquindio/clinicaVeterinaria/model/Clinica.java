@@ -534,11 +534,23 @@ public class Clinica implements Serializable {
 	
 	
 	/**
-	 *  Retorna una lista filtrada con el parametro ingresado (empieza por)
+	 *  Retorna una lista clientes filtrada por el parametro ingresado
 	 * @param cedula
 	 * @return
 	 */
 	public List<Cliente> filtrarClienteCedu(String cedula) {
 		return getListClientes().stream().filter(c -> c.cedulaEmpiezaPor(cedula)).collect(Collectors.toList());
+	}
+	
+	/**
+	 * Retorna una lista mascotas filtrada por el parametro ingresado
+	 * @param cedula
+	 * @param nombre
+	 * @return
+	 * @throws ClienteNoExistenteException
+	 * @author ElJuancho
+	 */
+	public List<Mascota> filtrarMascotaPorCliente(String cedula, String nombre) throws ClienteNoExistenteException{
+		return buscarCliente(cedula).getListaMascotas().stream().filter(m -> m.nombreEmpiezaPor(nombre)).collect(Collectors.toList());
 	}
 }
