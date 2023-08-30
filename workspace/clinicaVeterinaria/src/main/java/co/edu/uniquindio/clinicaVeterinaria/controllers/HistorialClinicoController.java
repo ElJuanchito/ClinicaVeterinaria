@@ -13,13 +13,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 /**
  * 
@@ -62,7 +59,8 @@ public class HistorialClinicoController {
 	@FXML
 	void initialize() {
 		ModelFactoryController.getInstance().loadData();
-		FxUtility.setAsIntegerTextfield(txtCedula);
+		FxUtility.setAsNumberTextfield(txtCedula);
+		FxUtility.setMaximumTextSize(txtCedula, 10, "Este campo puede tener como maximo 10 digitos");
 	}
 
 	@FXML
@@ -72,7 +70,7 @@ public class HistorialClinicoController {
 
 	private void buscarAction() {
 		if (!verificarCampos()) {
-			new Alert(AlertType.ERROR, "Llene todos los campos").show();
+			Menucontroller.getInstance().crearAlerta("Llene todos los campos");
 			return;
 		}
 		actualizarTabla();
