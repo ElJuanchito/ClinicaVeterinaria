@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Objects;
 
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.MascotaNoEncontradaExpcetion;
-import co.edu.uniquindio.clinicaVeterinaria.exceptions.MascotaYaExistenteException;
 
 /**
  * @author juanp
