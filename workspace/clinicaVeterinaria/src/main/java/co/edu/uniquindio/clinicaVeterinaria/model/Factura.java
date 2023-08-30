@@ -25,19 +25,18 @@ public class Factura implements Serializable {
 	 * Constructor con parametros de la clase <b>Factura</b>
 	 * 
 	 * @param costo
-	 * @param fecha
-	 * @param cliente
+	 * @param diagnostico
+	 * @param tratamiento
 	 * @param atencionVeterinaria
 	 */
-	public Factura(Double costo, LocalDateTime fecha, String diagnostico, String tratamiento, Cliente cliente,
-			AtencionVeterinaria atencionVeterinaria) {
+	public Factura(Double costo, String diagnostico, String tratamiento, AtencionVeterinaria atencionVeterinaria) {
 		super();
 		this.id = cuentaF.get();
 		this.costo = costo;
-		this.fecha = fecha;
+		this.fecha = LocalDateTime.now();
 		this.diagnostico = diagnostico;
 		this.tratamiento = tratamiento;
-		this.cliente = cliente;
+		this.cliente = atencionVeterinaria.getMascota().getDueno();
 		this.atencionVeterinaria = atencionVeterinaria;
 	}
 
