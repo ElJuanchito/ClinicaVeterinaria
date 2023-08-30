@@ -21,6 +21,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -46,6 +47,12 @@ public class Menucontroller {
 	public Menucontroller() {
 		instance = this;
 	}
+
+	@FXML
+	private BorderPane overlay;
+
+	@FXML
+	private Label lblAlerta;
 
 	@FXML
 	private HBox menuDesplegable;
@@ -180,8 +187,12 @@ public class Menucontroller {
 	}
 
 	@FXML
-	void initialize() {
+	void cerrarOverlayEvent(MouseEvent event) {
+		cerrarOverlayAction();
+	}
 
+	@FXML
+	void initialize() {
 		RotateTransition animacionRotarPerfil = new RotateTransition(Duration.millis(100), trianguloDesplieguePerfil);
 		FadeTransition animacionBtn = new FadeTransition(Duration.millis(100), btnCerrarSesion);
 		Timeline timeline = new Timeline();
@@ -301,5 +312,16 @@ public class Menucontroller {
 		Timeline timeline = new Timeline(
 				new KeyFrame(Duration.millis(100), (KeyValue[]) keyValues.toArray(new KeyValue[keyValues.size()])));
 		timeline.playFromStart();
+	}
+
+	public void crearAlerta(String msg) {
+		overlay.setDisable(false);
+		overlay.setOpacity(1);
+		lblAlerta.setText(msg);
+	}
+
+	private void cerrarOverlayAction() {
+		overlay.setDisable(true);
+		overlay.setOpacity(0);
 	}
 }

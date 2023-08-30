@@ -39,3 +39,7 @@
 	-fx-font-size: 15.0;
 	-fx-font-weight: bold;
 }
+.btn-overlay .label {
+	-fx-text-fill: white;
+	
+}
