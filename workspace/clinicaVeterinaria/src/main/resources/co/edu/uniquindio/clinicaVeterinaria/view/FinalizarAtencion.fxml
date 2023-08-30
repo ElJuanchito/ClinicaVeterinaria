@@ -7,14 +7,56 @@
 
 <VBox alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.FinalizarAtencionController">
    <children>
-      <HBox alignment="CENTER">
+      <VBox alignment="CENTER">
          <children>
             <Label id="titulo" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Finalizar Atencion">
                <HBox.margin>
                   <Insets />
-               </HBox.margin></Label>
+               </HBox.margin>
+            </Label>
+            <Label styleClass="texto" stylesheets="@../styles/textStyle.css" text="Elige La Atencion Veterinaria">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </VBox.margin>
+            </Label>
          </children>
-      </HBox>
+      </VBox>
+      <GridPane alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="177.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Filtrar Cedula">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="txtCedula" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+         </children>
+      </GridPane>
+      <TableView fx:id="tblCitas" maxWidth="1.7976931348623157E308" onMouseClicked="#seleccionarEvent" stylesheets="@../styles/tableStyle.css">
+        <columns>
+            <TableColumn fx:id="colCodigo" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Codigo" />
+          <TableColumn fx:id="colCedula" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Cedula" />
+          <TableColumn fx:id="colNombre" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Nombre" />
+            <TableColumn fx:id="colMascota" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Mascota" />
+            <TableColumn fx:id="colTipo" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Tipo" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+      </TableView>
       <GridPane alignment="CENTER" maxWidth="1.7976931348623157E308">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -78,20 +120,6 @@
             <Insets bottom="20.0" />
          </VBox.margin>
       </GridPane>
-      <TableView fx:id="tblCitas" maxWidth="1.7976931348623157E308" onMouseClicked="#seleccionarEvent" stylesheets="@../styles/tableStyle.css">
-        <columns>
-            <TableColumn fx:id="colCodigo" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Codigo" />
-          <TableColumn fx:id="colFecha" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Fecha" />
-          <TableColumn fx:id="colHora" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Hora" />
-            <TableColumn fx:id="colMascota" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Mascota" />
-            <TableColumn fx:id="colTipo" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Tipo" />
-            <TableColumn fx:id="colSexo" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Sexo" />
-            <TableColumn fx:id="colVeterinario" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Veterinario" />
-        </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
       <HBox alignment="CENTER">
          <children>
             <Button fx:id="btnFinalizar" mnemonicParsing="false" onAction="#finalizarEvent" styleClass="boton" stylesheets="@../styles/buttonStyle.css" text="Finalizar">
