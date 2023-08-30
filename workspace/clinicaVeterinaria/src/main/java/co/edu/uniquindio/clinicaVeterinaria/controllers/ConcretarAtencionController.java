@@ -7,7 +7,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.clinicaVeterinaria.model.AtencionVeterinaria;
+import co.edu.uniquindio.clinicaVeterinaria.model.Cliente;
 import co.edu.uniquindio.clinicaVeterinaria.utils.FxUtility;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -79,9 +81,18 @@ public class ConcretarAtencionController {
 	@FXML
 	void initialize() {
 		ModelFactoryController.getInstance().loadData();
-		lblCliente.setText(ModelFactoryController.getInstance().getCliente().getNombre());
-		lblMascota.setText(ModelFactoryController.getInstance().getMascota().getNombre());
-		lblVeterinario.setText(ModelFactoryController.getInstance().getVeterinario().getNombre());
+		ModelFactoryController.getInstance().getPropClienteCita().addListener((observable, oldValue, newValue) -> {
+			lblCliente.setText(newValue == null ? "" : newValue.getNombre());
+		});
+		ModelFactoryController.getInstance().getPropMascotaCita().addListener((observable, oldValue, newValue) -> {
+			lblMascota.setText(newValue == null ? "" : newValue.getNombre());
+		});
+		ModelFactoryController.getInstance().getPropMascotaCita().addListener((observable, oldValue, newValue) -> {
+			lblMascota.setText(newValue == null ? "" : newValue.getNombre());
+		});
+		ModelFactoryController.getInstance().getPropVeterinarioSel().addListener((observable, oldValue, newValue) -> {
+			lblVeterinario.setText(newValue == null ? "" : newValue.getNombre());
+		});
 		FxUtility.setAsHourTextField(txtHora);
 		FxUtility.setMaxLengthHourSize(txtHora, 5);
 	}
