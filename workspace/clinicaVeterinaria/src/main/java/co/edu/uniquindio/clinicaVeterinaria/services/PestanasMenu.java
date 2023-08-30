@@ -12,4 +12,9 @@ public enum PestanasMenu {
 	public String getFxml() {
 		return fxml;
 	}
+
+	@Override
+	public String toString() {
+		return "PestanasMenu[" + fxml + "]";
+	}
 }

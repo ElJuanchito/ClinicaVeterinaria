@@ -54,7 +54,7 @@ public class VistaMenu extends View {
 			cambiarEscenaEx(pestana);
 			pestanaActual = pestana;
 		} catch (EscenaNotFoundException e) {
-			e.printStackTrace();
+			Menucontroller.getInstance().crearAlerta(e.getMessage());
 		}
 		return this;
 	}
@@ -62,7 +62,8 @@ public class VistaMenu extends View {
 	private void cambiarEscenaEx(PestanasMenu escena) throws EscenaNotFoundException {
 		Parent escenaEncontrada = escenas.get(escena);
 		if (escenaEncontrada == null)
-			throw new EscenaNotFoundException("La escena seleccionada no fue encontrada");
+			throw new EscenaNotFoundException(
+					"La escena seleccionada no fue encontrada (" + (escena == null ? null : escena.toString()) + ")");
 		if (escena == PestanasMenu.INICIO) {
 			Platform.runLater(() -> Menucontroller.getInstance().goToInicio());
 			return;
