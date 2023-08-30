@@ -10,14 +10,11 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import co.edu.uniquindio.clinicaVeterinaria.exceptions.AtencionExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.AtencionNoExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.ClienteExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.ClienteNoExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.FacturaNoEcontradaException;
-import co.edu.uniquindio.clinicaVeterinaria.exceptions.FacturaYaExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.MascotaNoEncontradaExpcetion;
-import co.edu.uniquindio.clinicaVeterinaria.exceptions.MascotaYaExistenteException;
 import javafx.scene.image.Image;
 
 /**
@@ -203,16 +200,14 @@ public class Clinica implements Serializable {
 
 	/**
 	 * Agrega una mascota a un cliente de la lista. Lanza una exception si el
-	 * cliente no existe o si la mascota ya existe en la lista del cliente
-	 * seleccionado.
+	 * cliente no existe.
 	 * 
 	 * @param cliente
 	 * @param mascota
 	 * @throws ClienteNoExistenteException
-	 * @throws MascotaYaExistenteException
 	 */
 	public void agregarMascota(Cliente cliente, Mascota mascota)
-			throws ClienteNoExistenteException, MascotaYaExistenteException {
+			throws ClienteNoExistenteException {
 		throwClienteNoEncontrado(cliente.getCedula());
 		cliente.agregarMascota(mascota);
 		actualizarCliente(cliente);
@@ -301,16 +296,15 @@ public class Clinica implements Serializable {
 	}
 
 	/**
-	 * Lanza una exception si la atencion veterinaria ya existe en la lista.
+	 * Crea un codigo libre para la Atencion Veterinaria
 	 * 
 	 * @param codigo
 	 * @throws AtencionExistenteException
 	 * @author ElJuancho
 	 */
-	private void throwCitaYaExistente(Long codigo) throws AtencionExistenteException {
-		if (verificarAtencion(codigo))
-			throw new AtencionExistenteException(
-					"La atencion veterinaria con codigo: " + codigo + ", ya existe en la lista");
+	private void crearCodigoLibreAtencion() {
+		while (verificarAtencion(AtencionVeterinaria.getLong()))
+			AtencionVeterinaria.incrementLong();
 	}
 
 	/**
@@ -318,11 +312,11 @@ public class Clinica implements Serializable {
 	 * exception si ya existe.
 	 * 
 	 * @param cita
-	 * @throws AtencionExistenteException
 	 * @author ElJuancho
 	 */
-	public void agregarCita(AtencionVeterinaria cita) throws AtencionExistenteException {
-		throwCitaYaExistente(cita.getCodigo());
+	public void agregarCita(AtencionVeterinaria cita) {
+		crearCodigoLibreAtencion();
+		cita.setCodigo(AtencionVeterinaria.getLong());
 		citas.put(cita.getCodigo(), cita);
 	}
 
@@ -413,12 +407,11 @@ public class Clinica implements Serializable {
 	 * Lanza una exception si la factura ya existe en la lista.
 	 * 
 	 * @param id
-	 * @throws FacturaYaExistenteException
 	 * @author ElJuancho
 	 */
-	private void throwFacturaYaExistente(Long id) throws FacturaYaExistenteException {
-		if (verificarFactura(id))
-			throw new FacturaYaExistenteException("La factura identificada con el id " + id + "ya existe en la lista");
+	private void buscarIdLibreFactura() {
+		while (verificarFactura(Factura.getLong()))
+			Factura.incrementLong();
 	}
 
 	/**
@@ -436,14 +429,14 @@ public class Clinica implements Serializable {
 	}
 
 	/**
-	 * Agrega un factura a la lista. Lanza una exception si la factura ya existe.
+	 * Agrega una factura a la lista
 	 * 
 	 * @param factura
-	 * @throws FacturaYaExistenteException
 	 * @author ElJuancho
 	 */
-	public void agregarFactura(Factura factura) throws FacturaYaExistenteException {
-		throwFacturaYaExistente(factura.getId());
+	public void agregarFactura(Factura factura) {
+		buscarIdLibreFactura();
+		factura.setId(Factura.getLong());
 		facturas.put(factura.getId(), factura);
 	}
 

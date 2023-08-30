@@ -19,6 +19,7 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringExpression;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -187,7 +188,7 @@ public class Menucontroller {
 	}
 
 	@FXML
-	void cerrarOverlayEvent(MouseEvent event) {
+	void cerrarOverlayEvent(ActionEvent event) {
 		cerrarOverlayAction();
 	}
 

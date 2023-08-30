@@ -40,11 +40,15 @@ public class AtencionVeterinaria implements Serializable {
 	 */
 	public AtencionVeterinaria(LocalDateTime fecha, Mascota mascota, Veterinario veterinario) {
 		super();
-		this.codigo = cuenta.incrementAndGet();
+		this.setCodigo(cuenta.get());
 		this.fecha = fecha;
 		this.estado = Estado.CREADA;
 		this.mascota = mascota;
 		this.veterinario = veterinario;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
 	}
 
 	public Long getCodigo() {
@@ -108,6 +112,13 @@ public class AtencionVeterinaria implements Serializable {
 
 	public boolean enRangoDeFecha(LocalDate inicio, LocalDate fin) {
 		return fecha.toLocalDate().isAfter(inicio) && fecha.toLocalDate().isBefore(fin);
+	}
+
+	public static void incrementLong() {
+		cuenta.incrementAndGet();
+	}
+	public static long getLong() {
+		return cuenta.get();
 	}
 
 }

@@ -19,6 +19,12 @@ public class Mascota implements Serializable{
 	private Tipo tipo;
 	private Sexo sexo;
 
+	public static void incrementLong() {
+		cuentaM.incrementAndGet();
+	}
+	public static long getLong() {
+		return cuentaM.get();
+	}
 	/**
 	 * Constructor base de la clase <b>Mascota</b>
 	 */
@@ -37,13 +43,17 @@ public class Mascota implements Serializable{
 	 */
 	public Mascota(Cliente dueno, String nombre, Integer edad, String raza, Tipo tipo, Sexo sexo) {
 		super();
-		this.codigo = String.valueOf(cuentaM.incrementAndGet());
+		this.codigo = String.valueOf(cuentaM.get());
 		this.dueno = dueno;
 		this.nombre = nombre;
 		this.edad = edad;
 		this.raza = raza;
 		this.tipo = tipo;
 		this.sexo = sexo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getCodigo() {
