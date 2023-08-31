@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import co.edu.uniquindio.clinicaVeterinaria.controllers.PdfFacturaController;
 import co.edu.uniquindio.clinicaVeterinaria.model.Factura;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.print.PageLayout;
 import javafx.print.PageOrientation;
@@ -36,15 +37,17 @@ public class GeneracionPdf {
 	}
 
 	public void ejecutarImpresion() {
-		PrinterJob job = PrinterJob.createPrinterJob();
-		Printer printer = Printer.getDefaultPrinter();
-		PageLayout lay = printer.createPageLayout(Paper.A3, PageOrientation.PORTRAIT, MarginType.DEFAULT);
-		job.setPrinter(printer);
-		if (job != null) {
-			boolean success = job.printPage(lay, root);
-			if (success) {
-				job.endJob();
+		Platform.runLater(() -> {
+			PrinterJob job = PrinterJob.createPrinterJob();
+			Printer printer = Printer.getDefaultPrinter();
+			PageLayout lay = printer.createPageLayout(Paper.A3, PageOrientation.PORTRAIT, MarginType.DEFAULT);
+			job.setPrinter(printer);
+			if (job != null) {
+				boolean success = job.printPage(lay, root);
+				if (success) {
+					job.endJob();
+				}
 			}
-		}
+		});
 	}
 }
