@@ -5,11 +5,12 @@ import java.util.ResourceBundle;
 
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.ClienteExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.model.Cliente;
-import co.edu.uniquindio.clinicaVeterinaria.utils.FxUtility;
+import co.edu.uniquindio.clinicaVeterinaria.services.FxUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import one.jpro.routing.LinkUtil;
 
 public class RegistroClienteController {
 
@@ -63,6 +64,9 @@ public class RegistroClienteController {
 			ModelFactoryController.getInstance().saveData();
 			Menucontroller.getInstance().crearAlerta("Cliente agregado con exito");
 			vaciarCampos();
+			TablaClienteCitaController.getInstance().actualizarTabla();
+			RegistroMascotaController.getInstance().actualizarTabla();
+			LinkUtil.gotoPage(btnRegistrar, "/inicio");
 		} catch (ClienteExistenteException e) {
 			Menucontroller.getInstance().crearAlerta("El cliente ya existe en el sistema.");
 		}

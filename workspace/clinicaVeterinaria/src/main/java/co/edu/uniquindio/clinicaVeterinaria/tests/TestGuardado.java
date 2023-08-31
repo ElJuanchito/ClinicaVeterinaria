@@ -3,8 +3,8 @@
  */
 package co.edu.uniquindio.clinicaVeterinaria.tests;
 
-import co.edu.uniquindio.clinicaVeterinaria.dao.ClinicaDao;
 import co.edu.uniquindio.clinicaVeterinaria.model.Clinica;
+import co.edu.uniquindio.clinicaVeterinaria.services.ClinicaDao;
 
 /**
  * 

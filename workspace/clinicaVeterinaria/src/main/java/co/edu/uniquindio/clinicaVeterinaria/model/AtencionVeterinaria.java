@@ -125,4 +125,8 @@ public class AtencionVeterinaria implements Serializable {
 		return mascota.getDueno().cedulaEmpiezaPor(text);
 	}
 
+	public boolean tieneEstado(Estado estado) {
+		return this.estado == estado;
+	}
+
 }

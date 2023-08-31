@@ -33,6 +33,9 @@ public class TablaMascotaCitaController {
 
 	@FXML
 	private Button btnSiguiente;
+	
+	@FXML
+	private Button btnVolver;
 
 	@FXML
 	private TableColumn<Mascota, String> colCodigo;
@@ -84,6 +87,15 @@ public class TablaMascotaCitaController {
 		}
 
 	}
+	@FXML
+	void volverEvent(ActionEvent event) {
+		volverAction();
+	}
+
+	private void volverAction() {
+		LinkUtil.gotoPage(btnVolver, "/cita");
+	}
+
 
 	@FXML
 	void initialize() {

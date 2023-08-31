@@ -1,7 +1,7 @@
 /**
  * 
  */
-package co.edu.uniquindio.clinicaVeterinaria.dao;
+package co.edu.uniquindio.clinicaVeterinaria.services;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

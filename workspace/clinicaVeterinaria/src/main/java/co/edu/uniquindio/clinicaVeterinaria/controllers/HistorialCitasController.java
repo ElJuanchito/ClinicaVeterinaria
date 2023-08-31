@@ -9,8 +9,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
@@ -65,12 +63,12 @@ public class HistorialCitasController {
 
 	@FXML
 	void buscarEvent(ActionEvent event) {
-
+		buscarAction();
 	}
 
 	private void buscarAction() {
 		if (!verificarCampos()) {
-			new Alert(AlertType.ERROR, "Llene todos los campos").show();
+			Menucontroller.getInstance().crearAlerta("Llene todos los campos");
 			return;
 		}
 		actualizarTabla();

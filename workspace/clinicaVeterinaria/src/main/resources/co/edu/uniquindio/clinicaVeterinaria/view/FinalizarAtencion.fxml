@@ -42,7 +42,7 @@
             </TextField>
          </children>
       </GridPane>
-      <TableView fx:id="tblCitas" maxWidth="1.7976931348623157E308" onMouseClicked="#seleccionarEvent" stylesheets="@../styles/tableStyle.css">
+      <TableView fx:id="tblCitas" maxWidth="1.7976931348623157E308" stylesheets="@../styles/tableStyle.css">
         <columns>
             <TableColumn fx:id="colCodigo" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Codigo" />
           <TableColumn fx:id="colCedula" minWidth="50.0" prefWidth="-1.0" styleClass="columna-tabla" text="Cedula" />
@@ -85,11 +85,7 @@
                   <Insets bottom="5.0" left="20.0" right="20.0" />
                </GridPane.margin>
             </ComboBox>
-            <DatePicker fx:id="txtFecha" editable="false" maxWidth="1.7976931348623157E308" styleClass="textField" stylesheets="@../styles/txtFieldStyle.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="20.0" right="20.0" />
-               </GridPane.margin>
-            </DatePicker>
+            <Label fx:id="lblFecha" layoutX="239.0" layoutY="94.0" style="-fx-font-weight: bold; -fx-font-size: 1.2em;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="lblHora" style="-fx-font-weight: bold; -fx-font-size: 1.2em;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="lblMascota" style="-fx-font-weight: bold; -fx-font-size: 1.2em;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label fx:id="lblVeterinario" style="-fx-font-weight: bold; -fx-font-size: 1.2em;" GridPane.columnIndex="1" GridPane.rowIndex="4" />

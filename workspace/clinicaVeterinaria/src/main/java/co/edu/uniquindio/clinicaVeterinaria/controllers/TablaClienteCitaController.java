@@ -46,17 +46,15 @@ public class TablaClienteCitaController {
 	@FXML
 	private TextField txtCedula;
 
-
-	private TablaClienteCitaController instance;
+	private static TablaClienteCitaController instance;
 
 	public TablaClienteCitaController() {
 		instance = this;
 	}
-	
-	public TablaClienteCitaController getInstance() {
+
+	public static TablaClienteCitaController getInstance() {
 		return instance;
 	}
-	
 
 	@FXML
 	void siguienteEvent(ActionEvent event) {
@@ -64,8 +62,7 @@ public class TablaClienteCitaController {
 	}
 
 	private void siguienteAction() {
-		Cliente cliente;
-		cliente = tblCliente.getSelectionModel().getSelectedItem();
+		Cliente cliente = tblCliente.getSelectionModel().getSelectedItem();
 		if (cliente == null) {
 			Menucontroller.getInstance().crearAlerta("Debe seleccionar un cliente");
 			return;
@@ -82,10 +79,10 @@ public class TablaClienteCitaController {
 	void initialize() {
 		ModelFactoryController.getInstance().loadData();
 		txtCedula.textProperty().addListener((observable, oldValue, newValue) -> {
-			tblCliente.setItems(FXCollections
-					.observableArrayList(ModelFactoryController.getInstance().filtrarClienteCedu(newValue)));
-			tblCliente.refresh();
+			actualizarTabla(newValue);
 		});
+		tblCliente.setItems(
+				FXCollections.observableArrayList(ModelFactoryController.getInstance().filtrarClienteCedu("")));
 		tblCliente.getSelectionModel().selectedItemProperty().addListener(
 				(observable, oldValue, newValue) -> lblDueno.setText(newValue == null ? "" : newValue.getNombre()));
 		colNombre.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getNombre()));
@@ -94,6 +91,17 @@ public class TablaClienteCitaController {
 		colCedula.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getCedula()));
 		colDireccion.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getDireccion()));
 		tblCliente.refresh();
+	}
+
+	private void actualizarTabla(String newValue) {
+		tblCliente.setItems(
+				FXCollections.observableArrayList(ModelFactoryController.getInstance().filtrarClienteCedu(newValue)));
+		tblCliente.refresh();
+	}
+
+	public void actualizarTabla() {
+		txtCedula.setText("1");
+		txtCedula.setText("");
 	}
 
 }

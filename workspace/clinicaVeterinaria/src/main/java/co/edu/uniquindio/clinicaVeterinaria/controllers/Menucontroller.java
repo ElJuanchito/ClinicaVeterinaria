@@ -194,13 +194,20 @@ public class Menucontroller {
 
 	@FXML
 	void initialize() {
-		RotateTransition animacionRotarPerfil = new RotateTransition(Duration.millis(100), trianguloDesplieguePerfil);
-		FadeTransition animacionBtn = new FadeTransition(Duration.millis(100), btnCerrarSesion);
+		RotateTransition animacionRotarPerfil = new RotateTransition(Duration.millis(200), trianguloDesplieguePerfil);
+		animacionRotarPerfil.setInterpolator(new Interpolator() {
+			
+			@Override
+			protected double curve(double t) {
+				return 0.6 * Math.sin(4.334 * t - 2.18) + 0.5;
+			}
+		});
+		FadeTransition animacionBtn = new FadeTransition(Duration.millis(200), btnCerrarSesion);
 		Timeline timeline = new Timeline();
 		timeline.getKeyFrames()
 				.add(new KeyFrame(Duration.millis(0), new KeyValue(btnCerrarSesion.maxHeightProperty(), 0)));
 		timeline.getKeyFrames()
-				.add(new KeyFrame(Duration.millis(100), new KeyValue(btnCerrarSesion.maxHeightProperty(), 70)));
+				.add(new KeyFrame(Duration.millis(200), new KeyValue(btnCerrarSesion.maxHeightProperty(), 70)));
 		animacionPerfil = new ParallelTransition(animacionRotarPerfil, animacionBtn, timeline);
 
 		animacionRotarPerfil.setFromAngle(0);
@@ -275,7 +282,7 @@ public class Menucontroller {
 
 	private void animarPerfil() {
 		if (estaPerfilDesplegado) {
-			animacionPerfil.jumpTo(Duration.millis(100));
+			animacionPerfil.jumpTo(Duration.millis(200));
 			animacionPerfil.setRate(-1);
 			animacionPerfil.play();
 		} else {

@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.RegistroMascotaController">
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.RegistroMascotaController">
    <children>
       <Label id="titulo" alignment="CENTER" prefHeight="52.0" prefWidth="600.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Registro de Mascotas">
          <padding>
@@ -22,7 +22,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" prefHeight="27.0" prefWidth="325.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Cedula dueño:" GridPane.rowIndex="1">
+            <Label alignment="CENTER" prefHeight="27.0" prefWidth="325.0" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Filtrar Cedula:" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="20.0" />
                </GridPane.margin>

@@ -12,8 +12,10 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import one.jpro.routing.Route;
 import one.jpro.routing.RouteApp;
 
@@ -34,6 +36,13 @@ public class App extends RouteApp {
 	public App() {
 		app = this;
 		vistaLoading = new VistaLoading();
+	}
+
+	@Override
+	public void start(Stage stage) {
+		super.start(stage);
+		stage.getIcons().add(new Image(getClass()
+				.getResource("/co/edu/uniquindio/clinicaVeterinaria/sources/logo-no-text.png").toExternalForm()));
 	}
 
 	public static Parent loadFXML(String fxml) {
@@ -84,14 +93,14 @@ public class App extends RouteApp {
 				.and(get("/tablaMascota", r -> menuPrincipal.cambiarPestana(PestanasMenu.TMASCOTA)))
 				.and(get("/concretarAtencion", r -> menuPrincipal.cambiarPestana(PestanasMenu.CONCRETAR)))
 				.and(get("/factura", r -> menuPrincipal.cambiarPestana(PestanasMenu.FACTURA)))
-				.and(get("/histoial", r -> menuPrincipal.cambiarPestana(PestanasMenu.FACTURA)))
 				.and(get("/mas", r -> menuPrincipal.cambiarPestana(PestanasMenu.MORE)))
 				.and(get("/historialCitas", r -> menuPrincipal.cambiarPestana(PestanasMenu.HCITAS)))
 				.and(get("/historialClinico", r -> menuPrincipal.cambiarPestana(PestanasMenu.HCLINICO)));
 	}
-	
+
 	public void cargarFont() {
-		Font.loadFont(getClass().getResource("/co/edu/uniquindio/clinicaVeterinaria/sources/fonts/Rubik-SemiBold.ttf").toExternalForm(), 600);
+		Font.loadFont(getClass().getResource("/co/edu/uniquindio/clinicaVeterinaria/sources/fonts/Rubik-SemiBold.ttf")
+				.toExternalForm(), 600);
 	}
 
 }

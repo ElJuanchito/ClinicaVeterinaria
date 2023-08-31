@@ -36,10 +36,18 @@ public class Clinica implements Serializable {
 	 */
 	public Clinica() {
 		veterinarios = new Veterinario[4];
-		veterinarios[0] = new Veterinario("Dr. Perdomo", "juanm.perdomo@uqvirtual.edu.co", "3225179118", "0001", new Image(Clinica.class.getResourceAsStream("/co/edu/uniquindio/clinicaVeterinaria/sources/juancho.png")));
-		veterinarios[1] = new Veterinario("Dr. Bayter", "breynera.sanchezq@uqvirtual.edu.co", "3006123593", "0002", new Image(Clinica.class.getResourceAsStream("/co/edu/uniquindio/clinicaVeterinaria/sources/alejo.png")));
-		veterinarios[2] = new Veterinario("Dr. Quintero", "santiago.quinterou@uqvirtual.edu.co", "3147830068", "0003", new Image(Clinica.class.getResourceAsStream("/co/edu/uniquindio/clinicaVeterinaria/sources/santiago.png")));
-		veterinarios[3] = new Veterinario("Dr. Amador", "juanm.amadorr@uqvirtual.edu.co", "3136253916", "0004", new Image(Clinica.class.getResourceAsStream("/co/edu/uniquindio/clinicaVeterinaria/sources/amador.png")));
+		veterinarios[0] = new Veterinario("Dr. Perdomo", "juanm.perdomo@uqvirtual.edu.co", "3225179118", "0001",
+				new Image(Clinica.class
+						.getResourceAsStream("/co/edu/uniquindio/clinicaVeterinaria/sources/juancho.png")));
+		veterinarios[1] = new Veterinario("Dr. Bayter", "breynera.sanchezq@uqvirtual.edu.co", "3006123593", "0002",
+				new Image(
+						Clinica.class.getResourceAsStream("/co/edu/uniquindio/clinicaVeterinaria/sources/alejo.png")));
+		veterinarios[2] = new Veterinario("Dr. Quintero", "santiago.quinterou@uqvirtual.edu.co", "3147830068", "0003",
+				new Image(Clinica.class
+						.getResourceAsStream("/co/edu/uniquindio/clinicaVeterinaria/sources/santiago.png")));
+		veterinarios[3] = new Veterinario("Dr. Amador", "juanm.amadorr@uqvirtual.edu.co", "3136253916", "0004",
+				new Image(
+						Clinica.class.getResourceAsStream("/co/edu/uniquindio/clinicaVeterinaria/sources/amador.png")));
 		citas = new HashMap<Long, AtencionVeterinaria>();
 		facturas = new HashMap<Long, Factura>();
 		clientes = new HashMap<String, Cliente>();
@@ -206,8 +214,7 @@ public class Clinica implements Serializable {
 	 * @param mascota
 	 * @throws ClienteNoExistenteException
 	 */
-	public void agregarMascota(Cliente cliente, Mascota mascota)
-			throws ClienteNoExistenteException {
+	public void agregarMascota(Cliente cliente, Mascota mascota) throws ClienteNoExistenteException {
 		throwClienteNoEncontrado(cliente.getCedula());
 		cliente.agregarMascota(mascota);
 		actualizarCliente(cliente);
@@ -515,7 +522,7 @@ public class Clinica implements Serializable {
 	public List<Cliente> getListClientes() {
 		return new ArrayList<Cliente>(clientes.values());
 	}
-	
+
 	/**
 	 * Retorna una List con los veterinarios.
 	 * 
@@ -524,19 +531,20 @@ public class Clinica implements Serializable {
 	public List<Veterinario> getListaVeterinarios() {
 		return Arrays.asList(veterinarios);
 	}
-	
-	
+
 	/**
-	 *  Retorna una lista clientes filtrada por el parametro ingresado
+	 * Retorna una lista clientes filtrada por el parametro ingresado
+	 * 
 	 * @param cedula
 	 * @return
 	 */
 	public List<Cliente> filtrarClienteCedu(String cedula) {
 		return getListClientes().stream().filter(c -> c.cedulaEmpiezaPor(cedula)).collect(Collectors.toList());
 	}
-	
+
 	/**
 	 * Retorna una lista mascotas filtrada por el parametro ingresado
+	 * 
 	 * @param cedula
 	 * @param nombre
 	 * @return
@@ -544,7 +552,8 @@ public class Clinica implements Serializable {
 	 * @author ElJuancho
 	 */
 	public List<Mascota> filtrarMascotaPorCliente(String cedula, String nombre) throws ClienteNoExistenteException {
-		return buscarCliente(cedula).getListaMascotas().stream().filter(m -> m.nombreEmpiezaPor(nombre)).collect(Collectors.toList());
+		return buscarCliente(cedula).getListaMascotas().stream().filter(m -> m.nombreEmpiezaPor(nombre))
+				.collect(Collectors.toList());
 	}
 
 	/**
@@ -553,7 +562,8 @@ public class Clinica implements Serializable {
 	 * @param cedula
 	 * @return
 	 */
-	public List<AtencionVeterinaria> filtrarCitaPorCedula(String cedula) {
-		return getListaCitas().stream().filter(c -> c.cedulaEmpiezaPor(cedula)).collect(Collectors.toList());
+	public List<AtencionVeterinaria> filtrarCitasCreadasPorCedula(String cedula) {
+		return getListaCitas().stream().filter(c -> c.cedulaEmpiezaPor(cedula) && c.tieneEstado(Estado.CREADA))
+				.collect(Collectors.toList());
 	}
 }

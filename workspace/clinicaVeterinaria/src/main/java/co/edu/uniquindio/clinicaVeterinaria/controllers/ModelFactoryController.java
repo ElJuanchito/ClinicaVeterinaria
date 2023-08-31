@@ -2,13 +2,13 @@ package co.edu.uniquindio.clinicaVeterinaria.controllers;
 
 import java.util.List;
 
-import co.edu.uniquindio.clinicaVeterinaria.dao.ClinicaDao;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.ClienteNoExistenteException;
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.MascotaNoEncontradaExpcetion;
 import co.edu.uniquindio.clinicaVeterinaria.model.Cliente;
 import co.edu.uniquindio.clinicaVeterinaria.model.Clinica;
 import co.edu.uniquindio.clinicaVeterinaria.model.Mascota;
 import co.edu.uniquindio.clinicaVeterinaria.model.Veterinario;
+import co.edu.uniquindio.clinicaVeterinaria.services.ClinicaDao;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.image.Image;
 

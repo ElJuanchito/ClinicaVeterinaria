@@ -8,7 +8,7 @@ import co.edu.uniquindio.clinicaVeterinaria.model.Cliente;
 import co.edu.uniquindio.clinicaVeterinaria.model.Mascota;
 import co.edu.uniquindio.clinicaVeterinaria.model.Sexo;
 import co.edu.uniquindio.clinicaVeterinaria.model.Tipo;
-import co.edu.uniquindio.clinicaVeterinaria.utils.FxUtility;
+import co.edu.uniquindio.clinicaVeterinaria.services.FxUtility;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -19,6 +19,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import one.jpro.routing.LinkUtil;
 
 public class RegistroMascotaController {
 
@@ -28,38 +29,49 @@ public class RegistroMascotaController {
 	@FXML
 	private URL location;
 
-    @FXML
-    private TableView<Cliente> tblCliente;
+	@FXML
+	private TableView<Cliente> tblCliente;
 
-    @FXML
-    private TableColumn<Cliente, String> colNombreCliente;
+	@FXML
+	private TableColumn<Cliente, String> colNombreCliente;
 
-    @FXML
-    private TextField txtNombre;
+	@FXML
+	private TextField txtNombre;
 
-    @FXML
-    private ComboBox<Sexo> cbSexo;
+	@FXML
+	private ComboBox<Sexo> cbSexo;
 
-    @FXML
-    private TextField txtRaza;
+	@FXML
+	private TextField txtRaza;
 
-    @FXML
-    private TextField txtEdad;
+	@FXML
+	private TextField txtEdad;
 
-    @FXML
-    private GridPane gridMascota;
+	@FXML
+	private GridPane gridMascota;
 
-    @FXML
-    private TableColumn<Cliente, String> colCedulaCliente;
+	@FXML
+	private TableColumn<Cliente, String> colCedulaCliente;
 
-    @FXML
-    private TextField txtCedula;
+	@FXML
+	private TextField txtCedula;
 
-    @FXML
-    private Button btnRegistrar;
+	@FXML
+	private Button btnRegistrar;
 
-    @FXML
-    private ComboBox<Tipo> cbTipo;
+	@FXML
+	private ComboBox<Tipo> cbTipo;
+
+	private static RegistroMascotaController instance;
+
+	public static RegistroMascotaController getInstance() {
+		return instance;
+	}
+
+	public RegistroMascotaController() {
+		instance = this;
+	}
+
 	@FXML
 	void initialize() {
 		ModelFactoryController.getInstance().loadData();
@@ -71,19 +83,15 @@ public class RegistroMascotaController {
 				FXCollections.observableArrayList(ModelFactoryController.getInstance().filtrarClienteCedu("")));
 
 		txtCedula.textProperty().addListener((observable, oldValue, newValue) -> {
-			tblCliente.setItems(FXCollections
-					.observableArrayList(ModelFactoryController.getInstance().filtrarClienteCedu(newValue)));
-			tblCliente.refresh();
+			actualizarTabla(newValue);
 		});
 		colCedulaCliente.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getCedula()));
 		colNombreCliente.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getNombre()));
-		
-		tblCliente.getSelectionModel().selectedItemProperty().addListener( (observable, oldValue, newValue) -> {
 
-			
-			gridMascota.setDisable( newValue== null);
-			
-		
+		tblCliente.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+
+			gridMascota.setDisable(newValue == null);
+
 		});
 	}
 
@@ -100,12 +108,12 @@ public class RegistroMascotaController {
 		try {
 			Cliente cliente = tblCliente.getSelectionModel().getSelectedItem();
 			ModelFactoryController.getInstance().getClinica().agregarMascota(cliente,
-					new Mascota(cliente, txtNombre.getText().trim(),
-							Integer.valueOf(txtEdad.getText()), txtRaza.getText().trim(), cbTipo.getValue(),
-							cbSexo.getValue()));
+					new Mascota(cliente, txtNombre.getText().trim(), Integer.valueOf(txtEdad.getText()),
+							txtRaza.getText().trim(), cbTipo.getValue(), cbSexo.getValue()));
 			Menucontroller.getInstance().crearAlerta("Mascota agregada con éxito");
 			ModelFactoryController.getInstance().saveData();
 			vaciarCampos();
+			LinkUtil.gotoPage(btnRegistrar, "/inicio");
 		} catch (ClienteNoExistenteException e) {
 			Menucontroller.getInstance().crearAlerta("No existe ningun cliente con esta cedula");
 		} catch (NumberFormatException e) {
@@ -113,7 +121,7 @@ public class RegistroMascotaController {
 		}
 
 	}
-	
+
 	private boolean verificarCampos() {
 		if (txtNombre.getText().trim().isEmpty() || txtRaza.getText().trim().isEmpty()
 				|| txtEdad.getText().trim().isEmpty() || tblCliente.getSelectionModel().getSelectedItem() == null
@@ -122,7 +130,7 @@ public class RegistroMascotaController {
 		}
 		return true;
 	}
-	
+
 	private void vaciarCampos() {
 		txtNombre.clear();
 		cbSexo.setValue(null);
@@ -131,5 +139,16 @@ public class RegistroMascotaController {
 		txtCedula.clear();
 		tblCliente.getSelectionModel().clearSelection();
 		cbTipo.setValue(null);
+	}
+
+	private void actualizarTabla(String newValue) {
+		tblCliente.setItems(
+				FXCollections.observableArrayList(ModelFactoryController.getInstance().filtrarClienteCedu(newValue)));
+		tblCliente.refresh();
+	}
+
+	public void actualizarTabla() {
+		actualizarTabla("1");
+		actualizarTabla("");
 	}
 }

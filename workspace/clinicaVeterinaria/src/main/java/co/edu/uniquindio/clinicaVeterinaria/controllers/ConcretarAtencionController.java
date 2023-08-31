@@ -7,9 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.clinicaVeterinaria.model.AtencionVeterinaria;
-import co.edu.uniquindio.clinicaVeterinaria.model.Cliente;
-import co.edu.uniquindio.clinicaVeterinaria.utils.FxUtility;
-import javafx.beans.value.ChangeListener;
+import co.edu.uniquindio.clinicaVeterinaria.services.FxUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

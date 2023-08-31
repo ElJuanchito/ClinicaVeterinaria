@@ -11,7 +11,7 @@ import co.edu.uniquindio.clinicaVeterinaria.model.AtencionVeterinaria;
 import co.edu.uniquindio.clinicaVeterinaria.model.Cliente;
 import co.edu.uniquindio.clinicaVeterinaria.model.Mascota;
 import co.edu.uniquindio.clinicaVeterinaria.model.Veterinario;
-import co.edu.uniquindio.clinicaVeterinaria.utils.FxUtility;
+import co.edu.uniquindio.clinicaVeterinaria.services.FxUtility;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
