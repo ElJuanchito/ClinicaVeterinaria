@@ -86,4 +86,11 @@
          </BorderPane.margin>
       </Label>
    </top>
+   <bottom>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnCerrar" mnemonicParsing="false" onAction="#cerrarEvent" style="-fx-font-size: 3em;" styleClass="boton" stylesheets="@../styles/buttonStyle.css" text="CERRAR" />
+         </children>
+      </VBox>
+   </bottom>
 </BorderPane>
