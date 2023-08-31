@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import one.jpro.routing.LinkUtil;
 
 /**
  * 
@@ -32,6 +33,9 @@ public class HistorialClinicoController {
 
 	@FXML
 	private Button btnBuscar;
+
+	@FXML
+	private Button btnVolver;
 
 	@FXML
 	private TableColumn<AtencionVeterinaria, String> colCodigo;
@@ -66,6 +70,15 @@ public class HistorialClinicoController {
 	@FXML
 	void buscarEvent(ActionEvent event) {
 		buscarAction();
+	}
+
+	@FXML
+	void volverEvent(ActionEvent event) {
+		volverAction();
+	}
+
+	private void volverAction() {
+		LinkUtil.gotoPage(btnVolver, "/mas");
 	}
 
 	private void buscarAction() {

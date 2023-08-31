@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import one.jpro.routing.LinkUtil;
 
 /**
  * 
@@ -25,6 +26,9 @@ public class HistorialCitasController {
 
 	@FXML
 	private URL location;
+
+	@FXML
+	private Button btnVolver;
 
 	@FXML
 	private Button btnBuscar;
@@ -55,7 +59,6 @@ public class HistorialCitasController {
 
 	private ObservableList<AtencionVeterinaria> listaObservable;
 
-
 	@FXML
 	void initialize() {
 		ModelFactoryController.getInstance().loadData();
@@ -64,6 +67,15 @@ public class HistorialCitasController {
 	@FXML
 	void buscarEvent(ActionEvent event) {
 		buscarAction();
+	}
+
+	@FXML
+	void volverEvent(ActionEvent event) {
+		volverAction();
+	}
+
+	private void volverAction() {
+		LinkUtil.gotoPage(btnVolver, "/mas");
 	}
 
 	private void buscarAction() {
@@ -82,8 +94,8 @@ public class HistorialCitasController {
 
 	private void actualizarTabla() {
 		ModelFactoryController.getInstance().loadData();
-		listaObservable = FXCollections
-				.observableList(ModelFactoryController.getInstance().getClinica().citasEnRangoDeDias(txtInicio.getValue(), txtFin.getValue()));
+		listaObservable = FXCollections.observableList(ModelFactoryController.getInstance().getClinica()
+				.citasEnRangoDeDias(txtInicio.getValue(), txtFin.getValue()));
 		tblCitas.setItems(listaObservable);
 		colCodigo.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getCodigo().toString()));
 		colFecha.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getFecha().toLocalDate().toString()));
