@@ -4,10 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.clinicaVeterinaria.model.Veterinario;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -53,19 +50,6 @@ public class ProfileSelectorController {
 
 	@FXML
 	private Circle circulito_4;
-	
-	@FXML
-    private Button btnCerrar;
-
-    @FXML
-    void cerrarEvent(ActionEvent event) {
-    	cerrarAction();
-    }
-
-	private void cerrarAction() {
-		Platform.exit();
-		
-	}
 
 	@FXML
 	void selectUser1Event(MouseEvent event) {
@@ -138,7 +122,7 @@ public class ProfileSelectorController {
 		lblVet4.setText(veterinarios[3].getNombre());
 
 	}
-	
+
 	private void inicializarCirculos(Circle circulo) {
 		circulo.setStyle("-fx-effect: innershadow(gaussian, #6fc1c4, 1em, 0.5, 0.0, 0.0);");
 	}

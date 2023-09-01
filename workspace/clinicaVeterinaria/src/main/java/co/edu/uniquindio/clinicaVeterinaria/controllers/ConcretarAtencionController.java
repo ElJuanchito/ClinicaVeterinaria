@@ -3,17 +3,15 @@ package co.edu.uniquindio.clinicaVeterinaria.controllers;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.clinicaVeterinaria.model.AtencionVeterinaria;
-import co.edu.uniquindio.clinicaVeterinaria.services.FxUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Spinner;
 import one.jpro.routing.LinkUtil;
 
 /**
@@ -45,7 +43,10 @@ public class ConcretarAtencionController {
 	private DatePicker txtFecha;
 
 	@FXML
-	private TextField txtHora;
+	private Spinner<Integer> txtHora;
+
+	@FXML
+	private Spinner<Integer> txtMin;
 
 	@FXML
 	void siguienteEvent(ActionEvent event) {
@@ -57,10 +58,12 @@ public class ConcretarAtencionController {
 	 * @author ElJuancho
 	 */
 	private void siguienteAction() {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-		LocalTime tiempo = LocalTime.parse(txtHora.getText().trim(), formatter);
+		int hora = txtHora.getValue();
+		int minuto = txtMin.getValue();
 
-		LocalDateTime fechita = LocalDateTime.of(txtFecha.getValue(), tiempo);
+		LocalTime localTime = LocalTime.of(hora, minuto);
+
+		LocalDateTime fechita = LocalDateTime.of(txtFecha.getValue(), localTime);
 
 		AtencionVeterinaria cita = new AtencionVeterinaria(fechita, ModelFactoryController.getInstance().getMascota(),
 				ModelFactoryController.getInstance().getVeterinario());
@@ -79,6 +82,7 @@ public class ConcretarAtencionController {
 	@FXML
 	void initialize() {
 		ModelFactoryController.getInstance().loadData();
+
 		ModelFactoryController.getInstance().getPropClienteCita().addListener((observable, oldValue, newValue) -> {
 			lblCliente.setText(newValue == null ? "" : newValue.getNombre());
 		});
@@ -91,12 +95,10 @@ public class ConcretarAtencionController {
 		ModelFactoryController.getInstance().getPropVeterinarioSel().addListener((observable, oldValue, newValue) -> {
 			lblVeterinario.setText(newValue == null ? "" : newValue.getNombre());
 		});
-		FxUtility.setAsHourTextField(txtHora);
-		FxUtility.setMaxLengthHourSize(txtHora, 5);
 	}
 
 	private boolean verificarCampos() {
-		if (txtFecha.getValue() == null || txtHora.getText().trim().isEmpty()) {
+		if (txtFecha.getValue() == null || txtHora.getValue() == null || txtMin.getValue() == null) {
 			return false;
 		}
 		return true;
