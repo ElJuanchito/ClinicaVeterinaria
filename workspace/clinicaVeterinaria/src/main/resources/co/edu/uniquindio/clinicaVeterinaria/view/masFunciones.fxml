@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
 
-<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="40.0" stylesheets="@../styles/moreFunc.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.MasFuncionesController">
+<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="40.0" stylesheets="@../styles/moreFunc.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinicaVeterinaria.controllers.MasFuncionesController">
    <children>
       <HBox fx:id="btnHistorialClinico" alignment="CENTER" onMouseClicked="#verHistorialClinicoEvent" prefHeight="39.0" prefWidth="229.0" spacing="20.0" styleClass="boton">
          <children>
@@ -27,7 +31,6 @@
                </children>
             </StackPane>
             <Label text="Ver Historial Citas" />
-            <Label text="Atenciones Entre Fechas" />
          </children>
       </HBox>
       <HBox fx:id="btnVerCitas" alignment="CENTER" onMouseClicked="#verCitasEvent" prefHeight="39.0" prefWidth="229.0" spacing="20.0" styleClass="boton">
