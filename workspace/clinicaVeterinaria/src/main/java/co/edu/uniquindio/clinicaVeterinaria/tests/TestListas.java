@@ -18,10 +18,10 @@ public class TestListas {
 
         //System.out.println(ModelFactoryController.getInstance().getClinica().getListaCitas());
 
-        System.out.println(ModelFactoryController.getInstance().getClinica().buscarMascota("200", "2"));
+        //System.out.println(ModelFactoryController.getInstance().getClinica().buscarMascota("200", "2"));
 
         System.out.println(ModelFactoryController.getInstance().getClinica().getListaFacturas());
 
-        ModelFactoryController.getInstance().getClinica().buscarFactura(null).setId(1L);
+        //ModelFactoryController.getInstance().getClinica().buscarFactura(null).setId(1L);
     }
 }
