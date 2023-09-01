@@ -6,6 +6,7 @@ import co.edu.uniquindio.clinicaVeterinaria.exceptions.ClienteNoExistenteExcepti
 import co.edu.uniquindio.clinicaVeterinaria.exceptions.MascotaNoEncontradaExpcetion;
 import co.edu.uniquindio.clinicaVeterinaria.model.Cliente;
 import co.edu.uniquindio.clinicaVeterinaria.model.Clinica;
+import co.edu.uniquindio.clinicaVeterinaria.model.Factura;
 import co.edu.uniquindio.clinicaVeterinaria.model.Mascota;
 import co.edu.uniquindio.clinicaVeterinaria.model.Veterinario;
 import co.edu.uniquindio.clinicaVeterinaria.services.ClinicaDao;
@@ -136,5 +137,9 @@ public class ModelFactoryController {
 
 	public SimpleObjectProperty<Veterinario> getPropVeterinarioSel() {
 		return propVeterinarioSel;
+	}
+
+	public List<Factura> filtrarFacturasCodigo(Long codigo) {
+		return getClinica().filtrarFacturasCodigo(codigo);
 	}
 }

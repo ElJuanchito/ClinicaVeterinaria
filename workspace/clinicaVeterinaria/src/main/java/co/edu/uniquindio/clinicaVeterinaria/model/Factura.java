@@ -128,4 +128,13 @@ public class Factura implements Serializable {
 		return cuentaF.get();
 	}
 
+	public boolean tieneCodigo(Long codigo) {
+		String codigoString = codigo + "";
+		return (this.id + "").startsWith(codigoString);
+	}
+
+	public String getNombreMascota() {
+		return atencionVeterinaria.getMascota().getNombre();
+	}
+
 }

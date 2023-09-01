@@ -566,4 +566,8 @@ public class Clinica implements Serializable {
 		return getListaCitas().stream().filter(c -> c.cedulaEmpiezaPor(cedula) && c.tieneEstado(Estado.CREADA))
 				.collect(Collectors.toList());
 	}
+
+	public List<Factura> filtrarFacturasCodigo(Long codigo) {
+		return getListaFacturas().stream().filter(f -> f.tieneCodigo(codigo)).collect(Collectors.toList());
+	}
 }
