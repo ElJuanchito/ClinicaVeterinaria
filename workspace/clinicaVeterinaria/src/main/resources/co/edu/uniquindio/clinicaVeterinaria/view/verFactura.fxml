@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label styleClass="texto" stylesheets="@../styles/textStyle.css" text="Ver Factura" />
+            <Label styleClass="texto" stylesheets="@../styles/textStyle.css" text="Elija La Factura A Ver">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <GridPane alignment="CENTER" styleClass="texto">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Filtrar Codigo">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="txtCodigo" styleClass="textField" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+         </children>
+      </GridPane>
+      <TableView fx:id="tblFacturas" prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/tableStyle.css">
+        <columns>
+          <TableColumn fx:id="colCodigo" prefWidth="75.0" text="Codigo" />
+          <TableColumn fx:id="colCedula" prefWidth="75.0" text="Cedula" />
+            <TableColumn fx:id="colMascota" prefWidth="75.0" text="Mascota" />
+            <TableColumn fx:id="colVeterinario" prefWidth="75.0" text="Veterinario" />
+            <TableColumn fx:id="colValor" prefWidth="75.0" text="Valor" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </TableView>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="btnVolver" mnemonicParsing="false" onAction="#volverEvent" styleClass="boton" text="Volver">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnVer" mnemonicParsing="false" onAction="#verEvent" styleClass="boton" text="Ver" />
+         </children>
+      </HBox>
+   </children>
+   <stylesheets>
+      <URL value="@../styles/textStyle.css" />
+      <URL value="@../styles/txtFieldStyle.css" />
+      <URL value="@../styles/buttonStyle.css" />
+   </stylesheets>
+</VBox>
