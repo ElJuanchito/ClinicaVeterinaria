@@ -147,6 +147,7 @@ public class FinalizarAtencionController {
 		Platform.runLater(() -> new GeneracionPdf(factura).ejecutarImpresion());
 		Menucontroller.getInstance().crearAlerta("Factura creada con exito");
 		vaciarCampos();
+		VerFacturasController.getInstance().actualizarTabla();
 		actualizarTabla();
 		LinkUtil.gotoPage(btnFinalizar, "/inicio");
 	}
