@@ -27,7 +27,7 @@ public class TestListas {
 	}
 
 	@Test
-	public static void testFcturas() throws FacturaNoEcontradaException {
+	public void testFacturas() throws FacturaNoEcontradaException {
 		System.out.println(ModelFactoryController.getInstance().getClinica().getListaFacturas());
 		ModelFactoryController.getInstance().getClinica().buscarFactura(null).setId(1L);
 	}
