@@ -17,12 +17,20 @@
 			<artifactId>jpro-webapi</artifactId>
 			<version>2023.2.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>one.jpro</groupId>
 			<artifactId>jpro-routing-core</artifactId>
 			<version>0.15.0</version>
 			<scope>compile</scope>
-		</dependency> <!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
+		</dependency> <!--
+		https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
 		<dependency>
 			<groupId>org.apache.pdfbox</groupId>
 			<artifactId>pdfbox</artifactId>
